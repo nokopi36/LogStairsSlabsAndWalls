@@ -88,10 +88,16 @@ public final class ModGameTests {
         helper.succeed();
     }
 
-    // SPEC 4 章: 原木を横一列に 3 個 → ハーフ 24 個（竹ブロック 12 個）
+    // SPEC 4 章: 原木または原木パネルを横一列に 3 個 → ハーフ 24 個（竹ブロック 12 個）
     private static void logSlabRecipe(GameTestHelper helper) {
         for (LogWood wood : ModBlocks.WOODS) {
             assertOnlyRecipe(helper, CraftingInput.of(3, 1, Collections.nCopies(3, new ItemStack(wood.log()))),
+                    ModItems.logSlab(wood).get(), ModRecipeProvider.slabCount(wood));
+            // 原木パネルでも、原木と混ぜても同じ個数
+            ItemStack panel = new ItemStack(ModItems.logPanel(wood).get());
+            assertOnlyRecipe(helper, CraftingInput.of(3, 1, Collections.nCopies(3, panel)),
+                    ModItems.logSlab(wood).get(), ModRecipeProvider.slabCount(wood));
+            assertOnlyRecipe(helper, CraftingInput.of(3, 1, List.of(new ItemStack(wood.log()), panel, new ItemStack(wood.log()))),
                     ModItems.logSlab(wood).get(), ModRecipeProvider.slabCount(wood));
         }
         helper.assertTrue(ModRecipeProvider.slabCount(LogWood.OAK) == 24 && ModRecipeProvider.slabCount(LogWood.BAMBOO) == 12,

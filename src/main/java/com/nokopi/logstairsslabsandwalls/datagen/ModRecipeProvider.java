@@ -9,6 +9,7 @@ import net.minecraft.advancements.Advancement;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
 
@@ -37,8 +38,10 @@ public class ModRecipeProvider extends RecipeProvider {
                     .group("log_from_log_panel")
                     .unlockedBy(getHasName(panel), this.has(panel))
                     .save(this.output, LogStairsSlabsAndWalls.MODID + ":" + getConversionRecipeName(wood.log(), panel));
+            // 階段・ハーフ・塀は原木と原木パネルのどちらでも作れる（混ぜてもよい。パネル 1 個 = 原木 1 個）
+            Ingredient logOrPanel = Ingredient.of(wood.log(), panel);
             this.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.logSlab(wood).get(), slabCount(wood))
-                    .define('#', wood.log())
+                    .define('#', logOrPanel)
                     .pattern("###")
                     .group("log_slab")
                     .unlockedBy(getHasName(wood.log()), this.has(wood.log()))

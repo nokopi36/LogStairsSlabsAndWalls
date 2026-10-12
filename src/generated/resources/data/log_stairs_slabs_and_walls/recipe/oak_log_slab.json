@@ -3,7 +3,10 @@
   "category": "building",
   "group": "log_slab",
   "key": {
-    "#": "minecraft:oak_log"
+    "#": [
+      "minecraft:oak_log",
+      "log_stairs_slabs_and_walls:oak_log_panel"
+    ]
   },
   "pattern": [
     "###"
