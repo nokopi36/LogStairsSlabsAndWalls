@@ -3,6 +3,7 @@ package com.nokopi.logstairsslabsandwalls;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
+import com.nokopi.logstairsslabsandwalls.gametest.ModGameTests;
 
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
@@ -17,6 +18,7 @@ public class LogStairsSlabsAndWalls {
         ModBlocks.BLOCKS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
         ModCreativeTabs.CREATIVE_MODE_TABS.register(modEventBus);
+        ModGameTests.TEST_FUNCTIONS.register(modEventBus);
         modEventBus.addListener(ModCreativeTabs::addToVanillaTabs);
     }
 }

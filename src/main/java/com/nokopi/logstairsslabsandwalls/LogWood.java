@@ -1,5 +1,7 @@
 package com.nokopi.logstairsslabsandwalls;
 
+import net.minecraft.tags.BlockItemTagId;
+import net.minecraft.tags.BlockItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
@@ -125,6 +127,25 @@ public enum LogWood {
             case BAMBOO -> Blocks.STRIPPED_BAMBOO_BLOCK;
             case CRIMSON -> Blocks.STRIPPED_CRIMSON_STEM;
             case WARPED -> Blocks.STRIPPED_WARPED_STEM;
+        };
+    }
+
+    // この木の原木のタグ（ブロック・アイテム共通）。原木パネルを入れて、板材・木炭などの材料にする
+    public BlockItemTagId logsTag() {
+        return switch (this) {
+            case OAK -> BlockItemTags.OAK_LOGS;
+            case SPRUCE -> BlockItemTags.SPRUCE_LOGS;
+            case BIRCH -> BlockItemTags.BIRCH_LOGS;
+            case JUNGLE -> BlockItemTags.JUNGLE_LOGS;
+            case ACACIA -> BlockItemTags.ACACIA_LOGS;
+            case DARK_OAK -> BlockItemTags.DARK_OAK_LOGS;
+            case MANGROVE -> BlockItemTags.MANGROVE_LOGS;
+            case CHERRY -> BlockItemTags.CHERRY_LOGS;
+            case PALE_OAK -> BlockItemTags.PALE_OAK_LOGS;
+            case POPLAR -> BlockItemTags.POPLAR_LOGS;
+            case BAMBOO -> BlockItemTags.BAMBOO_BLOCKS;
+            case CRIMSON -> BlockItemTags.CRIMSON_STEMS;
+            case WARPED -> BlockItemTags.WARPED_STEMS;
         };
     }
 

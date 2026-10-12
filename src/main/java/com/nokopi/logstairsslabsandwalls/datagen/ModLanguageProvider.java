@@ -1,6 +1,8 @@
 package com.nokopi.logstairsslabsandwalls.datagen;
 
 import com.nokopi.logstairsslabsandwalls.LogStairsSlabsAndWalls;
+import com.nokopi.logstairsslabsandwalls.LogWood;
+import com.nokopi.logstairsslabsandwalls.ModBlocks;
 import com.nokopi.logstairsslabsandwalls.ModCreativeTabs;
 
 import net.minecraft.data.PackOutput;
@@ -17,6 +19,9 @@ public final class ModLanguageProvider {
 
         @Override
         protected void addTranslations() {
+            for (LogWood wood : ModBlocks.WOODS) {
+                this.addBlock(ModBlocks.logPanel(wood), wood.englishName() + " Panel");
+            }
             this.add(ModCreativeTabs.TAB_TITLE, "Log Stairs, Slabs and Walls");
         }
     }
@@ -28,6 +33,9 @@ public final class ModLanguageProvider {
 
         @Override
         protected void addTranslations() {
+            for (LogWood wood : ModBlocks.WOODS) {
+                this.addBlock(ModBlocks.logPanel(wood), wood.japaneseName() + "パネル");
+            }
             this.add(ModCreativeTabs.TAB_TITLE, "Log Stairs, Slabs and Walls");
         }
     }
