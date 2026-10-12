@@ -1,16 +1,364 @@
 {
-  "variants": {
-    "axis=x": {
-      "model": "log_stairs_slabs_and_walls:block/oak_log_panel_horizontal",
-      "x": 90,
-      "y": 90
+  "multipart": [
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_down",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "axis": "x",
+        "west_stripped": "false"
+      }
     },
-    "axis=y": {
-      "model": "log_stairs_slabs_and_walls:block/oak_log_panel"
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_stripped_down",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "axis": "x",
+        "west_stripped": "true"
+      }
     },
-    "axis=z": {
-      "model": "log_stairs_slabs_and_walls:block/oak_log_panel_horizontal",
-      "x": 90
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_horizontal_up",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "axis": "x",
+        "east_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_stripped_horizontal_up",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "axis": "x",
+        "east_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_north",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "axis": "x",
+        "down_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_stripped_north",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "axis": "x",
+        "down_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_south",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "axis": "x",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_stripped_south",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "axis": "x",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_west",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "axis": "x",
+        "north_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_stripped_west",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "axis": "x",
+        "north_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_east",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "axis": "x",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_stripped_east",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "axis": "x",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_down"
+      },
+      "when": {
+        "axis": "y",
+        "down_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_stripped_down"
+      },
+      "when": {
+        "axis": "y",
+        "down_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_up"
+      },
+      "when": {
+        "axis": "y",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_stripped_up"
+      },
+      "when": {
+        "axis": "y",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_north"
+      },
+      "when": {
+        "axis": "y",
+        "north_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_stripped_north"
+      },
+      "when": {
+        "axis": "y",
+        "north_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_south"
+      },
+      "when": {
+        "axis": "y",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_stripped_south"
+      },
+      "when": {
+        "axis": "y",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_west"
+      },
+      "when": {
+        "axis": "y",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_stripped_west"
+      },
+      "when": {
+        "axis": "y",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_east"
+      },
+      "when": {
+        "axis": "y",
+        "east_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_stripped_east"
+      },
+      "when": {
+        "axis": "y",
+        "east_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_down",
+        "x": 90
+      },
+      "when": {
+        "axis": "z",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_stripped_down",
+        "x": 90
+      },
+      "when": {
+        "axis": "z",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_horizontal_up",
+        "x": 90
+      },
+      "when": {
+        "axis": "z",
+        "north_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_stripped_horizontal_up",
+        "x": 90
+      },
+      "when": {
+        "axis": "z",
+        "north_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_north",
+        "x": 90
+      },
+      "when": {
+        "axis": "z",
+        "down_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_stripped_north",
+        "x": 90
+      },
+      "when": {
+        "axis": "z",
+        "down_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_south",
+        "x": 90
+      },
+      "when": {
+        "axis": "z",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_stripped_south",
+        "x": 90
+      },
+      "when": {
+        "axis": "z",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_west",
+        "x": 90
+      },
+      "when": {
+        "axis": "z",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_stripped_west",
+        "x": 90
+      },
+      "when": {
+        "axis": "z",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_east",
+        "x": 90
+      },
+      "when": {
+        "axis": "z",
+        "east_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_panel_stripped_east",
+        "x": 90
+      },
+      "when": {
+        "axis": "z",
+        "east_stripped": "true"
+      }
     }
-  }
+  ]
 }

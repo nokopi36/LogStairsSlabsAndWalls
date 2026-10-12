@@ -8,8 +8,11 @@ import com.nokopi.logstairsslabsandwalls.LogStairsSlabsAndWalls;
 import com.nokopi.logstairsslabsandwalls.LogWood;
 import com.nokopi.logstairsslabsandwalls.ModBlocks;
 import com.nokopi.logstairsslabsandwalls.ModItems;
+import com.nokopi.logstairsslabsandwalls.block.FaceStripping;
 import com.nokopi.logstairsslabsandwalls.datagen.ModRecipeProvider;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -21,6 +24,8 @@ import net.minecraft.gametest.framework.TestData;
 import net.minecraft.gametest.framework.TestEnvironmentDefinition;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -28,7 +33,11 @@ import net.minecraft.world.item.crafting.CraftingInput;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -37,6 +46,10 @@ public final class ModGameTests {
 
     public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> LOG_PANEL_RECIPES =
             TEST_FUNCTIONS.register("log_panel_recipes", () -> ModGameTests::logPanelRecipes);
+    public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> STRIP_EACH_FACE =
+            TEST_FUNCTIONS.register("strip_each_face", () -> ModGameTests::stripEachFace);
+    public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> STRIP_STRIPPED_FACE =
+            TEST_FUNCTIONS.register("strip_stripped_face", () -> ModGameTests::stripStrippedFace);
 
     // data/log_stairs_slabs_and_walls/structure/test_area.nbt（空の 3x3x3）
     private static final Identifier TEST_AREA = Identifier.fromNamespaceAndPath(LogStairsSlabsAndWalls.MODID, "test_area");
@@ -67,6 +80,46 @@ public final class ModGameTests {
         }
         assertOnlyRecipe(helper, CraftingInput.of(1, 1, List.of(new ItemStack(ModItems.logPanel(LogWood.OAK).get()))), Items.OAK_PLANKS, 4);
         helper.succeed();
+    }
+
+    // SPEC 3.2: 斧でクリックした面の向きだけ剥がれ、斧の耐久が 1 減る
+    private static void stripEachFace(GameTestHelper helper) {
+        Player player = helper.makeMockPlayer(GameType.SURVIVAL);
+        for (Direction face : Direction.values()) {
+            BlockPos pos = new BlockPos(1, 1, 1);
+            helper.setBlock(pos, ModBlocks.logPanel(LogWood.OAK).get());
+            ItemStack axe = new ItemStack(Items.IRON_AXE);
+            player.setItemInHand(InteractionHand.MAIN_HAND, axe);
+            clickFace(helper, player, pos, face);
+            BlockState state = helper.getBlockState(pos);
+            for (Direction direction : Direction.values()) {
+                helper.assertTrue(FaceStripping.isStripped(state, direction) == (direction == face),
+                        "clicked " + face + " but " + direction + " stripped=" + FaceStripping.isStripped(state, direction));
+            }
+            helper.assertTrue(player.getMainHandItem().getDamageValue() == 1, "axe damage should be 1 after stripping " + face);
+        }
+        helper.succeed();
+    }
+
+    // SPEC 3.2: 剥がれ済みの面をクリックしても何も起きない（斧も消費しない）
+    private static void stripStrippedFace(GameTestHelper helper) {
+        Player player = helper.makeMockPlayer(GameType.SURVIVAL);
+        BlockPos pos = new BlockPos(1, 1, 1);
+        BlockState stripped = ModBlocks.logPanel(LogWood.OAK).get().defaultBlockState()
+                .setValue(FaceStripping.strippedProperty(Direction.NORTH), true);
+        helper.setBlock(pos, stripped);
+        player.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(Items.IRON_AXE));
+        clickFace(helper, player, pos, Direction.NORTH);
+        helper.assertTrue(helper.getBlockState(pos) == stripped, "state changed: " + helper.getBlockState(pos));
+        helper.assertTrue(player.getMainHandItem().getDamageValue() == 0, "axe was damaged");
+        helper.succeed();
+    }
+
+    // ブロックの face 側の面の中央をクリックする
+    private static void clickFace(GameTestHelper helper, Player player, BlockPos relativePos, Direction face) {
+        BlockPos absolutePos = helper.absolutePos(relativePos);
+        Vec3 location = Vec3.atCenterOf(absolutePos).add(Vec3.atLowerCornerOf(face.getUnitVec3i()).scale(0.5));
+        helper.useBlock(relativePos, player, new BlockHitResult(location, face, absolutePos, false));
     }
 
     private static void assertOnlyRecipe(GameTestHelper helper, CraftingInput input, ItemLike expected, int count) {
