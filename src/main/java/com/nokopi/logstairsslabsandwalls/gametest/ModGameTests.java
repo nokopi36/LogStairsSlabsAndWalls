@@ -36,8 +36,11 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.Half;
 import net.minecraft.world.level.block.state.properties.SlabType;
+import net.minecraft.world.level.block.state.properties.StairsShape;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -56,6 +59,10 @@ public final class ModGameTests {
             TEST_FUNCTIONS.register("log_slab_recipe", () -> ModGameTests::logSlabRecipe);
     public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> STRIP_SLAB_FACES =
             TEST_FUNCTIONS.register("strip_slab_faces", () -> ModGameTests::stripSlabFaces);
+    public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> LOG_STAIRS_RECIPE =
+            TEST_FUNCTIONS.register("log_stairs_recipe", () -> ModGameTests::logStairsRecipe);
+    public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> STRIP_STAIRS_FACES =
+            TEST_FUNCTIONS.register("strip_stairs_faces", () -> ModGameTests::stripStairsFaces);
 
     // data/log_stairs_slabs_and_walls/structure/test_area.nbt（空の 3x3x3）
     private static final Identifier TEST_AREA = Identifier.fromNamespaceAndPath(LogStairsSlabsAndWalls.MODID, "test_area");
@@ -102,6 +109,34 @@ public final class ModGameTests {
         }
         helper.assertTrue(ModRecipeProvider.slabCount(LogWood.OAK) == 24 && ModRecipeProvider.slabCount(LogWood.BAMBOO) == 12,
                 "slab counts should be 24 and 12");
+        helper.succeed();
+    }
+
+    // SPEC 4 章: 階段の形に原木または原木パネル 6 個 → 階段 16 個（竹ブロック 8 個）
+    private static void logStairsRecipe(GameTestHelper helper) {
+        for (LogWood wood : ModBlocks.WOODS) {
+            ItemStack log = new ItemStack(wood.log());
+            ItemStack panel = new ItemStack(ModItems.logPanel(wood).get());
+            for (ItemStack mixed : List.of(log, panel)) {
+                assertOnlyRecipe(helper, CraftingInput.of(3, 3, List.of(
+                        log, ItemStack.EMPTY, ItemStack.EMPTY,
+                        mixed, panel, ItemStack.EMPTY,
+                        log, mixed, panel)), ModItems.logStairs(wood).get(), ModRecipeProvider.stairsCount(wood));
+            }
+        }
+        helper.assertTrue(ModRecipeProvider.stairsCount(LogWood.OAK) == 16 && ModRecipeProvider.stairsCount(LogWood.BAMBOO) == 8,
+                "stairs counts should be 16 and 8");
+        helper.succeed();
+    }
+
+    // 階段の上下・すべての形で、6 面それぞれが剥げる
+    private static void stripStairsFaces(GameTestHelper helper) {
+        for (Half half : Half.values()) {
+            for (StairsShape shape : StairsShape.values()) {
+                assertStripEachFace(helper, ModBlocks.logStairs(LogWood.OAK).get().defaultBlockState()
+                        .setValue(StairBlock.HALF, half).setValue(StairBlock.SHAPE, shape));
+            }
+        }
         helper.succeed();
     }
 

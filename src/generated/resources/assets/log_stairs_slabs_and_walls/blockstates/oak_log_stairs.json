@@ -1,0 +1,6364 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_down",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "shape": "straight",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_down",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "shape": "straight",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_up",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "north",
+        "half": "top",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_up",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "north",
+        "half": "top",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_north",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "north",
+        "half": "top",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_north",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "north",
+        "half": "top",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_south",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "shape": "straight",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_south",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "shape": "straight",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_west",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "shape": "straight",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_west",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "shape": "straight",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_east",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "north_stripped": "false",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_east",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "north_stripped": "true",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_down",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "shape": "inner_left",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_down",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "shape": "inner_left",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_up",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "north",
+        "half": "top",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_up",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "north",
+        "half": "top",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_north",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "north",
+        "half": "top",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_north",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "north",
+        "half": "top",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_south",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "shape": "inner_left",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_south",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "shape": "inner_left",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_west",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "shape": "inner_left",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_west",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "shape": "inner_left",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_east",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "north_stripped": "false",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_east",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "north_stripped": "true",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_down",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "shape": "inner_right",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_down",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "shape": "inner_right",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_up",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "north",
+        "half": "top",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_up",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "north",
+        "half": "top",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_north",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "shape": "inner_right",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_north",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "shape": "inner_right",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_south",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "north_stripped": "false",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_south",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "north_stripped": "true",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_west",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "shape": "inner_right",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_west",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "shape": "inner_right",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_east",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "north",
+        "half": "top",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_east",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "north",
+        "half": "top",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_down",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "shape": "outer_left",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_down",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "shape": "outer_left",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_up",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "north",
+        "half": "top",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_up",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "north",
+        "half": "top",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_north",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "north",
+        "half": "top",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_north",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "north",
+        "half": "top",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_south",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "shape": "outer_left",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_south",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "shape": "outer_left",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_west",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "shape": "outer_left",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_west",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "shape": "outer_left",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_east",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "north_stripped": "false",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_east",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "north_stripped": "true",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_down",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "shape": "outer_right",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_down",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "shape": "outer_right",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_up",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "north",
+        "half": "top",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_up",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "north",
+        "half": "top",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_north",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "shape": "outer_right",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_north",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "shape": "outer_right",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_south",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "north_stripped": "false",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_south",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "north_stripped": "true",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_west",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "shape": "outer_right",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_west",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "top",
+        "shape": "outer_right",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_east",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "north",
+        "half": "top",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_east",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "north",
+        "half": "top",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_down",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "north",
+        "half": "bottom",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_down",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "north",
+        "half": "bottom",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_up",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "shape": "straight",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_up",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "shape": "straight",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_north",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "shape": "straight",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_north",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "shape": "straight",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_south",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "north",
+        "half": "bottom",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_south",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "north",
+        "half": "bottom",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_west",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "shape": "straight",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_west",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "shape": "straight",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_east",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "north_stripped": "false",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_east",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "north_stripped": "true",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_down",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "north",
+        "half": "bottom",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_down",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "north",
+        "half": "bottom",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_up",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "shape": "inner_left",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_up",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "shape": "inner_left",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_north",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "shape": "inner_left",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_north",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "shape": "inner_left",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_south",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "north_stripped": "false",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_south",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "north_stripped": "true",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_west",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "north",
+        "half": "bottom",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_west",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "north",
+        "half": "bottom",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_east",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "shape": "inner_left",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_east",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "shape": "inner_left",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_down",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "north",
+        "half": "bottom",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_down",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "north",
+        "half": "bottom",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_up",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "shape": "inner_right",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_up",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "shape": "inner_right",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_north",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "shape": "inner_right",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_north",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "shape": "inner_right",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_south",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "north",
+        "half": "bottom",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_south",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "north",
+        "half": "bottom",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_west",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "shape": "inner_right",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_west",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "shape": "inner_right",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_east",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "north_stripped": "false",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_east",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "north_stripped": "true",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_down",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "north",
+        "half": "bottom",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_down",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "north",
+        "half": "bottom",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_up",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "shape": "outer_left",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_up",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "shape": "outer_left",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_north",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "shape": "outer_left",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_north",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "shape": "outer_left",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_south",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "north_stripped": "false",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_south",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "north_stripped": "true",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_west",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "north",
+        "half": "bottom",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_west",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "north",
+        "half": "bottom",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_east",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "shape": "outer_left",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_east",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "shape": "outer_left",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_down",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "north",
+        "half": "bottom",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_down",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "north",
+        "half": "bottom",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_up",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "shape": "outer_right",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_up",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "shape": "outer_right",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_north",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "shape": "outer_right",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_north",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "shape": "outer_right",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_south",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "north",
+        "half": "bottom",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_south",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "north",
+        "half": "bottom",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_west",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "shape": "outer_right",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_west",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "shape": "outer_right",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_east",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "north_stripped": "false",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_east",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "north",
+        "half": "bottom",
+        "north_stripped": "true",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_down",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "shape": "straight",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_down",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "shape": "straight",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_up",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "east",
+        "half": "top",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_up",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "east",
+        "half": "top",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_north",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "shape": "straight",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_north",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "shape": "straight",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_south",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "north_stripped": "false",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_south",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "north_stripped": "true",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_west",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "shape": "straight",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_west",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "shape": "straight",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_east",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "east",
+        "half": "top",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_east",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "east",
+        "half": "top",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_down",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "shape": "inner_left",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_down",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "shape": "inner_left",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_up",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "east",
+        "half": "top",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_up",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "east",
+        "half": "top",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_north",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "shape": "inner_left",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_north",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "shape": "inner_left",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_south",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "north_stripped": "false",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_south",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "north_stripped": "true",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_west",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "shape": "inner_left",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_west",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "shape": "inner_left",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_east",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "east",
+        "half": "top",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_east",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "east",
+        "half": "top",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_down",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "shape": "inner_right",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_down",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "shape": "inner_right",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_up",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "east",
+        "half": "top",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_up",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "east",
+        "half": "top",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_north",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "shape": "inner_right",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_north",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "shape": "inner_right",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_south",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "east",
+        "half": "top",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_south",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "east",
+        "half": "top",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_west",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "north_stripped": "false",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_west",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "north_stripped": "true",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_east",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "shape": "inner_right",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_east",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "shape": "inner_right",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_down",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "shape": "outer_left",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_down",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "shape": "outer_left",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_up",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "east",
+        "half": "top",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_up",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "east",
+        "half": "top",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_north",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "shape": "outer_left",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_north",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "shape": "outer_left",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_south",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "north_stripped": "false",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_south",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "north_stripped": "true",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_west",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "shape": "outer_left",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_west",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "shape": "outer_left",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_east",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "east",
+        "half": "top",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_east",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "east",
+        "half": "top",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_down",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "shape": "outer_right",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_down",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "shape": "outer_right",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_up",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "east",
+        "half": "top",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_up",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "east",
+        "half": "top",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_north",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "shape": "outer_right",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_north",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "shape": "outer_right",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_south",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "east",
+        "half": "top",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_south",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "east",
+        "half": "top",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_west",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "north_stripped": "false",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_west",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "north_stripped": "true",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_east",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "shape": "outer_right",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_east",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "half": "top",
+        "shape": "outer_right",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_down",
+        "uvlock": true
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "east",
+        "half": "bottom",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_down",
+        "uvlock": true
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "east",
+        "half": "bottom",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_up",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "shape": "straight",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_up",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "shape": "straight",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_north",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "north_stripped": "false",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_north",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "north_stripped": "true",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_south",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "shape": "straight",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_south",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "shape": "straight",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_west",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "shape": "straight",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_west",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "shape": "straight",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_east",
+        "uvlock": true
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "east",
+        "half": "bottom",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_east",
+        "uvlock": true
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "east",
+        "half": "bottom",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_down",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "east",
+        "half": "bottom",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_down",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "east",
+        "half": "bottom",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_up",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "shape": "inner_left",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_up",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "shape": "inner_left",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_north",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "shape": "inner_left",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_north",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "shape": "inner_left",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_south",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "east",
+        "half": "bottom",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_south",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "east",
+        "half": "bottom",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_west",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "shape": "inner_left",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_west",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "shape": "inner_left",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_east",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "north_stripped": "false",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_east",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "north_stripped": "true",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_down",
+        "uvlock": true
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "east",
+        "half": "bottom",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_down",
+        "uvlock": true
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "east",
+        "half": "bottom",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_up",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "shape": "inner_right",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_up",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "shape": "inner_right",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_north",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "north_stripped": "false",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_north",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "north_stripped": "true",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_south",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "shape": "inner_right",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_south",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "shape": "inner_right",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_west",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "shape": "inner_right",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_west",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "shape": "inner_right",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_east",
+        "uvlock": true
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "east",
+        "half": "bottom",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_east",
+        "uvlock": true
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "east",
+        "half": "bottom",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_down",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "east",
+        "half": "bottom",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_down",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "east",
+        "half": "bottom",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_up",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "shape": "outer_left",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_up",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "shape": "outer_left",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_north",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "shape": "outer_left",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_north",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "shape": "outer_left",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_south",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "east",
+        "half": "bottom",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_south",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "east",
+        "half": "bottom",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_west",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "shape": "outer_left",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_west",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "shape": "outer_left",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_east",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "north_stripped": "false",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_east",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "north_stripped": "true",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_down",
+        "uvlock": true
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "east",
+        "half": "bottom",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_down",
+        "uvlock": true
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "east",
+        "half": "bottom",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_up",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "shape": "outer_right",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_up",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "shape": "outer_right",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_north",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "north_stripped": "false",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_north",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "north_stripped": "true",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_south",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "shape": "outer_right",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_south",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "shape": "outer_right",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_west",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "shape": "outer_right",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_west",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "east",
+        "half": "bottom",
+        "shape": "outer_right",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_east",
+        "uvlock": true
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "east",
+        "half": "bottom",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_east",
+        "uvlock": true
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "east",
+        "half": "bottom",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_down",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "shape": "straight",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_down",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "shape": "straight",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_up",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "south",
+        "half": "top",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_up",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "south",
+        "half": "top",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_north",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "shape": "straight",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_north",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "shape": "straight",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_south",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "south",
+        "half": "top",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_south",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "south",
+        "half": "top",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_west",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "north_stripped": "false",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_west",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "north_stripped": "true",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_east",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "shape": "straight",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_east",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "shape": "straight",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_down",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "shape": "inner_left",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_down",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "shape": "inner_left",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_up",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "south",
+        "half": "top",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_up",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "south",
+        "half": "top",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_north",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "shape": "inner_left",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_north",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "shape": "inner_left",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_south",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "south",
+        "half": "top",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_south",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "south",
+        "half": "top",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_west",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "north_stripped": "false",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_west",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "north_stripped": "true",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_east",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "shape": "inner_left",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_east",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "shape": "inner_left",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_down",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "shape": "inner_right",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_down",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "shape": "inner_right",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_up",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "south",
+        "half": "top",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_up",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "south",
+        "half": "top",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_north",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "north_stripped": "false",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_north",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "north_stripped": "true",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_south",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "shape": "inner_right",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_south",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "shape": "inner_right",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_west",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "south",
+        "half": "top",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_west",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "south",
+        "half": "top",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_east",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "shape": "inner_right",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_east",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "shape": "inner_right",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_down",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "shape": "outer_left",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_down",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "shape": "outer_left",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_up",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "south",
+        "half": "top",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_up",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "south",
+        "half": "top",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_north",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "shape": "outer_left",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_north",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "shape": "outer_left",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_south",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "south",
+        "half": "top",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_south",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "south",
+        "half": "top",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_west",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "north_stripped": "false",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_west",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "north_stripped": "true",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_east",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "shape": "outer_left",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_east",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "shape": "outer_left",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_down",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "shape": "outer_right",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_down",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "shape": "outer_right",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_up",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "south",
+        "half": "top",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_up",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "south",
+        "half": "top",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_north",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "north_stripped": "false",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_north",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "north_stripped": "true",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_south",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "shape": "outer_right",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_south",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "shape": "outer_right",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_west",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "south",
+        "half": "top",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_west",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "south",
+        "half": "top",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_east",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "shape": "outer_right",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_east",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "half": "top",
+        "shape": "outer_right",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_down",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "south",
+        "half": "bottom",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_down",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "south",
+        "half": "bottom",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_up",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "straight",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_up",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "straight",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_north",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "south",
+        "half": "bottom",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_north",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "south",
+        "half": "bottom",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_south",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "straight",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_south",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "straight",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_west",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "north_stripped": "false",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_west",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "north_stripped": "true",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_east",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "straight",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_east",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "straight",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_down",
+        "uvlock": true
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "south",
+        "half": "bottom",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_down",
+        "uvlock": true
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "south",
+        "half": "bottom",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_up",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "inner_left",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_up",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "inner_left",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_north",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "north_stripped": "false",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_north",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "north_stripped": "true",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_south",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "inner_left",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_south",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "inner_left",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_west",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "inner_left",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_west",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "inner_left",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_east",
+        "uvlock": true
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "south",
+        "half": "bottom",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_east",
+        "uvlock": true
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "south",
+        "half": "bottom",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_down",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "south",
+        "half": "bottom",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_down",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "south",
+        "half": "bottom",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_up",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "inner_right",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_up",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "inner_right",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_north",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "south",
+        "half": "bottom",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_north",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "south",
+        "half": "bottom",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_south",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "inner_right",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_south",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "inner_right",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_west",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "north_stripped": "false",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_west",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "north_stripped": "true",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_east",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "inner_right",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_east",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "inner_right",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_down",
+        "uvlock": true
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "south",
+        "half": "bottom",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_down",
+        "uvlock": true
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "south",
+        "half": "bottom",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_up",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "outer_left",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_up",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "outer_left",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_north",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "north_stripped": "false",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_north",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "north_stripped": "true",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_south",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "outer_left",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_south",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "outer_left",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_west",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "outer_left",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_west",
+        "uvlock": true
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "outer_left",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_east",
+        "uvlock": true
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "south",
+        "half": "bottom",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_east",
+        "uvlock": true
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "south",
+        "half": "bottom",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_down",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "south",
+        "half": "bottom",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_down",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "south",
+        "half": "bottom",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_up",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "outer_right",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_up",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "outer_right",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_north",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "south",
+        "half": "bottom",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_north",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "south",
+        "half": "bottom",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_south",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "outer_right",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_south",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "outer_right",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_west",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "north_stripped": "false",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_west",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "north_stripped": "true",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_east",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "outer_right",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_east",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "outer_right",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_down",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "shape": "straight",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_down",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "shape": "straight",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_up",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "west",
+        "half": "top",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_up",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "west",
+        "half": "top",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_north",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "north_stripped": "false",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_north",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "north_stripped": "true",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_south",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "shape": "straight",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_south",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "shape": "straight",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_west",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "west",
+        "half": "top",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_west",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "west",
+        "half": "top",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_east",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "shape": "straight",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_east",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "shape": "straight",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_down",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "shape": "inner_left",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_down",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "shape": "inner_left",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_up",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "west",
+        "half": "top",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_up",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "west",
+        "half": "top",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_north",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "north_stripped": "false",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_north",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "north_stripped": "true",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_south",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "shape": "inner_left",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_south",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "shape": "inner_left",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_west",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "west",
+        "half": "top",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_west",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "west",
+        "half": "top",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_east",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "shape": "inner_left",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_east",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "shape": "inner_left",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_down",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "shape": "inner_right",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_down",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "shape": "inner_right",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_up",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "west",
+        "half": "top",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_up",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "west",
+        "half": "top",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_north",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "west",
+        "half": "top",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_north",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "west",
+        "half": "top",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_south",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "shape": "inner_right",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_south",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "shape": "inner_right",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_west",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "shape": "inner_right",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_west",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "shape": "inner_right",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_east",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "north_stripped": "false",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_east",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "north_stripped": "true",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_down",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "shape": "outer_left",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_down",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "shape": "outer_left",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_up",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "west",
+        "half": "top",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_up",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "west",
+        "half": "top",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_north",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "north_stripped": "false",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_north",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "north_stripped": "true",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_south",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "shape": "outer_left",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_south",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "shape": "outer_left",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_west",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "west",
+        "half": "top",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_west",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "west",
+        "half": "top",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_east",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "shape": "outer_left",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_east",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "shape": "outer_left",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_down",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "shape": "outer_right",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_down",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "shape": "outer_right",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_up",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "west",
+        "half": "top",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_up",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "west",
+        "half": "top",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_north",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "west",
+        "half": "top",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_north",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "west",
+        "half": "top",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_south",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "shape": "outer_right",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_south",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "shape": "outer_right",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_west",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "shape": "outer_right",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_west",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "shape": "outer_right",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_east",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "north_stripped": "false",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_east",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "half": "top",
+        "north_stripped": "true",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_down",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "west",
+        "half": "bottom",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_down",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "west",
+        "half": "bottom",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_up",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "shape": "straight",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_up",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "shape": "straight",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_north",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "shape": "straight",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_north",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "shape": "straight",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_south",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "north_stripped": "false",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_south",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "north_stripped": "true",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_west",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "west",
+        "half": "bottom",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_west",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "west",
+        "half": "bottom",
+        "shape": "straight"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_east",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "shape": "straight",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_east",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "shape": "straight",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_down",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "west",
+        "half": "bottom",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_down",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "west",
+        "half": "bottom",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_up",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "shape": "inner_left",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_up",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "shape": "inner_left",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_north",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "west",
+        "half": "bottom",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_north",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "west",
+        "half": "bottom",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_south",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "shape": "inner_left",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_south",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "shape": "inner_left",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_west",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "north_stripped": "false",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_west",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "north_stripped": "true",
+        "shape": "inner_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_east",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "shape": "inner_left",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_east",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "shape": "inner_left",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_down",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "west",
+        "half": "bottom",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_down",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "west",
+        "half": "bottom",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_up",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "shape": "inner_right",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_up",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "shape": "inner_right",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_north",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "shape": "inner_right",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_north",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "shape": "inner_right",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_south",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "north_stripped": "false",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_south",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "north_stripped": "true",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_west",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "west",
+        "half": "bottom",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_west",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "west",
+        "half": "bottom",
+        "shape": "inner_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_inner_east",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "shape": "inner_right",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_inner_east",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "shape": "inner_right",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_down",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "west",
+        "half": "bottom",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_down",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "west",
+        "half": "bottom",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_up",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "shape": "outer_left",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_up",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "shape": "outer_left",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_north",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "west",
+        "half": "bottom",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_north",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "west",
+        "half": "bottom",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_south",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "shape": "outer_left",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_south",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "shape": "outer_left",
+        "west_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_west",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "north_stripped": "false",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_west",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "north_stripped": "true",
+        "shape": "outer_left"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_east",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "shape": "outer_left",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_east",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "shape": "outer_left",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_down",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down_stripped": "false",
+        "facing": "west",
+        "half": "bottom",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_down",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down_stripped": "true",
+        "facing": "west",
+        "half": "bottom",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_up",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "shape": "outer_right",
+        "up_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_up",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "shape": "outer_right",
+        "up_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_north",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "shape": "outer_right",
+        "south_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_north",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "shape": "outer_right",
+        "south_stripped": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_south",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "north_stripped": "false",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_south",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "north_stripped": "true",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_west",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "east_stripped": "false",
+        "facing": "west",
+        "half": "bottom",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_west",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "east_stripped": "true",
+        "facing": "west",
+        "half": "bottom",
+        "shape": "outer_right"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_outer_east",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "shape": "outer_right",
+        "west_stripped": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "log_stairs_slabs_and_walls:block/oak_log_stairs_stripped_outer_east",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "facing": "west",
+        "half": "bottom",
+        "shape": "outer_right",
+        "west_stripped": "true"
+      }
+    }
+  ]
+}

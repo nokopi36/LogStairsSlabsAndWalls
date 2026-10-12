@@ -1,5 +1,6 @@
 {
   "block.log_stairs_slabs_and_walls.oak_log_panel": "オークの原木パネル",
   "block.log_stairs_slabs_and_walls.oak_log_slab": "オークの原木のハーフブロック",
+  "block.log_stairs_slabs_and_walls.oak_log_stairs": "オークの原木の階段",
   "itemGroup.log_stairs_slabs_and_walls": "Log Stairs, Slabs and Walls"
 }

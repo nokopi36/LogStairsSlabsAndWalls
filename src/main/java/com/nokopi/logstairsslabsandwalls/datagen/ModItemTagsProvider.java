@@ -23,6 +23,7 @@ public class ModItemTagsProvider extends BlockTagCopyingItemTagProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider lookupProvider) {
+        this.copy(BlockItemTags.WOODEN_STAIRS.block(), BlockItemTags.WOODEN_STAIRS.item());
         this.copy(BlockItemTags.WOODEN_SLABS.block(), BlockItemTags.WOODEN_SLABS.item());
         for (LogWood wood : ModBlocks.WOODS) {
             this.copy(wood.logsTag().block(), wood.logsTag().item());
@@ -30,6 +31,7 @@ public class ModItemTagsProvider extends BlockTagCopyingItemTagProvider {
             if (!wood.flammable()) {
                 this.tag(ItemTags.NON_FLAMMABLE_WOOD)
                         .add(ModItems.logPanel(wood).getKey())
+                        .add(ModItems.logStairs(wood).getKey())
                         .add(ModItems.logSlab(wood).getKey());
             }
         }

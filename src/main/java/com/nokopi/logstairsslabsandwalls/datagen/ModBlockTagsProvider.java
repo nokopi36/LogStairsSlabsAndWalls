@@ -22,9 +22,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         for (LogWood wood : ModBlocks.WOODS) {
             // 原木パネルはその木の原木として扱う（minecraft:logs などにも含まれる）
             this.tag(wood.logsTag().block()).add(ModBlocks.logPanel(wood).getKey());
+            this.tag(BlockItemTags.WOODEN_STAIRS.block()).add(ModBlocks.logStairs(wood).getKey());
             this.tag(BlockItemTags.WOODEN_SLABS.block()).add(ModBlocks.logSlab(wood).getKey());
             this.tag(BlockTags.MINEABLE_WITH_AXE)
                     .add(ModBlocks.logPanel(wood).getKey())
+                    .add(ModBlocks.logStairs(wood).getKey())
                     .add(ModBlocks.logSlab(wood).getKey());
         }
     }

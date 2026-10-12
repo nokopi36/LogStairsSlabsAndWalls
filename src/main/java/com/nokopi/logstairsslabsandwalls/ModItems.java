@@ -14,11 +14,13 @@ public final class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(LogStairsSlabsAndWalls.MODID);
 
     private static final Map<LogWood, DeferredItem<BlockItem>> LOG_PANELS = new EnumMap<>(LogWood.class);
+    private static final Map<LogWood, DeferredItem<BlockItem>> LOG_STAIRS = new EnumMap<>(LogWood.class);
     private static final Map<LogWood, DeferredItem<BlockItem>> LOG_SLABS = new EnumMap<>(LogWood.class);
 
     static {
         for (LogWood wood : ModBlocks.WOODS) {
             LOG_PANELS.put(wood, ITEMS.registerSimpleBlockItem(wood.logPanelName(), ModBlocks.logPanel(wood), blockFuel(wood)));
+            LOG_STAIRS.put(wood, ITEMS.registerSimpleBlockItem(wood.logStairsName(), ModBlocks.logStairs(wood), blockFuel(wood)));
             LOG_SLABS.put(wood, ITEMS.registerSimpleBlockItem(wood.logSlabName(), ModBlocks.logSlab(wood), slabFuel(wood)));
         }
     }
@@ -28,6 +30,10 @@ public final class ModItems {
 
     public static DeferredItem<BlockItem> logPanel(LogWood wood) {
         return LOG_PANELS.get(wood);
+    }
+
+    public static DeferredItem<BlockItem> logStairs(LogWood wood) {
+        return LOG_STAIRS.get(wood);
     }
 
     public static DeferredItem<BlockItem> logSlab(LogWood wood) {

@@ -21,6 +21,8 @@ public class ModRecipeProvider extends RecipeProvider {
     public static final int LOGS_PER_PANEL_RECIPE = 2;
     // バニラの「板材 3 → ハーフ 6 個」を、原木 1 個 = 板材 LogWood#planksPerLog 枚で換算する（原木 24 個、竹ブロック 12 個）
     private static final int VANILLA_SLABS_PER_PLANK_RECIPE = 6;
+    // バニラの「板材 6 → 階段 4 個」を同じく換算する（原木 16 個、竹ブロック 8 個）
+    private static final int VANILLA_STAIRS_PER_PLANK_RECIPE = 4;
 
     public ModRecipeProvider(BootstrapContext<Recipe<?>> recipeOutput, BootstrapContext<Advancement> advancementOutput) {
         super(recipeOutput, advancementOutput);
@@ -40,6 +42,14 @@ public class ModRecipeProvider extends RecipeProvider {
                     .save(this.output, LogStairsSlabsAndWalls.MODID + ":" + getConversionRecipeName(wood.log(), panel));
             // 階段・ハーフ・塀は原木と原木パネルのどちらでも作れる（混ぜてもよい。パネル 1 個 = 原木 1 個）
             Ingredient logOrPanel = Ingredient.of(wood.log(), panel);
+            this.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.logStairs(wood).get(), stairsCount(wood))
+                    .define('#', logOrPanel)
+                    .pattern("#  ")
+                    .pattern("## ")
+                    .pattern("###")
+                    .group("log_stairs")
+                    .unlockedBy(getHasName(wood.log()), this.has(wood.log()))
+                    .save(this.output);
             this.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.logSlab(wood).get(), slabCount(wood))
                     .define('#', logOrPanel)
                     .pattern("###")
@@ -47,6 +57,11 @@ public class ModRecipeProvider extends RecipeProvider {
                     .unlockedBy(getHasName(wood.log()), this.has(wood.log()))
                     .save(this.output);
         }
+    }
+
+    // 階段のレシピは原木 6 個 = 板材 6 * planksPerLog 枚分で、バニラのレシピ planksPerLog 回分
+    public static int stairsCount(LogWood wood) {
+        return VANILLA_STAIRS_PER_PLANK_RECIPE * wood.planksPerLog();
     }
 
     // ハーフのレシピは原木 3 個 = 板材 3 * planksPerLog 枚分で、バニラのレシピ planksPerLog 回分

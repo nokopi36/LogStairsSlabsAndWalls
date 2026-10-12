@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com.nokopi.logstairsslabsandwalls.block.LogPanelBlock;
 import com.nokopi.logstairsslabsandwalls.block.LogSlabBlock;
+import com.nokopi.logstairsslabsandwalls.block.LogStairBlock;
 
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -19,12 +20,16 @@ public final class ModBlocks {
     public static final List<LogWood> WOODS = List.of(LogWood.OAK);
 
     private static final Map<LogWood, DeferredBlock<LogPanelBlock>> LOG_PANELS = new EnumMap<>(LogWood.class);
+    private static final Map<LogWood, DeferredBlock<LogStairBlock>> LOG_STAIRS = new EnumMap<>(LogWood.class);
     private static final Map<LogWood, DeferredBlock<LogSlabBlock>> LOG_SLABS = new EnumMap<>(LogWood.class);
 
     static {
         for (LogWood wood : WOODS) {
             LOG_PANELS.put(wood, BLOCKS.registerBlock(wood.logPanelName(),
                     p -> new LogPanelBlock(p, wood.flammable()), p -> logProperties(p, wood)));
+            // 階段の土台（StairBlock の baseState）はバニラの原木
+            LOG_STAIRS.put(wood, BLOCKS.registerBlock(wood.logStairsName(),
+                    p -> new LogStairBlock(wood.log().defaultBlockState(), p, wood.flammable()), p -> logProperties(p, wood)));
             LOG_SLABS.put(wood, BLOCKS.registerBlock(wood.logSlabName(),
                     p -> new LogSlabBlock(p, wood.flammable()), p -> logProperties(p, wood)));
         }
@@ -35,6 +40,10 @@ public final class ModBlocks {
 
     public static DeferredBlock<LogPanelBlock> logPanel(LogWood wood) {
         return LOG_PANELS.get(wood);
+    }
+
+    public static DeferredBlock<LogStairBlock> logStairs(LogWood wood) {
+        return LOG_STAIRS.get(wood);
     }
 
     public static DeferredBlock<LogSlabBlock> logSlab(LogWood wood) {

@@ -28,6 +28,9 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.state.properties.Half;
+import net.minecraft.world.level.block.state.properties.StairsShape;
 import net.minecraft.world.level.block.state.properties.SlabType;
 
 public class ModModelProvider extends ModelProvider {
@@ -39,6 +42,10 @@ public class ModModelProvider extends ModelProvider {
     private static final Map<Direction, ModelTemplate> SLAB_BOTTOM_FACES = new EnumMap<>(Direction.class);
     private static final Map<Direction, ModelTemplate> SLAB_TOP_FACES = new EnumMap<>(Direction.class);
     private static final Map<Direction, ModelTemplate> SLAB_DOUBLE_FACES = new EnumMap<>(Direction.class);
+    // バニラの stairs / inner_stairs / outer_stairs を面の向きごとに分けたもの（その向きの面をすべて含む）
+    private static final Map<Direction, ModelTemplate> STAIRS_STRAIGHT_FACES = new EnumMap<>(Direction.class);
+    private static final Map<Direction, ModelTemplate> STAIRS_INNER_FACES = new EnumMap<>(Direction.class);
+    private static final Map<Direction, ModelTemplate> STAIRS_OUTER_FACES = new EnumMap<>(Direction.class);
 
     static {
         for (Direction face : Direction.values()) {
@@ -47,6 +54,9 @@ public class ModModelProvider extends ModelProvider {
             SLAB_BOTTOM_FACES.put(face, template("template_log_slab_" + name, "_" + name));
             SLAB_TOP_FACES.put(face, template("template_log_slab_top_" + name, "_top_" + name));
             SLAB_DOUBLE_FACES.put(face, template("template_log_panel_" + name, "_double_" + name));
+            STAIRS_STRAIGHT_FACES.put(face, template("template_log_stairs_" + name, "_" + name));
+            STAIRS_INNER_FACES.put(face, template("template_log_inner_stairs_" + name, "_inner_" + name));
+            STAIRS_OUTER_FACES.put(face, template("template_log_outer_stairs_" + name, "_outer_" + name));
         }
     }
 
@@ -65,6 +75,7 @@ public class ModModelProvider extends ModelProvider {
     protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
         for (LogWood wood : ModBlocks.WOODS) {
             createLogPanel(blockModels, ModBlocks.logPanel(wood).get(), wood.log(), wood.strippedLog());
+            createLogStairs(blockModels, ModBlocks.logStairs(wood).get(), wood.log(), wood.strippedLog());
             createLogSlab(blockModels, ModBlocks.logSlab(wood).get(), wood.log(), wood.strippedLog());
         }
     }
@@ -124,6 +135,106 @@ public class ModModelProvider extends ModelProvider {
         return new MultiVariant[] {
                 BlockModelGenerators.plainVariant(createModel(blockModels, template, block, bark, false)),
                 BlockModelGenerators.plainVariant(createModel(blockModels, template, block, stripped, true))};
+    }
+
+    /**
+     * 原木の階段: 縦置きの原木の見た目。回転はバニラの createStairs と同じ（上下逆は x=180、向きと形で y、uvlock）。
+     * 1 面ずつのモデルを、回した後にワールドで向く方向の _stripped を条件に組み合わせる。
+     */
+    private static void createLogStairs(BlockModelGenerators blockModels, Block stairs, Block log, Block strippedLog) {
+        TextureMapping bark = logTextures(log);
+        TextureMapping stripped = logTextures(strippedLog);
+
+        Map<StairsShape, Map<Direction, MultiVariant[]>> models = new EnumMap<>(StairsShape.class);
+        for (StairsShape shape : StairsShape.values()) {
+            Map<Direction, ModelTemplate> templates = switch (shape) {
+                case STRAIGHT -> STAIRS_STRAIGHT_FACES;
+                case INNER_LEFT, INNER_RIGHT -> STAIRS_INNER_FACES;
+                case OUTER_LEFT, OUTER_RIGHT -> STAIRS_OUTER_FACES;
+            };
+            // 左右は同じモデルを回転だけ変えて使うので、モデルは 1 回だけ作る（enum の並びで先に来る LEFT で作る）
+            StairsShape owner = switch (shape) {
+                case INNER_RIGHT -> StairsShape.INNER_LEFT;
+                case OUTER_RIGHT -> StairsShape.OUTER_LEFT;
+                default -> shape;
+            };
+            if (owner != shape) {
+                models.put(shape, models.get(owner));
+                continue;
+            }
+            Map<Direction, MultiVariant[]> byFace = new EnumMap<>(Direction.class);
+            for (Direction face : Direction.values()) {
+                byFace.put(face, barkAndStripped(blockModels, templates.get(face), stairs, bark, stripped));
+            }
+            models.put(shape, byFace);
+        }
+
+        MultiPartGenerator generator = MultiPartGenerator.multiPart(stairs);
+        for (Direction facing : Direction.Plane.HORIZONTAL) {
+            for (Half half : Half.values()) {
+                for (StairsShape shape : StairsShape.values()) {
+                    boolean upsideDown = half == Half.TOP;
+                    int yRotation = stairsYRotation(facing, half, shape);
+                    for (Direction face : Direction.values()) {
+                        Direction worldFace = rotateY(upsideDown ? rotateX180(face) : face, yRotation);
+                        for (boolean isStripped : new boolean[] {false, true}) {
+                            MultiVariant model = models.get(shape).get(face)[isStripped ? 1 : 0];
+                            if (upsideDown) {
+                                model = model.with(BlockModelGenerators.X_ROT_180);
+                            }
+                            generator.with(BlockModelGenerators.condition()
+                                    .term(StairBlock.FACING, facing)
+                                    .term(StairBlock.HALF, half)
+                                    .term(StairBlock.SHAPE, shape)
+                                    .term(FaceStripping.strippedProperty(worldFace), isStripped),
+                                    withYRotation(model, yRotation).with(BlockModelGenerators.UV_LOCK));
+                        }
+                    }
+                }
+            }
+        }
+        blockModels.blockStateOutput.accept(generator);
+
+        // インベントリでは樹皮付きの見た目（バニラの stairs モデル）
+        blockModels.registerSimpleItemModel(stairs, ModelTemplates.STAIRS_STRAIGHT.create(stairs, new TextureMapping()
+                .put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(log, "_top"))
+                .put(TextureSlot.TOP, TextureMapping.getBlockTexture(log, "_top"))
+                .put(TextureSlot.SIDE, TextureMapping.getBlockTexture(log)), blockModels.modelOutput));
+    }
+
+    // BlockModelGenerators#createStairs の y 回転（度）。モデルは東向きが基準
+    private static int stairsYRotation(Direction facing, Half half, StairsShape shape) {
+        int base = switch (facing) {
+            case SOUTH -> 90;
+            case WEST -> 180;
+            case NORTH -> 270;
+            default -> 0;
+        };
+        boolean left = shape == StairsShape.INNER_LEFT || shape == StairsShape.OUTER_LEFT;
+        boolean right = shape == StairsShape.INNER_RIGHT || shape == StairsShape.OUTER_RIGHT;
+        int offset = half == Half.BOTTOM ? (left ? 270 : 0) : (right ? 90 : 0);
+        return (base + offset) % 360;
+    }
+
+    private static MultiVariant withYRotation(MultiVariant model, int degrees) {
+        return switch (degrees) {
+            case 90 -> model.with(BlockModelGenerators.Y_ROT_90);
+            case 180 -> model.with(BlockModelGenerators.Y_ROT_180);
+            case 270 -> model.with(BlockModelGenerators.Y_ROT_270);
+            default -> model;
+        };
+    }
+
+    // blockstate の x=180: 上と下、北と南が入れ替わる
+    private static Direction rotateX180(Direction face) {
+        return face.getAxis() == Direction.Axis.X ? face : face.getOpposite();
+    }
+
+    private static Direction rotateY(Direction face, int degrees) {
+        for (int i = 0; i < degrees / 90; i++) {
+            face = rotateY90(face);
+        }
+        return face;
     }
 
     /**

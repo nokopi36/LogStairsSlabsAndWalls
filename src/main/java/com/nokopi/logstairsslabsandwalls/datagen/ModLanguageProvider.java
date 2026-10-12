@@ -21,6 +21,7 @@ public final class ModLanguageProvider {
         protected void addTranslations() {
             for (LogWood wood : ModBlocks.WOODS) {
                 this.addBlock(ModBlocks.logPanel(wood), wood.englishName() + " Panel");
+                this.addBlock(ModBlocks.logStairs(wood), wood.englishName() + " Stairs");
                 this.addBlock(ModBlocks.logSlab(wood), wood.englishName() + " Slab");
             }
             this.add(ModCreativeTabs.TAB_TITLE, "Log Stairs, Slabs and Walls");
@@ -36,6 +37,7 @@ public final class ModLanguageProvider {
         protected void addTranslations() {
             for (LogWood wood : ModBlocks.WOODS) {
                 this.addBlock(ModBlocks.logPanel(wood), wood.japaneseName() + "パネル");
+                this.addBlock(ModBlocks.logStairs(wood), wood.japaneseName() + "の階段");
                 this.addBlock(ModBlocks.logSlab(wood), wood.japaneseName() + "のハーフブロック");
             }
             this.add(ModCreativeTabs.TAB_TITLE, "Log Stairs, Slabs and Walls");
