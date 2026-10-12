@@ -35,7 +35,9 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.SlabType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -50,6 +52,10 @@ public final class ModGameTests {
             TEST_FUNCTIONS.register("strip_each_face", () -> ModGameTests::stripEachFace);
     public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> STRIP_STRIPPED_FACE =
             TEST_FUNCTIONS.register("strip_stripped_face", () -> ModGameTests::stripStrippedFace);
+    public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> LOG_SLAB_RECIPE =
+            TEST_FUNCTIONS.register("log_slab_recipe", () -> ModGameTests::logSlabRecipe);
+    public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> STRIP_SLAB_FACES =
+            TEST_FUNCTIONS.register("strip_slab_faces", () -> ModGameTests::stripSlabFaces);
 
     // data/log_stairs_slabs_and_walls/structure/test_area.nbt（空の 3x3x3）
     private static final Identifier TEST_AREA = Identifier.fromNamespaceAndPath(LogStairsSlabsAndWalls.MODID, "test_area");
@@ -82,23 +88,46 @@ public final class ModGameTests {
         helper.succeed();
     }
 
+    // SPEC 4 章: 原木を横一列に 3 個 → ハーフ 24 個（竹ブロック 12 個）
+    private static void logSlabRecipe(GameTestHelper helper) {
+        for (LogWood wood : ModBlocks.WOODS) {
+            assertOnlyRecipe(helper, CraftingInput.of(3, 1, Collections.nCopies(3, new ItemStack(wood.log()))),
+                    ModItems.logSlab(wood).get(), ModRecipeProvider.slabCount(wood));
+        }
+        helper.assertTrue(ModRecipeProvider.slabCount(LogWood.OAK) == 24 && ModRecipeProvider.slabCount(LogWood.BAMBOO) == 12,
+                "slab counts should be 24 and 12");
+        helper.succeed();
+    }
+
     // SPEC 3.2: 斧でクリックした面の向きだけ剥がれ、斧の耐久が 1 減る
     private static void stripEachFace(GameTestHelper helper) {
+        assertStripEachFace(helper, ModBlocks.logPanel(LogWood.OAK).get().defaultBlockState());
+        helper.succeed();
+    }
+
+    // ハーフの下置き・上置き・2 枚重ねで、6 面それぞれが剥げる
+    private static void stripSlabFaces(GameTestHelper helper) {
+        for (SlabType type : SlabType.values()) {
+            assertStripEachFace(helper, ModBlocks.logSlab(LogWood.OAK).get().defaultBlockState().setValue(SlabBlock.TYPE, type));
+        }
+        helper.succeed();
+    }
+
+    private static void assertStripEachFace(GameTestHelper helper, BlockState initial) {
         Player player = helper.makeMockPlayer(GameType.SURVIVAL);
         for (Direction face : Direction.values()) {
             BlockPos pos = new BlockPos(1, 1, 1);
-            helper.setBlock(pos, ModBlocks.logPanel(LogWood.OAK).get());
+            helper.setBlock(pos, initial);
             ItemStack axe = new ItemStack(Items.IRON_AXE);
             player.setItemInHand(InteractionHand.MAIN_HAND, axe);
             clickFace(helper, player, pos, face);
             BlockState state = helper.getBlockState(pos);
             for (Direction direction : Direction.values()) {
                 helper.assertTrue(FaceStripping.isStripped(state, direction) == (direction == face),
-                        "clicked " + face + " but " + direction + " stripped=" + FaceStripping.isStripped(state, direction));
+                        initial + ": clicked " + face + " but " + direction + " stripped=" + FaceStripping.isStripped(state, direction));
             }
-            helper.assertTrue(player.getMainHandItem().getDamageValue() == 1, "axe damage should be 1 after stripping " + face);
+            helper.assertTrue(player.getMainHandItem().getDamageValue() == 1, "axe damage should be 1 after stripping " + face + " of " + initial);
         }
-        helper.succeed();
     }
 
     // SPEC 3.2: 剥がれ済みの面をクリックしても何も起きない（斧も消費しない）

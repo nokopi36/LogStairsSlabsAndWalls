@@ -14,10 +14,12 @@ public final class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(LogStairsSlabsAndWalls.MODID);
 
     private static final Map<LogWood, DeferredItem<BlockItem>> LOG_PANELS = new EnumMap<>(LogWood.class);
+    private static final Map<LogWood, DeferredItem<BlockItem>> LOG_SLABS = new EnumMap<>(LogWood.class);
 
     static {
         for (LogWood wood : ModBlocks.WOODS) {
             LOG_PANELS.put(wood, ITEMS.registerSimpleBlockItem(wood.logPanelName(), ModBlocks.logPanel(wood), blockFuel(wood)));
+            LOG_SLABS.put(wood, ITEMS.registerSimpleBlockItem(wood.logSlabName(), ModBlocks.logSlab(wood), slabFuel(wood)));
         }
     }
 
@@ -28,8 +30,17 @@ public final class ModItems {
         return LOG_PANELS.get(wood);
     }
 
+    public static DeferredItem<BlockItem> logSlab(LogWood wood) {
+        return LOG_SLABS.get(wood);
+    }
+
     // 燃料はバニラの木の階段・フェンスなどと同じ（COOKING_TIME_WOOD_BLOCKS = 300 tick）。ネザーの木は燃料にならない
     private static UnaryOperator<Item.Properties> blockFuel(LogWood wood) {
         return wood.flammable() ? p -> p.cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS) : UnaryOperator.identity();
+    }
+
+    // ハーフはバニラの木のハーフと同じ（COOKING_TIME_WOOD_SLABS = 150 tick）
+    private static UnaryOperator<Item.Properties> slabFuel(LogWood wood) {
+        return wood.flammable() ? p -> p.cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_SLABS) : UnaryOperator.identity();
     }
 }

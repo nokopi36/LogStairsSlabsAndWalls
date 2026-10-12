@@ -10,6 +10,7 @@ import com.nokopi.logstairsslabsandwalls.ModItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.TagsProvider;
+import net.minecraft.tags.BlockItemTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.BlockTagCopyingItemTagProvider;
@@ -22,11 +23,14 @@ public class ModItemTagsProvider extends BlockTagCopyingItemTagProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider lookupProvider) {
+        this.copy(BlockItemTags.WOODEN_SLABS.block(), BlockItemTags.WOODEN_SLABS.item());
         for (LogWood wood : ModBlocks.WOODS) {
             this.copy(wood.logsTag().block(), wood.logsTag().item());
             // バニラと同じく、ネザーの木は燃えない木材として扱う
             if (!wood.flammable()) {
-                this.tag(ItemTags.NON_FLAMMABLE_WOOD).add(ModItems.logPanel(wood).getKey());
+                this.tag(ItemTags.NON_FLAMMABLE_WOOD)
+                        .add(ModItems.logPanel(wood).getKey())
+                        .add(ModItems.logSlab(wood).getKey());
             }
         }
     }
