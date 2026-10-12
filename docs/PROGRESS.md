@@ -4,12 +4,13 @@
 
 ## 現在地
 - 実装中: なし
-- 次にやること: 1. 共通基盤（メインクラス、登録、言語ファイル、datagen の土台。Log Fences and Gates の `LogWood` などをコピー）
+- 次にやること: 2. オークの原木パネル（剥ぎなし）
 
 ## 完了
 | 日付 | 機能 | コミット | メモ |
 |---|---|---|---|
 | 2026-10-13 | プロジェクト作成（MDK 26.3 から） | 初回コミット | refs は Log Fences and Gates と同じコミット。MDK の wrapper jar が公式と不一致のため検証済み 9.2.1 に差し替え。neo_version を 26.3.0.42-beta に。`./gradlew build` 成功 |
+| 2026-10-13 | 1. 共通基盤 | (このコミット) | LogWood（fence からコピーし名前を変更）、DeferredRegister（ModBlocks/ModItems/専用タブ）、datagen 入口（GatherDataEvent.Client）、言語プロバイダー（en_us/ja_jp）。runData 成功、MOD 一覧に表示を確認 |
 
 ## 保留・課題
 - NeoForge 26.3 はベータ版。正式版が出たら `neo_version` を上げて追従する（`mcsrc/` も展開し直す）
