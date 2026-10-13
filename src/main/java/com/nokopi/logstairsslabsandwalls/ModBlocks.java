@@ -7,6 +7,7 @@ import java.util.Map;
 import com.nokopi.logstairsslabsandwalls.block.LogPanelBlock;
 import com.nokopi.logstairsslabsandwalls.block.LogSlabBlock;
 import com.nokopi.logstairsslabsandwalls.block.LogStairBlock;
+import com.nokopi.logstairsslabsandwalls.block.LogWallBlock;
 
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -22,6 +23,7 @@ public final class ModBlocks {
     private static final Map<LogWood, DeferredBlock<LogPanelBlock>> LOG_PANELS = new EnumMap<>(LogWood.class);
     private static final Map<LogWood, DeferredBlock<LogStairBlock>> LOG_STAIRS = new EnumMap<>(LogWood.class);
     private static final Map<LogWood, DeferredBlock<LogSlabBlock>> LOG_SLABS = new EnumMap<>(LogWood.class);
+    private static final Map<LogWood, DeferredBlock<LogWallBlock>> LOG_WALLS = new EnumMap<>(LogWood.class);
 
     static {
         for (LogWood wood : WOODS) {
@@ -32,6 +34,9 @@ public final class ModBlocks {
                     p -> new LogStairBlock(wood.log().defaultBlockState(), p, wood.flammable()), p -> logProperties(p, wood)));
             LOG_SLABS.put(wood, BLOCKS.registerBlock(wood.logSlabName(),
                     p -> new LogSlabBlock(p, wood.flammable()), p -> logProperties(p, wood)));
+            // 塀はバニラの塀と同じく forceSolidOn（上に松明などを置ける）
+            LOG_WALLS.put(wood, BLOCKS.registerBlock(wood.logWallName(),
+                    p -> new LogWallBlock(p, wood.flammable()), p -> logProperties(p, wood).forceSolidOn()));
         }
     }
 
@@ -48,6 +53,10 @@ public final class ModBlocks {
 
     public static DeferredBlock<LogSlabBlock> logSlab(LogWood wood) {
         return LOG_SLABS.get(wood);
+    }
+
+    public static DeferredBlock<LogWallBlock> logWall(LogWood wood) {
+        return LOG_WALLS.get(wood);
     }
 
     // 性能は材料のバニラの原木と同じ（Blocks#logProperties: strength(2.0F)）。地図の色は原木に合わせる

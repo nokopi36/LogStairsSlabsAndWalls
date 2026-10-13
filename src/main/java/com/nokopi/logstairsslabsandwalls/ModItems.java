@@ -16,12 +16,14 @@ public final class ModItems {
     private static final Map<LogWood, DeferredItem<BlockItem>> LOG_PANELS = new EnumMap<>(LogWood.class);
     private static final Map<LogWood, DeferredItem<BlockItem>> LOG_STAIRS = new EnumMap<>(LogWood.class);
     private static final Map<LogWood, DeferredItem<BlockItem>> LOG_SLABS = new EnumMap<>(LogWood.class);
+    private static final Map<LogWood, DeferredItem<BlockItem>> LOG_WALLS = new EnumMap<>(LogWood.class);
 
     static {
         for (LogWood wood : ModBlocks.WOODS) {
             LOG_PANELS.put(wood, ITEMS.registerSimpleBlockItem(wood.logPanelName(), ModBlocks.logPanel(wood), blockFuel(wood)));
             LOG_STAIRS.put(wood, ITEMS.registerSimpleBlockItem(wood.logStairsName(), ModBlocks.logStairs(wood), blockFuel(wood)));
             LOG_SLABS.put(wood, ITEMS.registerSimpleBlockItem(wood.logSlabName(), ModBlocks.logSlab(wood), slabFuel(wood)));
+            LOG_WALLS.put(wood, ITEMS.registerSimpleBlockItem(wood.logWallName(), ModBlocks.logWall(wood), blockFuel(wood)));
         }
     }
 
@@ -38,6 +40,10 @@ public final class ModItems {
 
     public static DeferredItem<BlockItem> logSlab(LogWood wood) {
         return LOG_SLABS.get(wood);
+    }
+
+    public static DeferredItem<BlockItem> logWall(LogWood wood) {
+        return LOG_WALLS.get(wood);
     }
 
     // 燃料はバニラの木の階段・フェンスなどと同じ（COOKING_TIME_WOOD_BLOCKS = 300 tick）。ネザーの木は燃料にならない

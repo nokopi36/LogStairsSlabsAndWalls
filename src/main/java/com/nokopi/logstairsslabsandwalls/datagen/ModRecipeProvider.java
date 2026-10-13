@@ -23,6 +23,8 @@ public class ModRecipeProvider extends RecipeProvider {
     private static final int VANILLA_SLABS_PER_PLANK_RECIPE = 6;
     // バニラの「板材 6 → 階段 4 個」を同じく換算する（原木 16 個、竹ブロック 8 個）
     private static final int VANILLA_STAIRS_PER_PLANK_RECIPE = 4;
+    // バニラに木の塀はないので、石の塀（ブロック 6 → 6 個）を板材に置き換えて換算する（原木 24 個、竹ブロック 12 個）
+    private static final int VANILLA_WALLS_PER_PLANK_RECIPE = 6;
 
     public ModRecipeProvider(BootstrapContext<Recipe<?>> recipeOutput, BootstrapContext<Advancement> advancementOutput) {
         super(recipeOutput, advancementOutput);
@@ -56,12 +58,24 @@ public class ModRecipeProvider extends RecipeProvider {
                     .group("log_slab")
                     .unlockedBy(getHasName(wood.log()), this.has(wood.log()))
                     .save(this.output);
+            this.shaped(RecipeCategory.DECORATIONS, ModItems.logWall(wood).get(), wallCount(wood))
+                    .define('#', logOrPanel)
+                    .pattern("###")
+                    .pattern("###")
+                    .group("log_wall")
+                    .unlockedBy(getHasName(wood.log()), this.has(wood.log()))
+                    .save(this.output);
         }
     }
 
     // 階段のレシピは原木 6 個 = 板材 6 * planksPerLog 枚分で、バニラのレシピ planksPerLog 回分
     public static int stairsCount(LogWood wood) {
         return VANILLA_STAIRS_PER_PLANK_RECIPE * wood.planksPerLog();
+    }
+
+    // 塀のレシピは原木 6 個 = 板材 6 * planksPerLog 枚分で、換算した石の塀のレシピ planksPerLog 回分
+    public static int wallCount(LogWood wood) {
+        return VANILLA_WALLS_PER_PLANK_RECIPE * wood.planksPerLog();
     }
 
     // ハーフのレシピは原木 3 個 = 板材 3 * planksPerLog 枚分で、バニラのレシピ planksPerLog 回分

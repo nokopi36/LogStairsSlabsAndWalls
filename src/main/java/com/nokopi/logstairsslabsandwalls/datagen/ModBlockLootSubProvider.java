@@ -25,6 +25,7 @@ public class ModBlockLootSubProvider extends BlockLootSubProvider {
         for (LogWood wood : ModBlocks.WOODS) {
             this.dropSelf(ModBlocks.logPanel(wood).get());
             this.dropSelf(ModBlocks.logStairs(wood).get());
+            this.dropSelf(ModBlocks.logWall(wood).get());
             this.add(ModBlocks.logSlab(wood).get(), this.createSlabItemTable(ModBlocks.logSlab(wood).get()));
         }
     }

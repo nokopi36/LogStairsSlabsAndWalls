@@ -30,9 +30,11 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.Half;
 import net.minecraft.world.level.block.state.properties.StairsShape;
+import net.minecraft.world.level.block.state.properties.WallSide;
 import net.minecraft.world.level.block.state.properties.SlabType;
 
 public class ModModelProvider extends ModelProvider {
@@ -50,6 +52,11 @@ public class ModModelProvider extends ModelProvider {
     private static final Map<String, ModelTemplate> STAIRS_STRAIGHT_PARTS = stairsTemplates("stairs", "");
     private static final Map<String, ModelTemplate> STAIRS_INNER_PARTS = stairsTemplates("inner_stairs", "_inner");
     private static final Map<String, ModelTemplate> STAIRS_OUTER_PARTS = stairsTemplates("outer_stairs", "_outer");
+    // バニラの template_wall_post / _side / _side_tall から 1 面だけを取り出したもの（壁の南の面は元のモデルにもない）
+    private static final Map<Direction, ModelTemplate> WALL_POST_FACES = new EnumMap<>(Direction.class);
+    private static final Map<Direction, ModelTemplate> WALL_LOW_SIDE_FACES = new EnumMap<>(Direction.class);
+    private static final Map<Direction, ModelTemplate> WALL_TALL_SIDE_FACES = new EnumMap<>(Direction.class);
+    private static final ModelTemplate WALL_INVENTORY = template("template_log_wall_inventory", "_inventory");
 
     static {
         for (Direction face : Direction.values()) {
@@ -58,6 +65,11 @@ public class ModModelProvider extends ModelProvider {
             SLAB_BOTTOM_FACES.put(face, template("template_log_slab_" + name, "_" + name));
             SLAB_TOP_FACES.put(face, template("template_log_slab_top_" + name, "_top_" + name));
             SLAB_DOUBLE_FACES.put(face, template("template_log_panel_" + name, "_double_" + name));
+            WALL_POST_FACES.put(face, template("template_log_wall_post_" + name, "_post_" + name));
+            if (face != Direction.SOUTH) {
+                WALL_LOW_SIDE_FACES.put(face, template("template_log_wall_side_" + name, "_side_" + name));
+                WALL_TALL_SIDE_FACES.put(face, template("template_log_wall_side_tall_" + name, "_side_tall_" + name));
+            }
         }
     }
 
@@ -86,6 +98,7 @@ public class ModModelProvider extends ModelProvider {
             createLogPanel(blockModels, ModBlocks.logPanel(wood).get(), wood.log(), wood.strippedLog());
             createLogStairs(blockModels, ModBlocks.logStairs(wood).get(), wood.log(), wood.strippedLog());
             createLogSlab(blockModels, ModBlocks.logSlab(wood).get(), wood.log(), wood.strippedLog());
+            createLogWall(blockModels, ModBlocks.logWall(wood).get(), wood.log(), wood.strippedLog());
         }
     }
 
@@ -214,6 +227,54 @@ public class ModModelProvider extends ModelProvider {
                 .put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(log, "_top"))
                 .put(TextureSlot.TOP, TextureMapping.getBlockTexture(log, "_top"))
                 .put(TextureSlot.SIDE, TextureMapping.getBlockTexture(log)), blockModels.modelOutput));
+    }
+
+    /**
+     * 原木の塀: 縦置きの原木の見た目。回転はバニラの createWall と同じ（壁は北向きが基準で y、uvlock）。
+     * 柱と壁の 1 面ずつのモデルを、ワールドで向く方向の _stripped を条件に組み合わせる。
+     */
+    private static void createLogWall(BlockModelGenerators blockModels, Block wall, Block log, Block strippedLog) {
+        TextureMapping bark = logTextures(log);
+        TextureMapping stripped = logTextures(strippedLog);
+
+        MultiPartGenerator generator = MultiPartGenerator.multiPart(wall);
+        for (Direction face : Direction.values()) {
+            MultiVariant[] post = barkAndStripped(blockModels, WALL_POST_FACES.get(face), wall, bark, stripped);
+            for (boolean isStripped : new boolean[] {false, true}) {
+                generator.with(BlockModelGenerators.condition()
+                        .term(WallBlock.UP, true)
+                        .term(FaceStripping.strippedProperty(face), isStripped), post[isStripped ? 1 : 0]);
+            }
+        }
+        addWallSides(blockModels, generator, wall, WallSide.LOW, WALL_LOW_SIDE_FACES, bark, stripped);
+        addWallSides(blockModels, generator, wall, WallSide.TALL, WALL_TALL_SIDE_FACES, bark, stripped);
+        blockModels.blockStateOutput.accept(generator);
+
+        // インベントリではバニラの wall_inventory と同じ形の、樹皮付きの見た目
+        blockModels.registerSimpleItemModel(wall, WALL_INVENTORY.create(wall, bark, blockModels.modelOutput));
+    }
+
+    private static void addWallSides(BlockModelGenerators blockModels, MultiPartGenerator generator, Block wall, WallSide height,
+            Map<Direction, ModelTemplate> templates, TextureMapping bark, TextureMapping stripped) {
+        for (Map.Entry<Direction, ModelTemplate> entry : templates.entrySet()) {
+            MultiVariant[] models = barkAndStripped(blockModels, entry.getValue(), wall, bark, stripped);
+            for (Direction side : Direction.Plane.HORIZONTAL) {
+                // 北向きの壁を side の向きに回す角度
+                int yRotation = switch (side) {
+                    case EAST -> 90;
+                    case SOUTH -> 180;
+                    case WEST -> 270;
+                    default -> 0;
+                };
+                Direction worldFace = rotateY(entry.getKey(), yRotation);
+                for (boolean isStripped : new boolean[] {false, true}) {
+                    generator.with(BlockModelGenerators.condition()
+                            .term(WallBlock.PROPERTY_BY_DIRECTION.get(side), height)
+                            .term(FaceStripping.strippedProperty(worldFace), isStripped),
+                            withYRotation(models[isStripped ? 1 : 0], yRotation).with(BlockModelGenerators.UV_LOCK));
+                }
+            }
+        }
     }
 
     // BlockModelGenerators#createStairs の y 回転（度）。モデルは東向きが基準

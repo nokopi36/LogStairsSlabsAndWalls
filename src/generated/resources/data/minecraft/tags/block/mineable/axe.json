@@ -2,6 +2,7 @@
   "values": [
     "log_stairs_slabs_and_walls:oak_log_panel",
     "log_stairs_slabs_and_walls:oak_log_stairs",
-    "log_stairs_slabs_and_walls:oak_log_slab"
+    "log_stairs_slabs_and_walls:oak_log_slab",
+    "log_stairs_slabs_and_walls:oak_log_wall"
   ]
 }

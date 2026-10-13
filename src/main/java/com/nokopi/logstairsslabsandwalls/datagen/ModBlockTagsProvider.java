@@ -24,10 +24,12 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
             this.tag(wood.logsTag().block()).add(ModBlocks.logPanel(wood).getKey());
             this.tag(BlockItemTags.WOODEN_STAIRS.block()).add(ModBlocks.logStairs(wood).getKey());
             this.tag(BlockItemTags.WOODEN_SLABS.block()).add(ModBlocks.logSlab(wood).getKey());
+            this.tag(BlockItemTags.WALLS.block()).add(ModBlocks.logWall(wood).getKey());
             this.tag(BlockTags.MINEABLE_WITH_AXE)
                     .add(ModBlocks.logPanel(wood).getKey())
                     .add(ModBlocks.logStairs(wood).getKey())
-                    .add(ModBlocks.logSlab(wood).getKey());
+                    .add(ModBlocks.logSlab(wood).getKey())
+                    .add(ModBlocks.logWall(wood).getKey());
         }
     }
 }

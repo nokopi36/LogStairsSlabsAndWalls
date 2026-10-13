@@ -38,12 +38,14 @@ import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.Half;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.SlabType;
 import net.minecraft.world.level.block.state.properties.StairsShape;
+import net.minecraft.world.level.block.state.properties.WallSide;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -66,6 +68,10 @@ public final class ModGameTests {
             TEST_FUNCTIONS.register("log_stairs_recipe", () -> ModGameTests::logStairsRecipe);
     public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> STRIP_STAIRS_FACES =
             TEST_FUNCTIONS.register("strip_stairs_faces", () -> ModGameTests::stripStairsFaces);
+    public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> LOG_WALL_RECIPE =
+            TEST_FUNCTIONS.register("log_wall_recipe", () -> ModGameTests::logWallRecipe);
+    public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> STRIP_WALL_FACES =
+            TEST_FUNCTIONS.register("strip_wall_faces", () -> ModGameTests::stripWallFaces);
 
     // data/log_stairs_slabs_and_walls/structure/test_area.nbt（空の 3x3x3）
     private static final Identifier TEST_AREA = Identifier.fromNamespaceAndPath(LogStairsSlabsAndWalls.MODID, "test_area");
@@ -148,6 +154,31 @@ public final class ModGameTests {
                 }
             }
         }
+        helper.succeed();
+    }
+
+    // SPEC 4 章: 原木または原木パネル 6 個（3 × 2）→ 塀 24 個（竹ブロック 12 個）
+    private static void logWallRecipe(GameTestHelper helper) {
+        for (LogWood wood : ModBlocks.WOODS) {
+            ItemStack log = new ItemStack(wood.log());
+            ItemStack panel = new ItemStack(ModItems.logPanel(wood).get());
+            assertOnlyRecipe(helper, CraftingInput.of(3, 2, Collections.nCopies(6, log)), ModItems.logWall(wood).get(), ModRecipeProvider.wallCount(wood));
+            assertOnlyRecipe(helper, CraftingInput.of(3, 2, List.of(log, panel, log, panel, log, panel)),
+                    ModItems.logWall(wood).get(), ModRecipeProvider.wallCount(wood));
+        }
+        helper.assertTrue(ModRecipeProvider.wallCount(LogWood.OAK) == 24 && ModRecipeProvider.wallCount(LogWood.BAMBOO) == 12,
+                "wall counts should be 24 and 12");
+        helper.succeed();
+    }
+
+    // 塀の柱あり・なし、低い壁・高い壁で、6 面それぞれが剥げる
+    private static void stripWallFaces(GameTestHelper helper) {
+        BlockState wall = ModBlocks.logWall(LogWood.OAK).get().defaultBlockState();
+        assertStripEachFace(helper, wall.setValue(WallBlock.UP, true));
+        assertStripEachFace(helper, wall.setValue(WallBlock.UP, false)
+                .setValue(WallBlock.NORTH, WallSide.LOW).setValue(WallBlock.SOUTH, WallSide.LOW));
+        assertStripEachFace(helper, wall.setValue(WallBlock.UP, true)
+                .setValue(WallBlock.EAST, WallSide.TALL).setValue(WallBlock.WEST, WallSide.LOW));
         helper.succeed();
     }
 
