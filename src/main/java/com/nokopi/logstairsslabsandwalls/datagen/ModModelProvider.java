@@ -12,7 +12,8 @@ import com.nokopi.logstairsslabsandwalls.LogStairsSlabsAndWalls;
 import com.nokopi.logstairsslabsandwalls.LogWood;
 import com.nokopi.logstairsslabsandwalls.ModBlocks;
 import com.nokopi.logstairsslabsandwalls.block.FaceStripping;
-import com.nokopi.logstairsslabsandwalls.block.LogStairBlock;
+import com.nokopi.logstairsslabsandwalls.block.StrippedFace;
+import com.nokopi.logstairsslabsandwalls.client.StrippedFaceModel;
 
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
@@ -31,7 +32,7 @@ import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.WallBlock;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.neoforged.neoforge.client.model.generators.blockstate.CustomBlockStateModelBuilder;
 import net.minecraft.world.level.block.state.properties.Half;
 import net.minecraft.world.level.block.state.properties.StairsShape;
 import net.minecraft.world.level.block.state.properties.WallSide;
@@ -161,7 +162,7 @@ public class ModModelProvider extends ModelProvider {
 
     /**
      * 原木の階段: 縦置きの原木の見た目。回転はバニラの createStairs と同じ（上下逆は x=180、向きと形で y、uvlock）。
-     * 外周の面は回した後にワールドで向く方向の _stripped、段の内側の面は tread_stripped / riser_stripped を条件に組み合わせる。
+     * 外周の面は回した後にワールドで向く方向、段の内側の面は踏み面・蹴上げとして、ブロックエンティティの剥ぎ状態で切り替える。
      */
     private static void createLogStairs(BlockModelGenerators blockModels, Block stairs, Block log, Block strippedLog) {
         TextureMapping bark = logTextures(log);
@@ -198,24 +199,25 @@ public class ModModelProvider extends ModelProvider {
                     boolean upsideDown = half == Half.TOP;
                     int yRotation = stairsYRotation(facing, half, shape);
                     for (String part : STAIRS_PARTS) {
-                        BooleanProperty property = switch (part) {
-                            case "tread" -> LogStairBlock.TREAD_STRIPPED;
-                            case "riser" -> LogStairBlock.RISER_STRIPPED;
-                            default -> FaceStripping.strippedProperty(
+                        StrippedFace face = switch (part) {
+                            case "tread" -> StrippedFace.TREAD;
+                            case "riser" -> StrippedFace.RISER;
+                            default -> StrippedFace.of(
                                     rotateY(upsideDown ? rotateX180(Direction.byName(part)) : Direction.byName(part), yRotation));
                         };
-                        for (boolean isStripped : new boolean[] {false, true}) {
-                            MultiVariant model = models.get(shape).get(part)[isStripped ? 1 : 0];
+                        MultiVariant[] barkAndStripped = new MultiVariant[2];
+                        for (int i = 0; i < 2; i++) {
+                            MultiVariant model = models.get(shape).get(part)[i];
                             if (upsideDown) {
                                 model = model.with(BlockModelGenerators.X_ROT_180);
                             }
-                            generator.with(BlockModelGenerators.condition()
-                                    .term(StairBlock.FACING, facing)
-                                    .term(StairBlock.HALF, half)
-                                    .term(StairBlock.SHAPE, shape)
-                                    .term(property, isStripped),
-                                    withYRotation(model, yRotation).with(BlockModelGenerators.UV_LOCK));
+                            barkAndStripped[i] = withYRotation(model, yRotation).with(BlockModelGenerators.UV_LOCK);
                         }
+                        generator.with(BlockModelGenerators.condition()
+                                .term(StairBlock.FACING, facing)
+                                .term(StairBlock.HALF, half)
+                                .term(StairBlock.SHAPE, shape),
+                                strippedFace(face, barkAndStripped[0], barkAndStripped[1]));
                     }
                 }
             }
@@ -275,6 +277,12 @@ public class ModModelProvider extends ModelProvider {
                 }
             }
         }
+    }
+
+    // ブロックエンティティの剥ぎ状態で bark / stripped を切り替えるモデル（SPEC 3.3.1、client/StrippedFaceModel）
+    private static MultiVariant strippedFace(StrippedFace face, MultiVariant bark, MultiVariant stripped) {
+        return MultiVariant.of(new CustomBlockStateModelBuilder.Simple(
+                new StrippedFaceModel.Unbaked(face, bark.toUnbaked(), stripped.toUnbaked())));
     }
 
     // BlockModelGenerators#createStairs の y 回転（度）。モデルは東向きが基準

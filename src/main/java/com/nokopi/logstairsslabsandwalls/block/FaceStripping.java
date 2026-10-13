@@ -94,10 +94,29 @@ public final class FaceStripping {
         }
         BlockState stripped = state.setValue(property, true);
         level.setBlock(pos, stripped, Block.UPDATE_ALL_IMMEDIATE);
-        level.playSound(player, pos, SoundEvents.AXE_STRIP.value(), SoundSource.BLOCKS, 1.0F, 1.0F);
-        level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, stripped));
-        stack.hurtAndBreak(AXE_DAMAGE_PER_STRIP, player, hand.asEquipmentSlot());
+        playStripEffects(level, pos, player, stack, hand, stripped);
         return InteractionResult.SUCCESS;
+    }
+
+    /**
+     * ブロックエンティティに剥ぎ状態を持つブロック用（SPEC 3.3.1）。face の面を剥いで、同じ音・ゲームイベント・耐久消費を起こす。
+     * 剥がれ済み、またはブロックエンティティがなければ何もせず、通常の右クリックに回す。
+     */
+    public static InteractionResult strip(StrippedFace face, BlockState state, Level level, BlockPos pos, Player player,
+            ItemStack stack, InteractionHand hand) {
+        if (!(level.getBlockEntity(pos) instanceof StrippedFacesBlockEntity blockEntity) || blockEntity.isStripped(face)) {
+            return InteractionResult.TRY_WITH_EMPTY_HAND;
+        }
+        blockEntity.strip(face);
+        playStripEffects(level, pos, player, stack, hand, state);
+        return InteractionResult.SUCCESS;
+    }
+
+    // バニラの原木を剥ぐときと同じ音・ゲームイベント・斧の耐久消費
+    private static void playStripEffects(Level level, BlockPos pos, Player player, ItemStack stack, InteractionHand hand, BlockState state) {
+        level.playSound(player, pos, SoundEvents.AXE_STRIP.value(), SoundSource.BLOCKS, 1.0F, 1.0F);
+        level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, state));
+        stack.hurtAndBreak(AXE_DAMAGE_PER_STRIP, player, hand.asEquipmentSlot());
     }
 
     // ストラクチャーなどでブロックを回転・反転したとき、剥いだ面も一緒に動かす

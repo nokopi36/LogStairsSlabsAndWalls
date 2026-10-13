@@ -17,6 +17,7 @@ public class LogStairsSlabsAndWalls {
     public LogStairsSlabsAndWalls(IEventBus modEventBus, ModContainer modContainer) {
         ModBlocks.BLOCKS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
+        ModBlockEntities.BLOCK_ENTITY_TYPES.register(modEventBus);
         ModCreativeTabs.CREATIVE_MODE_TABS.register(modEventBus);
         ModGameTests.TEST_FUNCTIONS.register(modEventBus);
         modEventBus.addListener(ModCreativeTabs::addToVanillaTabs);

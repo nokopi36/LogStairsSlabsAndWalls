@@ -9,12 +9,16 @@ import com.nokopi.logstairsslabsandwalls.LogWood;
 import com.nokopi.logstairsslabsandwalls.ModBlocks;
 import com.nokopi.logstairsslabsandwalls.ModItems;
 import com.nokopi.logstairsslabsandwalls.block.FaceStripping;
-import com.nokopi.logstairsslabsandwalls.block.LogStairBlock;
+import com.nokopi.logstairsslabsandwalls.block.StrippedFace;
+import com.nokopi.logstairsslabsandwalls.block.StrippedFacesBlockEntity;
 import com.nokopi.logstairsslabsandwalls.datagen.ModRecipeProvider;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderGetter;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.util.ProblemReporter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.gametest.framework.FunctionGameTestInstance;
@@ -36,6 +40,7 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.WallBlock;
@@ -46,6 +51,7 @@ import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.SlabType;
 import net.minecraft.world.level.block.state.properties.StairsShape;
 import net.minecraft.world.level.block.state.properties.WallSide;
+import net.minecraft.world.level.storage.TagValueInput;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -68,6 +74,8 @@ public final class ModGameTests {
             TEST_FUNCTIONS.register("log_stairs_recipe", () -> ModGameTests::logStairsRecipe);
     public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> STRIP_STAIRS_FACES =
             TEST_FUNCTIONS.register("strip_stairs_faces", () -> ModGameTests::stripStairsFaces);
+    public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> STRIPPED_FACES_SAVE_LOAD =
+            TEST_FUNCTIONS.register("stripped_faces_save_load", () -> ModGameTests::strippedFacesSaveLoad);
     public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> LOG_WALL_RECIPE =
             TEST_FUNCTIONS.register("log_wall_recipe", () -> ModGameTests::logWallRecipe);
     public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> STRIP_WALL_FACES =
@@ -144,13 +152,16 @@ public final class ModGameTests {
             for (StairsShape shape : StairsShape.values()) {
                 BlockState stairs = ModBlocks.logStairs(LogWood.OAK).get().defaultBlockState()
                         .setValue(StairBlock.HALF, half).setValue(StairBlock.SHAPE, shape);
-                assertStripEachFace(helper, stairs);
+                for (Direction face : Direction.values()) {
+                    Vec3 local = new Vec3(0.5, 0.5, 0.5).add(Vec3.atLowerCornerOf(face.getUnitVec3i()).scale(0.5));
+                    assertBlockEntityStripsOnly(helper, stairs, face, local, StrippedFace.of(face));
+                }
                 // 段の内側の面（ブロックの中央の高さ・位置）: 踏み面は上下逆なら下向き、蹴上げは横向き
                 Direction treadFace = half == Half.BOTTOM ? Direction.UP : Direction.DOWN;
-                assertStripsOnly(helper, stairs, treadFace, new Vec3(0.25, 0.5, 0.5), LogStairBlock.TREAD_STRIPPED);
+                assertBlockEntityStripsOnly(helper, stairs, treadFace, new Vec3(0.25, 0.5, 0.5), StrippedFace.TREAD);
                 for (Direction riserFace : Direction.Plane.HORIZONTAL) {
                     Vec3 local = new Vec3(0.5, half == Half.BOTTOM ? 0.75 : 0.25, 0.5);
-                    assertStripsOnly(helper, stairs, riserFace, local, LogStairBlock.RISER_STRIPPED);
+                    assertBlockEntityStripsOnly(helper, stairs, riserFace, local, StrippedFace.RISER);
                 }
             }
         }
@@ -202,6 +213,37 @@ public final class ModGameTests {
             Vec3 local = new Vec3(0.5, 0.5, 0.5).add(Vec3.atLowerCornerOf(face.getUnitVec3i()).scale(0.5));
             assertStripsOnly(helper, initial, face, local, FaceStripping.strippedProperty(face));
         }
+    }
+
+    // ブロックエンティティに剥ぎ状態を持つブロック（SPEC 3.3.1）: local の位置を face 向きにクリックすると、expected の面だけ剥がれ、斧の耐久が 1 減る。
+    // 同じ面をもう一度クリックしても変わらない
+    private static void assertBlockEntityStripsOnly(GameTestHelper helper, BlockState initial, Direction face, Vec3 local, StrippedFace expected) {
+        Player player = helper.makeMockPlayer(GameType.SURVIVAL);
+        BlockPos pos = new BlockPos(1, 1, 1);
+        helper.setBlock(pos, Blocks.AIR);
+        helper.setBlock(pos, initial);
+        player.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(Items.IRON_AXE));
+        click(helper, player, pos, local, face);
+        click(helper, player, pos, local, face);
+        StrippedFacesBlockEntity blockEntity = helper.getBlockEntity(pos, StrippedFacesBlockEntity.class);
+        helper.assertTrue(blockEntity.strippedMask() == expected.bit(),
+                initial + ": clicked " + face + " at " + local + " expected only " + expected + " but mask=" + Integer.toBinaryString(blockEntity.strippedMask()));
+        helper.assertTrue(player.getMainHandItem().getDamageValue() == 1, "axe damage should be 1 after stripping " + expected + " of " + initial);
+    }
+
+    // SPEC 3.3.1: 剥ぎ状態はブロックエンティティとして保存・読み込みされる
+    private static void strippedFacesSaveLoad(GameTestHelper helper) {
+        BlockPos pos = new BlockPos(1, 1, 1);
+        helper.setBlock(pos, ModBlocks.logStairs(LogWood.OAK).get());
+        StrippedFacesBlockEntity blockEntity = helper.getBlockEntity(pos, StrippedFacesBlockEntity.class);
+        int mask = StrippedFace.NORTH.bit() | StrippedFace.TREAD.bit() | StrippedFace.RISER.bit();
+        blockEntity.setStrippedMask(mask);
+        HolderLookup.Provider registries = helper.getLevel().registryAccess();
+        CompoundTag tag = blockEntity.saveCustomOnly(registries);
+        StrippedFacesBlockEntity loaded = new StrippedFacesBlockEntity(blockEntity.getBlockPos(), blockEntity.getBlockState());
+        loaded.loadCustomOnly(TagValueInput.create(ProblemReporter.DISCARDING, registries, tag));
+        helper.assertTrue(loaded.strippedMask() == mask, "loaded mask " + loaded.strippedMask() + " != " + mask);
+        helper.succeed();
     }
 
     // local の位置を face 向きにクリックすると、剥ぎ状態（*_stripped）のうち expected だけ剥がれ、斧の耐久が 1 減る
