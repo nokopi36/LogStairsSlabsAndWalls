@@ -8,7 +8,6 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
 /**
@@ -21,20 +20,15 @@ public class StrippedLogBlockItem extends BlockItem {
 
     /**
      * 置いた後に全面を剥がれた状態にする（ブロックエンティティは placeBlock の中で作られる）。
-     * ハーフを重ねて 2 枚重ねにするときは、側面は先に置いたハーフのまま。表に出る新しいハーフの面は LogSlabBlock#onPlace が
-     * 剥がれた状態にする（NeoForge はアイテムで置くとき onPlace を置いた後に呼ぶので、ここでは印を付けるだけ）。
+     * ハーフを重ねて 2 枚重ねにするときは、LogSlabBlock#setPlacedBy が新しいハーフの面だけ剥がれた状態にする。
      */
     @Override
     protected boolean placeBlock(BlockPlaceContext context, BlockState placementState) {
-        boolean stackingSlab = context.getLevel().getBlockState(context.getClickedPos()).is(this.getBlock())
-                && placementState.getBlock() instanceof SlabBlock;
-        if (stackingSlab && context.getLevel().getBlockEntity(context.getClickedPos()) instanceof StrippedFacesBlockEntity blockEntity) {
-            blockEntity.markStackingStrippedSlab();
-        }
         if (!super.placeBlock(context, placementState)) {
             return false;
         }
-        if (!stackingSlab && context.getLevel().getBlockEntity(context.getClickedPos()) instanceof StrippedFacesBlockEntity blockEntity) {
+        if (context.getLevel().getBlockEntity(context.getClickedPos()) instanceof StrippedFacesBlockEntity blockEntity
+                && !blockEntity.isStackingSlab()) {
             blockEntity.setStrippedMask(StrippedFacesBlockEntity.allFacesMask(placementState));
         }
         return true;

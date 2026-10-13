@@ -2,6 +2,24 @@
   "type": "minecraft:block",
   "pools": [
     {
+      "condition": {
+        "type": "minecraft:all_of",
+        "terms": [
+          {
+            "type": "minecraft:inverted",
+            "term": {
+              "type": "minecraft:match_block",
+              "blocks": "log_stairs_slabs_and_walls:cherry_log_slab",
+              "state": {
+                "type": "top"
+              }
+            }
+          },
+          {
+            "type": "minecraft:survives_explosion"
+          }
+        ]
+      },
       "entries": [
         {
           "type": "minecraft:alternatives",
@@ -9,44 +27,53 @@
             {
               "type": "minecraft:item",
               "condition": {
-                "type": "log_stairs_slabs_and_walls:all_faces_stripped"
+                "type": "log_stairs_slabs_and_walls:all_faces_stripped",
+                "part": "lower_slab"
               },
-              "modifier": [
-                {
-                  "type": "minecraft:set_count",
-                  "condition": {
-                    "type": "minecraft:match_block",
-                    "blocks": "log_stairs_slabs_and_walls:cherry_log_slab",
-                    "state": {
-                      "type": "double"
-                    }
-                  },
-                  "count": 2
-                },
-                {
-                  "type": "minecraft:explosion_decay"
-                }
-              ],
               "name": "log_stairs_slabs_and_walls:stripped_cherry_log_slab"
             },
             {
               "type": "minecraft:item",
-              "modifier": [
-                {
-                  "type": "minecraft:set_count",
-                  "condition": {
-                    "type": "minecraft:match_block",
-                    "blocks": "log_stairs_slabs_and_walls:cherry_log_slab",
-                    "state": {
-                      "type": "double"
-                    }
-                  },
-                  "count": 2
-                },
-                {
-                  "type": "minecraft:explosion_decay"
-                }
-              ],
+              "name": "log_stairs_slabs_and_walls:cherry_log_slab"
+            }
+          ]
+        }
+      ],
+      "rolls": 1
+    },
+    {
+      "condition": {
+        "type": "minecraft:all_of",
+        "terms": [
+          {
+            "type": "minecraft:inverted",
+            "term": {
+              "type": "minecraft:match_block",
+              "blocks": "log_stairs_slabs_and_walls:cherry_log_slab",
+              "state": {
+                "type": "bottom"
+              }
+            }
+          },
+          {
+            "type": "minecraft:survives_explosion"
+          }
+        ]
+      },
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "condition": {
+                "type": "log_stairs_slabs_and_walls:all_faces_stripped",
+                "part": "upper_slab"
+              },
+              "name": "log_stairs_slabs_and_walls:stripped_cherry_log_slab"
+            },
+            {
+              "type": "minecraft:item",
               "name": "log_stairs_slabs_and_walls:cherry_log_slab"
             }
           ]

@@ -43,10 +43,9 @@ public class ModModelProvider extends ModelProvider {
     // バニラの cube_column から 1 面だけを取り出したもの。横置きの上面だけは cube_column_horizontal と同じく UV を 180° 回す
     private static final Map<Direction, ModelTemplate> PANEL_FACES = new EnumMap<>(Direction.class);
     private static final ModelTemplate PANEL_HORIZONTAL_UP = template("template_log_panel_horizontal_up", "_horizontal_up");
-    // バニラの slab / slab_top から 1 面だけを取り出したもの。2 枚重ねはパネルの縦置きの型を使う
+    // バニラの slab / slab_top から 1 面だけを取り出したもの。2 枚重ねは下置きの下面・側面と上置きの上面・側面を組み合わせる
     private static final Map<Direction, ModelTemplate> SLAB_BOTTOM_FACES = new EnumMap<>(Direction.class);
     private static final Map<Direction, ModelTemplate> SLAB_TOP_FACES = new EnumMap<>(Direction.class);
-    private static final Map<Direction, ModelTemplate> SLAB_DOUBLE_FACES = new EnumMap<>(Direction.class);
     // バニラの stairs / inner_stairs / outer_stairs を、外周の面（向きごと）と段の内側の面（踏み面・蹴上げ）に分けたもの。
     // キーは向きの名前と "tread" / "riser"
     private static final List<String> STAIRS_PARTS = List.of("down", "up", "north", "south", "west", "east", "tread", "riser");
@@ -65,7 +64,6 @@ public class ModModelProvider extends ModelProvider {
             PANEL_FACES.put(face, template("template_log_panel_" + name, "_" + name));
             SLAB_BOTTOM_FACES.put(face, template("template_log_slab_" + name, "_" + name));
             SLAB_TOP_FACES.put(face, template("template_log_slab_top_" + name, "_top_" + name));
-            SLAB_DOUBLE_FACES.put(face, template("template_log_panel_" + name, "_double_" + name));
             WALL_POST_FACES.put(face, template("template_log_wall_post_" + name, "_post_" + name));
             if (face != Direction.SOUTH) {
                 WALL_LOW_SIDE_FACES.put(face, template("template_log_wall_side_" + name, "_side_" + name));
@@ -334,28 +332,41 @@ public class ModModelProvider extends ModelProvider {
 
     /**
      * 原木のハーフ: 縦置きの原木の見た目。下置き・上置き・2 枚重ねのそれぞれで、1 面ずつのモデルを組み合わせる（回転なし）。
+     * 上のハーフ（上置き・2 枚重ねの上半分）の側面は upper_* の剥ぎ状態で切り替える（SPEC 3.2）。
+     * 2 枚重ねは、下置きの下面・側面と上置きの上面・側面（中の 2 面は見えないので使わない）。
      */
     private static void createLogSlab(BlockModelGenerators blockModels, Block slab, Block log, Block strippedLog) {
         TextureMapping bark = logTextures(log);
         TextureMapping stripped = logTextures(strippedLog);
 
+        Map<Direction, MultiVariant[]> bottom = new EnumMap<>(Direction.class);
+        Map<Direction, MultiVariant[]> top = new EnumMap<>(Direction.class);
+        for (Direction face : Direction.values()) {
+            bottom.put(face, barkAndStripped(blockModels, SLAB_BOTTOM_FACES.get(face), slab, bark, stripped));
+            top.put(face, barkAndStripped(blockModels, SLAB_TOP_FACES.get(face), slab, bark, stripped));
+        }
+
         MultiPartGenerator generator = MultiPartGenerator.multiPart(slab);
-        for (SlabType type : SlabType.values()) {
-            Map<Direction, ModelTemplate> faces = switch (type) {
-                case BOTTOM -> SLAB_BOTTOM_FACES;
-                case TOP -> SLAB_TOP_FACES;
-                case DOUBLE -> SLAB_DOUBLE_FACES;
-            };
-            for (Direction face : Direction.values()) {
-                MultiVariant[] models = barkAndStripped(blockModels, faces.get(face), slab, bark, stripped);
-                generator.with(BlockModelGenerators.condition().term(SlabBlock.TYPE, type),
-                        strippedFace(StrippedFace.of(face), models[0], models[1]));
+        for (Direction face : Direction.values()) {
+            StrippedFace upperFace = face.getAxis().isHorizontal() ? StrippedFace.upper(face) : StrippedFace.of(face);
+            addSlabFace(generator, SlabType.BOTTOM, StrippedFace.of(face), bottom.get(face));
+            addSlabFace(generator, SlabType.TOP, upperFace, top.get(face));
+            if (face != Direction.UP) {
+                addSlabFace(generator, SlabType.DOUBLE, StrippedFace.of(face), bottom.get(face));
+            }
+            if (face != Direction.DOWN) {
+                addSlabFace(generator, SlabType.DOUBLE, upperFace, top.get(face));
             }
         }
         blockModels.blockStateOutput.accept(generator);
 
         // インベントリでは樹皮付きの下置きの見た目（バニラの slab モデル）
         blockModels.registerSimpleItemModel(slab, ModelTemplates.SLAB_BOTTOM.create(slab, slabAndStairsTextures(log), blockModels.modelOutput));
+    }
+
+    private static void addSlabFace(MultiPartGenerator generator, SlabType type, StrippedFace face, MultiVariant[] barkAndStripped) {
+        generator.with(BlockModelGenerators.condition().term(SlabBlock.TYPE, type),
+                strippedFace(face, barkAndStripped[0], barkAndStripped[1]));
     }
 
     private static List<ModelTemplate> allPanelTemplates() {

@@ -1,7 +1,0 @@
-{
-  "parent": "log_stairs_slabs_and_walls:block/template_log_panel_north",
-  "textures": {
-    "end": "minecraft:block/warped_stem_top",
-    "side": "minecraft:block/warped_stem"
-  }
-}

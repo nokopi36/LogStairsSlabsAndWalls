@@ -18,8 +18,6 @@ import net.minecraft.world.level.block.state.properties.SlabType;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.entries.UniformContainerBase;
-import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.MatchBlock;
 import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
@@ -52,19 +50,21 @@ public class ModBlockLootSubProvider extends BlockLootSubProvider {
                         .otherwise(LootItem.lootTableItem(block)))));
     }
 
-    // ハーフは、バニラの createSlabItemTable と同じく 2 枚重ねなら 2 個（剥いだ版・普通の版とも）
+    // ハーフは上下のハーフごとに 1 個ずつ（2 枚重ねなら 2 個）。そのハーフの面がすべて剥がれていれば剥いだ版（SPEC 3.5）
     private LootTable.Builder createStrippableSlabTable(Block slab, Item strippedItem) {
-        return LootTable.lootTable().withPool(LootPool.lootPool()
-                .setRolls(ContextIntProviders.exactly(1))
-                .add(this.slabEntry(slab, strippedItem)
-                        .when(AllFacesStrippedCondition.allFacesStripped())
-                        .otherwise(this.slabEntry(slab, slab.asItem()))));
+        return LootTable.lootTable()
+                .withPool(this.slabHalfPool(slab, strippedItem, false, SlabType.TOP))
+                .withPool(this.slabHalfPool(slab, strippedItem, true, SlabType.BOTTOM));
     }
 
-    private UniformContainerBase.Builder<?> slabEntry(Block slab, Item item) {
-        return this.applyExplosionDecay(slab, LootItem.lootTableItem(item)
-                .apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(2))
-                        .when(MatchBlock.blockMatches(this.blocks, slab,
-                                StatePropertiesPredicate.Builder.properties().hasProperty(SlabBlock.TYPE, SlabType.DOUBLE)))));
+    // そのハーフがあるとき（absentType でないとき）に 1 個落とすプール
+    private LootPool.Builder slabHalfPool(Block slab, Item strippedItem, boolean upper, SlabType absentType) {
+        return this.applyExplosionCondition(slab, LootPool.lootPool()
+                .setRolls(ContextIntProviders.exactly(1))
+                .when(MatchBlock.blockMatches(this.blocks, slab,
+                        StatePropertiesPredicate.Builder.properties().hasProperty(SlabBlock.TYPE, absentType)).invert())
+                .add(LootItem.lootTableItem(strippedItem)
+                        .when(AllFacesStrippedCondition.slabHalfStripped(upper))
+                        .otherwise(LootItem.lootTableItem(slab))));
     }
 }

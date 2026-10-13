@@ -3,17 +3,21 @@ package com.nokopi.logstairsslabsandwalls.block;
 import com.nokopi.logstairsslabsandwalls.ModBlockEntities;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.SlabType;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.neoforged.neoforge.model.data.ModelData;
 import net.neoforged.neoforge.model.data.ModelProperty;
+import org.jspecify.annotations.Nullable;
 
 /**
  * 剥ぎ状態をブロックごとに持つブロックエンティティ（SPEC 3.3.1）。
@@ -26,9 +30,8 @@ public class StrippedFacesBlockEntity extends BlockEntity {
     private static final String TAG_STRIPPED = "stripped_faces";
 
     private int strippedMask;
-    // 剥いだ版のハーフを重ねている途中か（保存しない）。NeoForge はアイテムで置くとき onPlace を置いた後に呼ぶので、
-    // アイテムからハーフの onPlace へ「表に出る面を剥がれた状態にする」ことを伝える
-    private boolean stackingStrippedSlab;
+    // ハーフを重ねている途中なら、新しく重ねるのが上のハーフか（保存しない。LogSlabBlock が置く前に付け、置いた後に読む）
+    private @Nullable Boolean stackingUpperSlab;
 
     public StrippedFacesBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.STRIPPED_FACES.get(), pos, state);
@@ -48,26 +51,57 @@ public class StrippedFacesBlockEntity extends BlockEntity {
         return (this.strippedMask & all) == all;
     }
 
-    // そのブロックが持つ面のすべて: 階段は 8 面（段の内側の 2 面を含む）、ほかは外周の 6 面
+    // そのブロックが持つ面のすべて: 階段は 8 面（段の内側の 2 面を含む）、ハーフは置き方による（2 枚重ねは 10 面）、ほかは外周の 6 面
     public static int allFacesMask(BlockState state) {
+        if (state.getBlock() instanceof LogStairBlock) {
+            return outerFacesMask() | StrippedFace.TREAD.bit() | StrippedFace.RISER.bit();
+        }
+        if (state.getBlock() instanceof SlabBlock) {
+            SlabType type = state.getValue(SlabBlock.TYPE);
+            return (type != SlabType.TOP ? slabHalfMask(state, false) : 0) | (type != SlabType.BOTTOM ? slabHalfMask(state, true) : 0);
+        }
+        return outerFacesMask();
+    }
+
+    /**
+     * ハーフの上下どちらかのハーフの面（SPEC 3.2）。下のハーフは下面と下半分の側面、上のハーフは上面と上半分の側面。
+     * 1 枚だけのときは、もう一方の向きの面（下置きの上面・上置きの下面）も含む。
+     */
+    public static int slabHalfMask(BlockState state, boolean upper) {
+        SlabType type = state.getValue(SlabBlock.TYPE);
+        if (upper) {
+            return StrippedFace.UP.bit() | StrippedFace.UPPER_SIDES | (type == SlabType.TOP ? StrippedFace.DOWN.bit() : 0);
+        }
+        return StrippedFace.DOWN.bit() | StrippedFace.LOWER_SIDES | (type == SlabType.BOTTOM ? StrippedFace.UP.bit() : 0);
+    }
+
+    // そのハーフの面がすべて剥がれているか（2 枚重ねのドロップ）
+    public boolean isSlabHalfStripped(boolean upper) {
+        int half = slabHalfMask(this.getBlockState(), upper);
+        return (this.strippedMask & half) == half;
+    }
+
+    private static int outerFacesMask() {
         int mask = 0;
-        for (StrippedFace face : StrippedFace.values()) {
-            if (face.isOuter() || state.getBlock() instanceof LogStairBlock) {
-                mask |= face.bit();
-            }
+        for (Direction direction : Direction.values()) {
+            mask |= StrippedFace.of(direction).bit();
         }
         return mask;
     }
 
-    public void markStackingStrippedSlab() {
-        this.stackingStrippedSlab = true;
+    public void markStackingSlab(boolean upper) {
+        this.stackingUpperSlab = upper;
     }
 
-    // 重ねている途中の印を読んで消す
-    public boolean consumeStackingStrippedSlab() {
-        boolean stacking = this.stackingStrippedSlab;
-        this.stackingStrippedSlab = false;
-        return stacking;
+    public boolean isStackingSlab() {
+        return this.stackingUpperSlab != null;
+    }
+
+    // 重ねている途中の印を読んで消す（重ねていなければ null）
+    public @Nullable Boolean consumeStackingSlab() {
+        Boolean upper = this.stackingUpperSlab;
+        this.stackingUpperSlab = null;
+        return upper;
     }
 
     // 面を剥いで保存し、クライアントへ送る。クライアント側でも同じ処理を呼んで、すぐ見た目を変える

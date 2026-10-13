@@ -4,86 +4,26 @@
       "apply": {
         "type": "log_stairs_slabs_and_walls:stripped_face",
         "bark": {
+          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_down"
+        },
+        "face": "down",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_stripped_down"
+        }
+      },
+      "when": {
+        "type": "bottom"
+      }
+    },
+    {
+      "apply": {
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
           "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_top_down"
         },
         "face": "down",
         "stripped": {
           "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_stripped_top_down"
-        }
-      },
-      "when": {
-        "type": "top"
-      }
-    },
-    {
-      "apply": {
-        "type": "log_stairs_slabs_and_walls:stripped_face",
-        "bark": {
-          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_top_up"
-        },
-        "face": "up",
-        "stripped": {
-          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_stripped_top_up"
-        }
-      },
-      "when": {
-        "type": "top"
-      }
-    },
-    {
-      "apply": {
-        "type": "log_stairs_slabs_and_walls:stripped_face",
-        "bark": {
-          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_top_north"
-        },
-        "face": "north",
-        "stripped": {
-          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_stripped_top_north"
-        }
-      },
-      "when": {
-        "type": "top"
-      }
-    },
-    {
-      "apply": {
-        "type": "log_stairs_slabs_and_walls:stripped_face",
-        "bark": {
-          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_top_south"
-        },
-        "face": "south",
-        "stripped": {
-          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_stripped_top_south"
-        }
-      },
-      "when": {
-        "type": "top"
-      }
-    },
-    {
-      "apply": {
-        "type": "log_stairs_slabs_and_walls:stripped_face",
-        "bark": {
-          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_top_west"
-        },
-        "face": "west",
-        "stripped": {
-          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_stripped_top_west"
-        }
-      },
-      "when": {
-        "type": "top"
-      }
-    },
-    {
-      "apply": {
-        "type": "log_stairs_slabs_and_walls:stripped_face",
-        "bark": {
-          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_top_east"
-        },
-        "face": "east",
-        "stripped": {
-          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_stripped_top_east"
         }
       },
       "when": {
@@ -102,7 +42,7 @@
         }
       },
       "when": {
-        "type": "bottom"
+        "type": "double"
       }
     },
     {
@@ -124,6 +64,36 @@
       "apply": {
         "type": "log_stairs_slabs_and_walls:stripped_face",
         "bark": {
+          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_top_up"
+        },
+        "face": "up",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_stripped_top_up"
+        }
+      },
+      "when": {
+        "type": "top"
+      }
+    },
+    {
+      "apply": {
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_top_up"
+        },
+        "face": "up",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_stripped_top_up"
+        }
+      },
+      "when": {
+        "type": "double"
+      }
+    },
+    {
+      "apply": {
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
           "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_north"
         },
         "face": "north",
@@ -133,6 +103,51 @@
       },
       "when": {
         "type": "bottom"
+      }
+    },
+    {
+      "apply": {
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_top_north"
+        },
+        "face": "upper_north",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_stripped_top_north"
+        }
+      },
+      "when": {
+        "type": "top"
+      }
+    },
+    {
+      "apply": {
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_north"
+        },
+        "face": "north",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_stripped_north"
+        }
+      },
+      "when": {
+        "type": "double"
+      }
+    },
+    {
+      "apply": {
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_top_north"
+        },
+        "face": "upper_north",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_stripped_top_north"
+        }
+      },
+      "when": {
+        "type": "double"
       }
     },
     {
@@ -154,6 +169,51 @@
       "apply": {
         "type": "log_stairs_slabs_and_walls:stripped_face",
         "bark": {
+          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_top_south"
+        },
+        "face": "upper_south",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_stripped_top_south"
+        }
+      },
+      "when": {
+        "type": "top"
+      }
+    },
+    {
+      "apply": {
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_south"
+        },
+        "face": "south",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_stripped_south"
+        }
+      },
+      "when": {
+        "type": "double"
+      }
+    },
+    {
+      "apply": {
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_top_south"
+        },
+        "face": "upper_south",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_stripped_top_south"
+        }
+      },
+      "when": {
+        "type": "double"
+      }
+    },
+    {
+      "apply": {
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
           "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_west"
         },
         "face": "west",
@@ -163,6 +223,51 @@
       },
       "when": {
         "type": "bottom"
+      }
+    },
+    {
+      "apply": {
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_top_west"
+        },
+        "face": "upper_west",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_stripped_top_west"
+        }
+      },
+      "when": {
+        "type": "top"
+      }
+    },
+    {
+      "apply": {
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_west"
+        },
+        "face": "west",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_stripped_west"
+        }
+      },
+      "when": {
+        "type": "double"
+      }
+    },
+    {
+      "apply": {
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_top_west"
+        },
+        "face": "upper_west",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_stripped_top_west"
+        }
+      },
+      "when": {
+        "type": "double"
       }
     },
     {
@@ -184,86 +289,41 @@
       "apply": {
         "type": "log_stairs_slabs_and_walls:stripped_face",
         "bark": {
-          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_double_down"
+          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_top_east"
         },
-        "face": "down",
+        "face": "upper_east",
         "stripped": {
-          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_stripped_double_down"
+          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_stripped_top_east"
         }
       },
       "when": {
-        "type": "double"
+        "type": "top"
       }
     },
     {
       "apply": {
         "type": "log_stairs_slabs_and_walls:stripped_face",
         "bark": {
-          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_double_up"
-        },
-        "face": "up",
-        "stripped": {
-          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_stripped_double_up"
-        }
-      },
-      "when": {
-        "type": "double"
-      }
-    },
-    {
-      "apply": {
-        "type": "log_stairs_slabs_and_walls:stripped_face",
-        "bark": {
-          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_double_north"
-        },
-        "face": "north",
-        "stripped": {
-          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_stripped_double_north"
-        }
-      },
-      "when": {
-        "type": "double"
-      }
-    },
-    {
-      "apply": {
-        "type": "log_stairs_slabs_and_walls:stripped_face",
-        "bark": {
-          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_double_south"
-        },
-        "face": "south",
-        "stripped": {
-          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_stripped_double_south"
-        }
-      },
-      "when": {
-        "type": "double"
-      }
-    },
-    {
-      "apply": {
-        "type": "log_stairs_slabs_and_walls:stripped_face",
-        "bark": {
-          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_double_west"
-        },
-        "face": "west",
-        "stripped": {
-          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_stripped_double_west"
-        }
-      },
-      "when": {
-        "type": "double"
-      }
-    },
-    {
-      "apply": {
-        "type": "log_stairs_slabs_and_walls:stripped_face",
-        "bark": {
-          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_double_east"
+          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_east"
         },
         "face": "east",
         "stripped": {
-          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_stripped_double_east"
+          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_stripped_east"
+        }
+      },
+      "when": {
+        "type": "double"
+      }
+    },
+    {
+      "apply": {
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_top_east"
+        },
+        "face": "upper_east",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/crimson_stem_slab_stripped_top_east"
         }
       },
       "when": {

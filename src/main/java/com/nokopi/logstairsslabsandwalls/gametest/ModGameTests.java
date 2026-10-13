@@ -1,7 +1,9 @@
 package com.nokopi.logstairsslabsandwalls.gametest;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Consumer;
 
 import com.nokopi.logstairsslabsandwalls.LogStairsSlabsAndWalls;
@@ -239,13 +241,20 @@ public final class ModGameTests {
     }
 
     private static void assertDrop(GameTestHelper helper, BlockState state, StrippedFacesBlockEntity blockEntity, Item expected) {
-        List<ItemStack> drops = Block.getDrops(state, helper.getLevel(), blockEntity.getBlockPos(), blockEntity);
         int count = state.getBlock() instanceof SlabBlock && state.getValue(SlabBlock.TYPE) == SlabType.DOUBLE ? 2 : 1;
-        helper.assertTrue(drops.size() == 1 && drops.get(0).is(expected) && drops.get(0).getCount() == count,
-                state + " should drop " + count + " " + expected + " but dropped " + drops);
+        assertDrops(helper, state, blockEntity, Map.of(expected, count));
     }
 
-    // 普通のハーフに剥いだハーフを重ねられる。側面は先に置いたハーフのまま、表に出る上面だけ剥がれる。2 枚重ねで 2 個落ちる
+    private static void assertDrops(GameTestHelper helper, BlockState state, StrippedFacesBlockEntity blockEntity, Map<Item, Integer> expected) {
+        Map<Item, Integer> actual = new HashMap<>();
+        for (ItemStack drop : Block.getDrops(state, helper.getLevel(), blockEntity.getBlockPos(), blockEntity)) {
+            actual.merge(drop.getItem(), drop.getCount(), Integer::sum);
+        }
+        helper.assertTrue(actual.equals(expected), state + " should drop " + expected + " but dropped " + actual);
+    }
+
+    // 普通のハーフに剥いだハーフを重ねられる。先に置いたハーフの面はそのまま、新しいハーフ（上面と上半分の側面）は剥がれる。
+    // 上下で 1 個ずつ、そのハーフの状態で落ちる
     private static void strippedSlabOnSlab(GameTestHelper helper) {
         Player player = helper.makeMockPlayer(GameType.CREATIVE);
         BlockPos pos = new BlockPos(1, 1, 1);
@@ -256,9 +265,12 @@ public final class ModGameTests {
         BlockState state = helper.getBlockState(pos);
         helper.assertTrue(state.getValue(SlabBlock.TYPE) == SlabType.DOUBLE, "stripped slab did not stack: " + state);
         StrippedFacesBlockEntity blockEntity = helper.getBlockEntity(pos, StrippedFacesBlockEntity.class);
-        int expected = StrippedFace.NORTH.bit() | StrippedFace.UP.bit();
+        int expected = StrippedFace.NORTH.bit() | StrippedFace.UP.bit() | StrippedFace.UPPER_SIDES;
         helper.assertTrue(blockEntity.strippedMask() == expected, "expected " + Integer.toBinaryString(expected) + " but was " + Integer.toBinaryString(blockEntity.strippedMask()));
-        assertDrop(helper, state, blockEntity, ModItems.logSlab(LogWood.OAK).get());
+        assertDrops(helper, state, blockEntity, Map.of(ModItems.logSlab(LogWood.OAK).get(), 1, ModItems.strippedLogSlab(LogWood.OAK).get(), 1));
+        // 下半分も剥げば剥いだ版 2 個
+        blockEntity.setStrippedMask(StrippedFacesBlockEntity.allFacesMask(state));
+        assertDrops(helper, state, blockEntity, Map.of(ModItems.strippedLogSlab(LogWood.OAK).get(), 2));
         helper.succeed();
     }
 
@@ -310,10 +322,21 @@ public final class ModGameTests {
         helper.succeed();
     }
 
-    // ハーフの下置き・上置き・2 枚重ねで、6 面それぞれが剥げる
+    // ハーフの下置き・上置き・2 枚重ねで、面がそれぞれ剥げる。上のハーフの側面は upper_*、2 枚重ねの側面はクリックした高さで上下が分かれる
     private static void stripSlabFaces(GameTestHelper helper) {
-        for (SlabType type : SlabType.values()) {
-            assertStripEachFace(helper, ModBlocks.logSlab(LogWood.OAK).get().defaultBlockState().setValue(SlabBlock.TYPE, type));
+        BlockState slab = ModBlocks.logSlab(LogWood.OAK).get().defaultBlockState();
+        assertStripEachFace(helper, slab.setValue(SlabBlock.TYPE, SlabType.BOTTOM));
+        for (SlabType type : List.of(SlabType.TOP, SlabType.DOUBLE)) {
+            BlockState state = slab.setValue(SlabBlock.TYPE, type);
+            assertBlockEntityStripsOnly(helper, state, Direction.UP, new Vec3(0.5, 1.0, 0.5), StrippedFace.UP);
+            assertBlockEntityStripsOnly(helper, state, Direction.DOWN, new Vec3(0.5, 0.0, 0.5), StrippedFace.DOWN);
+            for (Direction side : Direction.Plane.HORIZONTAL) {
+                Vec3 edge = new Vec3(0.5, 0.0, 0.5).add(Vec3.atLowerCornerOf(side.getUnitVec3i()).scale(0.5));
+                assertBlockEntityStripsOnly(helper, state, side, edge.add(0, 0.75, 0), StrippedFace.upper(side));
+                if (type == SlabType.DOUBLE) {
+                    assertBlockEntityStripsOnly(helper, state, side, edge.add(0, 0.25, 0), StrippedFace.of(side));
+                }
+            }
         }
         helper.succeed();
     }
@@ -371,20 +394,28 @@ public final class ModGameTests {
         helper.succeed();
     }
 
-    // SPEC 3.2: ハーフを 2 枚重ねにすると、側面の剥ぎ状態は引き継ぎ、新しいハーフで隠れる面は樹皮付きに戻る
+    // SPEC 3.2: 普通のハーフを重ねて 2 枚重ねにすると、先に置いたハーフの面はそのまま、新しいハーフの面は樹皮付き
     private static void doubleSlabKeepsSides(GameTestHelper helper) {
         BlockPos pos = new BlockPos(1, 1, 1);
         BlockState slab = ModBlocks.logSlab(LogWood.OAK).get().defaultBlockState();
-        int stripped = StrippedFace.NORTH.bit() | StrippedFace.UP.bit() | StrippedFace.DOWN.bit();
         for (SlabType type : List.of(SlabType.BOTTOM, SlabType.TOP)) {
+            BlockState single = slab.setValue(SlabBlock.TYPE, type);
             helper.setBlock(pos, Blocks.AIR);
-            helper.setBlock(pos, slab.setValue(SlabBlock.TYPE, type));
+            helper.setBlock(pos, single);
+            int stripped = StrippedFacesBlockEntity.allFacesMask(single);
             helper.getBlockEntity(pos, StrippedFacesBlockEntity.class).setStrippedMask(stripped);
-            helper.setBlock(pos, slab.setValue(SlabBlock.TYPE, SlabType.DOUBLE));
-            StrippedFace covered = type == SlabType.BOTTOM ? StrippedFace.UP : StrippedFace.DOWN;
+            // 普通のハーフを、下置きなら上から、上置きなら下から重ねる
+            Player player = helper.makeMockPlayer(GameType.CREATIVE);
+            player.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(ModItems.logSlab(LogWood.OAK).get()));
+            Direction face = type == SlabType.BOTTOM ? Direction.UP : Direction.DOWN;
+            click(helper, player, pos, new Vec3(0.5, 0.5, 0.5), face);
+            BlockState doubled = helper.getBlockState(pos);
+            helper.assertTrue(doubled.getValue(SlabBlock.TYPE) == SlabType.DOUBLE, type + " + slab did not stack: " + doubled);
+            // 先に置いたのが下置きなら残るのは下のハーフ（下面と下半分の側面）、上置きなら上のハーフ
+            int expected = StrippedFacesBlockEntity.slabHalfMask(doubled, type == SlabType.TOP);
             int mask = helper.getBlockEntity(pos, StrippedFacesBlockEntity.class).strippedMask();
-            helper.assertTrue(mask == (stripped & ~covered.bit()),
-                    type + " + slab: expected " + Integer.toBinaryString(stripped & ~covered.bit()) + " but was " + Integer.toBinaryString(mask));
+            helper.assertTrue(mask == expected,
+                    type + " + slab: expected " + Integer.toBinaryString(expected) + " but was " + Integer.toBinaryString(mask));
         }
         helper.succeed();
     }
