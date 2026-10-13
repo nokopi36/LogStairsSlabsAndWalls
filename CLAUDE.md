@@ -34,6 +34,9 @@
 - タグの `add` は `ResourceKey`（`DeferredHolder#getKey()`）。ブロックとアイテム共通のタグは `BlockItemTags`
 - 燃料は `Item.Properties#cookingFuel(ContextIntProviders.*)`。テクスチャは `Material`（`TextureMapping.getBlockTexture`）
 - 斧で剥ぐ処理などのブロック変換はデータ駆動（`data/minecraft/block_transformer/axe.json`）。`ItemAbilities.AXE_STRIP` は廃止。面ごとの剥ぎはブロックの `useItemOn` を上書きし、斧の判定は `minecraft:block_transformer` コンポーネントで行う
+- 剥ぎ状態は blockstate ではなくブロックエンティティ（`StrippedFacesBlockEntity` のビット）に持つ。blockstate だと状態の数が 64〜256 倍になり、13 種類で起動 +25 秒・+530 MB の見込みだったため（SPEC 3.3.1）。描画は自前のモデルの型 `stripped_face`（`client/StrippedFaceModel`、`RegisterBlockStateModels` で登録）が `level.getModelData(pos)` を見て切り替える
+- `onPlace` はサーバーでしか呼ばれず、さらに NeoForge はアイテムで置くとき（ブロックのスナップショットを取る間）`onPlace` を置いた後まで遅らせる。置いたときにブロックエンティティを書き換える処理は、両側で動く `getStateForPlacement`（印を付ける）と `setPlacedBy`（反映する）に置く。そうしないと、手元で一瞬古い見た目になる
+- 計測（起動時間・ヒープ）は runClient をバックグラウンドで起動し、ログの `Loaded 0 entity animations` までの時間と `jcmd <pid> GC.run` → `GC.heap_info` で取った（PROGRESS の「計測」）
 - Gradle Wrapper: MDK の `gradle-wrapper.jar` は公式チェックサムと一致しなかったため、検証済みの 9.2.1 の jar と `gradlew` に差し替えた
 
 ## 利用範囲とライセンス
