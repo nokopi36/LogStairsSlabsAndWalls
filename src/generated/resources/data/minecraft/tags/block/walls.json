@@ -1,5 +1,17 @@
 {
   "values": [
-    "log_stairs_slabs_and_walls:oak_log_wall"
+    "log_stairs_slabs_and_walls:oak_log_wall",
+    "log_stairs_slabs_and_walls:spruce_log_wall",
+    "log_stairs_slabs_and_walls:birch_log_wall",
+    "log_stairs_slabs_and_walls:jungle_log_wall",
+    "log_stairs_slabs_and_walls:acacia_log_wall",
+    "log_stairs_slabs_and_walls:dark_oak_log_wall",
+    "log_stairs_slabs_and_walls:mangrove_log_wall",
+    "log_stairs_slabs_and_walls:cherry_log_wall",
+    "log_stairs_slabs_and_walls:pale_oak_log_wall",
+    "log_stairs_slabs_and_walls:poplar_log_wall",
+    "log_stairs_slabs_and_walls:bamboo_block_wall",
+    "log_stairs_slabs_and_walls:crimson_stem_wall",
+    "log_stairs_slabs_and_walls:warped_stem_wall"
   ]
 }

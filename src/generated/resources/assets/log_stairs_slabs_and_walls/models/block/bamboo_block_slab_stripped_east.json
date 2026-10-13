@@ -1,0 +1,7 @@
+{
+  "parent": "log_stairs_slabs_and_walls:block/template_log_slab_east",
+  "textures": {
+    "end": "minecraft:block/stripped_bamboo_block_top",
+    "side": "minecraft:block/stripped_bamboo_block"
+  }
+}

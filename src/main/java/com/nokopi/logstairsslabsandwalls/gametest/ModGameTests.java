@@ -6,6 +6,7 @@ import java.util.function.Consumer;
 
 import com.nokopi.logstairsslabsandwalls.LogStairsSlabsAndWalls;
 import com.nokopi.logstairsslabsandwalls.LogWood;
+import com.nokopi.logstairsslabsandwalls.ModBlockEntities;
 import com.nokopi.logstairsslabsandwalls.ModBlocks;
 import com.nokopi.logstairsslabsandwalls.ModItems;
 import com.nokopi.logstairsslabsandwalls.block.StrippedFace;
@@ -16,6 +17,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.ProblemReporter;
 import net.minecraft.core.registries.Registries;
@@ -28,6 +30,7 @@ import net.minecraft.gametest.framework.TestData;
 import net.minecraft.gametest.framework.TestEnvironmentDefinition;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -39,6 +42,7 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
@@ -49,6 +53,7 @@ import net.minecraft.world.level.block.state.properties.SlabType;
 import net.minecraft.world.level.block.state.properties.StairsShape;
 import net.minecraft.world.level.block.state.properties.WallSide;
 import net.minecraft.world.level.storage.TagValueInput;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -75,6 +80,8 @@ public final class ModGameTests {
             TEST_FUNCTIONS.register("stripped_faces_save_load", () -> ModGameTests::strippedFacesSaveLoad);
     public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> DOUBLE_SLAB_KEEPS_SIDES =
             TEST_FUNCTIONS.register("double_slab_keeps_sides", () -> ModGameTests::doubleSlabKeepsSides);
+    public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> ALL_WOODS_REGISTERED =
+            TEST_FUNCTIONS.register("all_woods_registered", () -> ModGameTests::allWoodsRegistered);
     public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> LOG_WALL_RECIPE =
             TEST_FUNCTIONS.register("log_wall_recipe", () -> ModGameTests::logWallRecipe);
     public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> STRIP_WALL_FACES =
@@ -162,6 +169,29 @@ public final class ModGameTests {
                     Vec3 local = new Vec3(0.5, half == Half.BOTTOM ? 0.75 : 0.25, 0.5);
                     assertBlockEntityStripsOnly(helper, stairs, riserFace, local, StrippedFace.RISER);
                 }
+            }
+        }
+        helper.succeed();
+    }
+
+    // SPEC 3.4: 全 13 種類の 4 ブロックに、ルートテーブル・レシピ・剥ぎ状態のブロックエンティティがある。
+    // ネザーの幹は燃えず、音は材料の原木と同じ
+    private static void allWoodsRegistered(GameTestHelper helper) {
+        helper.assertTrue(ModBlocks.WOODS.size() == LogWood.values().length, "not all woods are registered: " + ModBlocks.WOODS);
+        MinecraftServer server = helper.getLevel().getServer();
+        BlockPos pos = helper.absolutePos(BlockPos.ZERO);
+        for (LogWood wood : ModBlocks.WOODS) {
+            for (Block block : List.of(ModBlocks.logPanel(wood).get(), ModBlocks.logStairs(wood).get(),
+                    ModBlocks.logSlab(wood).get(), ModBlocks.logWall(wood).get())) {
+                BlockState state = block.defaultBlockState();
+                ResourceKey<LootTable> lootTable = block.getLootTable().orElseThrow();
+                helper.assertTrue(server.reloadableRegistries().getLootTable(lootTable) != LootTable.EMPTY, block + " has no loot table");
+                Identifier id = BuiltInRegistries.BLOCK.getKey(block);
+                helper.assertTrue(server.getRecipeManager().byKey(ResourceKey.create(Registries.RECIPE, id)).isPresent(), id + " has no recipe");
+                helper.assertTrue(ModBlockEntities.STRIPPED_FACES.get().isValid(state), block + " has no stripped faces block entity");
+                helper.assertTrue((state.getFlammability(helper.getLevel(), pos, Direction.UP) > 0) == wood.flammable(),
+                        block + " flammability does not match " + wood);
+                helper.assertTrue(state.getSoundType() == wood.log().defaultBlockState().getSoundType(), block + " sound differs from the log");
             }
         }
         helper.succeed();

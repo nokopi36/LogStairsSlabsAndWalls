@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "log_wall",
+  "key": {
+    "#": [
+      "minecraft:bamboo_block",
+      "log_stairs_slabs_and_walls:bamboo_block_panel"
+    ]
+  },
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 12,
+    "id": "log_stairs_slabs_and_walls:bamboo_block_wall"
+  }
+}

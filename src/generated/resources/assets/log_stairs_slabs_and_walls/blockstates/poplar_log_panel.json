@@ -1,0 +1,310 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_down",
+          "x": 90,
+          "y": 90
+        },
+        "face": "west",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_stripped_down",
+          "x": 90,
+          "y": 90
+        }
+      },
+      "when": {
+        "axis": "x"
+      }
+    },
+    {
+      "apply": {
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_horizontal_up",
+          "x": 90,
+          "y": 90
+        },
+        "face": "east",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_stripped_horizontal_up",
+          "x": 90,
+          "y": 90
+        }
+      },
+      "when": {
+        "axis": "x"
+      }
+    },
+    {
+      "apply": {
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_north",
+          "x": 90,
+          "y": 90
+        },
+        "face": "down",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_stripped_north",
+          "x": 90,
+          "y": 90
+        }
+      },
+      "when": {
+        "axis": "x"
+      }
+    },
+    {
+      "apply": {
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_south",
+          "x": 90,
+          "y": 90
+        },
+        "face": "up",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_stripped_south",
+          "x": 90,
+          "y": 90
+        }
+      },
+      "when": {
+        "axis": "x"
+      }
+    },
+    {
+      "apply": {
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_west",
+          "x": 90,
+          "y": 90
+        },
+        "face": "north",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_stripped_west",
+          "x": 90,
+          "y": 90
+        }
+      },
+      "when": {
+        "axis": "x"
+      }
+    },
+    {
+      "apply": {
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_east",
+          "x": 90,
+          "y": 90
+        },
+        "face": "south",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_stripped_east",
+          "x": 90,
+          "y": 90
+        }
+      },
+      "when": {
+        "axis": "x"
+      }
+    },
+    {
+      "apply": {
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_down"
+        },
+        "face": "down",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_stripped_down"
+        }
+      },
+      "when": {
+        "axis": "y"
+      }
+    },
+    {
+      "apply": {
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_up"
+        },
+        "face": "up",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_stripped_up"
+        }
+      },
+      "when": {
+        "axis": "y"
+      }
+    },
+    {
+      "apply": {
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_north"
+        },
+        "face": "north",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_stripped_north"
+        }
+      },
+      "when": {
+        "axis": "y"
+      }
+    },
+    {
+      "apply": {
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_south"
+        },
+        "face": "south",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_stripped_south"
+        }
+      },
+      "when": {
+        "axis": "y"
+      }
+    },
+    {
+      "apply": {
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_west"
+        },
+        "face": "west",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_stripped_west"
+        }
+      },
+      "when": {
+        "axis": "y"
+      }
+    },
+    {
+      "apply": {
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_east"
+        },
+        "face": "east",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_stripped_east"
+        }
+      },
+      "when": {
+        "axis": "y"
+      }
+    },
+    {
+      "apply": {
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_down",
+          "x": 90
+        },
+        "face": "south",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_stripped_down",
+          "x": 90
+        }
+      },
+      "when": {
+        "axis": "z"
+      }
+    },
+    {
+      "apply": {
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_horizontal_up",
+          "x": 90
+        },
+        "face": "north",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_stripped_horizontal_up",
+          "x": 90
+        }
+      },
+      "when": {
+        "axis": "z"
+      }
+    },
+    {
+      "apply": {
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_north",
+          "x": 90
+        },
+        "face": "down",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_stripped_north",
+          "x": 90
+        }
+      },
+      "when": {
+        "axis": "z"
+      }
+    },
+    {
+      "apply": {
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_south",
+          "x": 90
+        },
+        "face": "up",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_stripped_south",
+          "x": 90
+        }
+      },
+      "when": {
+        "axis": "z"
+      }
+    },
+    {
+      "apply": {
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_west",
+          "x": 90
+        },
+        "face": "west",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_stripped_west",
+          "x": 90
+        }
+      },
+      "when": {
+        "axis": "z"
+      }
+    },
+    {
+      "apply": {
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_east",
+          "x": 90
+        },
+        "face": "east",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/poplar_log_panel_stripped_east",
+          "x": 90
+        }
+      },
+      "when": {
+        "axis": "z"
+      }
+    }
+  ]
+}

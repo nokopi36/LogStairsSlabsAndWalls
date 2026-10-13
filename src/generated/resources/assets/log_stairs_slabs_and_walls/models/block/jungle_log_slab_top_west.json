@@ -1,0 +1,7 @@
+{
+  "parent": "log_stairs_slabs_and_walls:block/template_log_slab_top_west",
+  "textures": {
+    "end": "minecraft:block/jungle_log_top",
+    "side": "minecraft:block/jungle_log"
+  }
+}

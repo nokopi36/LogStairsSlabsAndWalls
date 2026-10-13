@@ -17,8 +17,8 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public final class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(LogStairsSlabsAndWalls.MODID);
 
-    // MVP ではオークだけ。全種類への展開（SPEC 3.4）でここを LogWood.values() にする
-    public static final List<LogWood> WOODS = List.of(LogWood.OAK);
+    // 全 13 種類（SPEC 2 章・3.4）。並び順はクリエイティブタブの並び順
+    public static final List<LogWood> WOODS = List.of(LogWood.values());
 
     private static final Map<LogWood, DeferredBlock<LogPanelBlock>> LOG_PANELS = new EnumMap<>(LogWood.class);
     private static final Map<LogWood, DeferredBlock<LogStairBlock>> LOG_STAIRS = new EnumMap<>(LogWood.class);
@@ -59,12 +59,13 @@ public final class ModBlocks {
         return LOG_WALLS.get(wood);
     }
 
-    // 性能は材料のバニラの原木と同じ（Blocks#logProperties: strength(2.0F)）。地図の色は原木に合わせる
+    // 性能・音は材料のバニラの原木と同じ（Blocks#logProperties: strength(2.0F)。ネザーの幹は STEM、竹ブロックは BAMBOO_WOOD）。
+    // 地図の色は原木に合わせる
     private static BlockBehaviour.Properties logProperties(BlockBehaviour.Properties p, LogWood wood) {
         p.mapColor(wood.log().defaultMapColor())
                 .instrument(NoteBlockInstrument.BASS)
                 .strength(2.0F)
-                .sound(wood.woodType().soundType());
+                .sound(wood.log().defaultBlockState().getSoundType());
         return wood.flammable() ? p.ignitedByLava() : p;
     }
 }

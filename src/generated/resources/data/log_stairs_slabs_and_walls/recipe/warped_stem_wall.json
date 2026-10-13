@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "log_wall",
+  "key": {
+    "#": [
+      "minecraft:warped_stem",
+      "log_stairs_slabs_and_walls:warped_stem_panel"
+    ]
+  },
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 24,
+    "id": "log_stairs_slabs_and_walls:warped_stem_wall"
+  }
+}

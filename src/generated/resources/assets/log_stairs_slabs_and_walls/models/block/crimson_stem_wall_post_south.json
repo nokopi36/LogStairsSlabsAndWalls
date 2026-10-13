@@ -1,0 +1,7 @@
+{
+  "parent": "log_stairs_slabs_and_walls:block/template_log_wall_post_south",
+  "textures": {
+    "end": "minecraft:block/crimson_stem_top",
+    "side": "minecraft:block/crimson_stem"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "log_stairs",
+  "key": {
+    "#": [
+      "minecraft:jungle_log",
+      "log_stairs_slabs_and_walls:jungle_log_panel"
+    ]
+  },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "result": {
+    "count": 16,
+    "id": "log_stairs_slabs_and_walls:jungle_log_stairs"
+  }
+}
