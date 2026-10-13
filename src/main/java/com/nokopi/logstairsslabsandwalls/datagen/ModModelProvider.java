@@ -11,7 +11,6 @@ import java.util.function.UnaryOperator;
 import com.nokopi.logstairsslabsandwalls.LogStairsSlabsAndWalls;
 import com.nokopi.logstairsslabsandwalls.LogWood;
 import com.nokopi.logstairsslabsandwalls.ModBlocks;
-import com.nokopi.logstairsslabsandwalls.block.FaceStripping;
 import com.nokopi.logstairsslabsandwalls.block.StrippedFace;
 import com.nokopi.logstairsslabsandwalls.client.StrippedFaceModel;
 
@@ -117,7 +116,7 @@ public class ModModelProvider extends ModelProvider {
     }
 
     /**
-     * 原木パネル: 1 面ずつのモデルを、その面がワールドで向く方向の _stripped を条件に組み合わせる。
+     * 原木パネル: 1 面ずつのモデルを、その面がワールドで向く方向の剥ぎ状態（ブロックエンティティ）で切り替える。
      * 軸ごとの回転はバニラの原木の blockstate と同じ（y: なし / z: x=90 / x: x=90, y=90）。
      */
     private static void createLogPanel(BlockModelGenerators blockModels, Block panel, Block log, Block strippedLog) {
@@ -138,12 +137,10 @@ public class ModModelProvider extends ModelProvider {
             for (Direction face : Direction.values()) {
                 ModelTemplate template = horizontal && face == Direction.UP ? PANEL_HORIZONTAL_UP : PANEL_FACES.get(face);
                 Direction worldFace = rotateForAxis(face, axis);
-                for (boolean isStripped : new boolean[] {false, true}) {
-                    MultiVariant model = models.get(template)[isStripped ? 1 : 0];
-                    generator.with(BlockModelGenerators.condition()
-                            .term(RotatedPillarBlock.AXIS, axis)
-                            .term(FaceStripping.strippedProperty(worldFace), isStripped), axisRotation(axis).apply(model));
-                }
+                MultiVariant[] barkAndStripped = models.get(template);
+                generator.with(BlockModelGenerators.condition().term(RotatedPillarBlock.AXIS, axis),
+                        strippedFace(StrippedFace.of(worldFace),
+                                axisRotation(axis).apply(barkAndStripped[0]), axisRotation(axis).apply(barkAndStripped[1])));
             }
         }
         blockModels.blockStateOutput.accept(generator);
@@ -233,7 +230,7 @@ public class ModModelProvider extends ModelProvider {
 
     /**
      * 原木の塀: 縦置きの原木の見た目。回転はバニラの createWall と同じ（壁は北向きが基準で y、uvlock）。
-     * 柱と壁の 1 面ずつのモデルを、ワールドで向く方向の _stripped を条件に組み合わせる。
+     * 柱と壁の 1 面ずつのモデルを、ワールドで向く方向の剥ぎ状態（ブロックエンティティ）で切り替える。
      */
     private static void createLogWall(BlockModelGenerators blockModels, Block wall, Block log, Block strippedLog) {
         TextureMapping bark = logTextures(log);
@@ -242,11 +239,8 @@ public class ModModelProvider extends ModelProvider {
         MultiPartGenerator generator = MultiPartGenerator.multiPart(wall);
         for (Direction face : Direction.values()) {
             MultiVariant[] post = barkAndStripped(blockModels, WALL_POST_FACES.get(face), wall, bark, stripped);
-            for (boolean isStripped : new boolean[] {false, true}) {
-                generator.with(BlockModelGenerators.condition()
-                        .term(WallBlock.UP, true)
-                        .term(FaceStripping.strippedProperty(face), isStripped), post[isStripped ? 1 : 0]);
-            }
+            generator.with(BlockModelGenerators.condition().term(WallBlock.UP, true),
+                    strippedFace(StrippedFace.of(face), post[0], post[1]));
         }
         addWallSides(blockModels, generator, wall, WallSide.LOW, WALL_LOW_SIDE_FACES, bark, stripped);
         addWallSides(blockModels, generator, wall, WallSide.TALL, WALL_TALL_SIDE_FACES, bark, stripped);
@@ -269,12 +263,10 @@ public class ModModelProvider extends ModelProvider {
                     default -> 0;
                 };
                 Direction worldFace = rotateY(entry.getKey(), yRotation);
-                for (boolean isStripped : new boolean[] {false, true}) {
-                    generator.with(BlockModelGenerators.condition()
-                            .term(WallBlock.PROPERTY_BY_DIRECTION.get(side), height)
-                            .term(FaceStripping.strippedProperty(worldFace), isStripped),
-                            withYRotation(models[isStripped ? 1 : 0], yRotation).with(BlockModelGenerators.UV_LOCK));
-                }
+                generator.with(BlockModelGenerators.condition().term(WallBlock.PROPERTY_BY_DIRECTION.get(side), height),
+                        strippedFace(StrippedFace.of(worldFace),
+                                withYRotation(models[0], yRotation).with(BlockModelGenerators.UV_LOCK),
+                                withYRotation(models[1], yRotation).with(BlockModelGenerators.UV_LOCK)));
             }
         }
     }
@@ -336,11 +328,8 @@ public class ModModelProvider extends ModelProvider {
             };
             for (Direction face : Direction.values()) {
                 MultiVariant[] models = barkAndStripped(blockModels, faces.get(face), slab, bark, stripped);
-                for (boolean isStripped : new boolean[] {false, true}) {
-                    generator.with(BlockModelGenerators.condition()
-                            .term(SlabBlock.TYPE, type)
-                            .term(FaceStripping.strippedProperty(face), isStripped), models[isStripped ? 1 : 0]);
-                }
+                generator.with(BlockModelGenerators.condition().term(SlabBlock.TYPE, type),
+                        strippedFace(StrippedFace.of(face), models[0], models[1]));
             }
         }
         blockModels.blockStateOutput.accept(generator);

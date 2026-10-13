@@ -8,7 +8,6 @@ import com.nokopi.logstairsslabsandwalls.LogStairsSlabsAndWalls;
 import com.nokopi.logstairsslabsandwalls.LogWood;
 import com.nokopi.logstairsslabsandwalls.ModBlocks;
 import com.nokopi.logstairsslabsandwalls.ModItems;
-import com.nokopi.logstairsslabsandwalls.block.FaceStripping;
 import com.nokopi.logstairsslabsandwalls.block.StrippedFace;
 import com.nokopi.logstairsslabsandwalls.block.StrippedFacesBlockEntity;
 import com.nokopi.logstairsslabsandwalls.datagen.ModRecipeProvider;
@@ -45,9 +44,7 @@ import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.Half;
-import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.SlabType;
 import net.minecraft.world.level.block.state.properties.StairsShape;
 import net.minecraft.world.level.block.state.properties.WallSide;
@@ -76,6 +73,8 @@ public final class ModGameTests {
             TEST_FUNCTIONS.register("strip_stairs_faces", () -> ModGameTests::stripStairsFaces);
     public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> STRIPPED_FACES_SAVE_LOAD =
             TEST_FUNCTIONS.register("stripped_faces_save_load", () -> ModGameTests::strippedFacesSaveLoad);
+    public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> DOUBLE_SLAB_KEEPS_SIDES =
+            TEST_FUNCTIONS.register("double_slab_keeps_sides", () -> ModGameTests::doubleSlabKeepsSides);
     public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> LOG_WALL_RECIPE =
             TEST_FUNCTIONS.register("log_wall_recipe", () -> ModGameTests::logWallRecipe);
     public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> STRIP_WALL_FACES =
@@ -207,11 +206,11 @@ public final class ModGameTests {
         helper.succeed();
     }
 
-    // 外周の 6 面それぞれの中央をクリックすると、その向きの状態だけ剥がれる
+    // 外周の 6 面それぞれの中央をクリックすると、その向きの面だけ剥がれる
     private static void assertStripEachFace(GameTestHelper helper, BlockState initial) {
         for (Direction face : Direction.values()) {
             Vec3 local = new Vec3(0.5, 0.5, 0.5).add(Vec3.atLowerCornerOf(face.getUnitVec3i()).scale(0.5));
-            assertStripsOnly(helper, initial, face, local, FaceStripping.strippedProperty(face));
+            assertBlockEntityStripsOnly(helper, initial, face, local, StrippedFace.of(face));
         }
     }
 
@@ -246,34 +245,35 @@ public final class ModGameTests {
         helper.succeed();
     }
 
-    // local の位置を face 向きにクリックすると、剥ぎ状態（*_stripped）のうち expected だけ剥がれ、斧の耐久が 1 減る
-    private static void assertStripsOnly(GameTestHelper helper, BlockState initial, Direction face, Vec3 local, BooleanProperty expected) {
-        Player player = helper.makeMockPlayer(GameType.SURVIVAL);
-        BlockPos pos = new BlockPos(1, 1, 1);
-        helper.setBlock(pos, initial);
-        player.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(Items.IRON_AXE));
-        click(helper, player, pos, local, face);
-        BlockState state = helper.getBlockState(pos);
-        for (Property<?> property : state.getProperties()) {
-            if (property instanceof BooleanProperty bool && bool.getName().endsWith("_stripped")) {
-                helper.assertTrue(state.getValue(bool) == (bool == expected),
-                        initial + ": clicked " + face + " at " + local + " but " + bool.getName() + "=" + state.getValue(bool));
-            }
-        }
-        helper.assertTrue(player.getMainHandItem().getDamageValue() == 1, "axe damage should be 1 after stripping " + expected.getName() + " of " + initial);
-    }
-
     // SPEC 3.2: 剥がれ済みの面をクリックしても何も起きない（斧も消費しない）
     private static void stripStrippedFace(GameTestHelper helper) {
         Player player = helper.makeMockPlayer(GameType.SURVIVAL);
         BlockPos pos = new BlockPos(1, 1, 1);
-        BlockState stripped = ModBlocks.logPanel(LogWood.OAK).get().defaultBlockState()
-                .setValue(FaceStripping.strippedProperty(Direction.NORTH), true);
-        helper.setBlock(pos, stripped);
+        helper.setBlock(pos, ModBlocks.logPanel(LogWood.OAK).get());
+        StrippedFacesBlockEntity blockEntity = helper.getBlockEntity(pos, StrippedFacesBlockEntity.class);
+        blockEntity.setStrippedMask(StrippedFace.NORTH.bit());
         player.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(Items.IRON_AXE));
         clickFace(helper, player, pos, Direction.NORTH);
-        helper.assertTrue(helper.getBlockState(pos) == stripped, "state changed: " + helper.getBlockState(pos));
+        helper.assertTrue(blockEntity.strippedMask() == StrippedFace.NORTH.bit(), "mask changed: " + blockEntity.strippedMask());
         helper.assertTrue(player.getMainHandItem().getDamageValue() == 0, "axe was damaged");
+        helper.succeed();
+    }
+
+    // SPEC 3.2: ハーフを 2 枚重ねにすると、側面の剥ぎ状態は引き継ぎ、新しいハーフで隠れる面は樹皮付きに戻る
+    private static void doubleSlabKeepsSides(GameTestHelper helper) {
+        BlockPos pos = new BlockPos(1, 1, 1);
+        BlockState slab = ModBlocks.logSlab(LogWood.OAK).get().defaultBlockState();
+        int stripped = StrippedFace.NORTH.bit() | StrippedFace.UP.bit() | StrippedFace.DOWN.bit();
+        for (SlabType type : List.of(SlabType.BOTTOM, SlabType.TOP)) {
+            helper.setBlock(pos, Blocks.AIR);
+            helper.setBlock(pos, slab.setValue(SlabBlock.TYPE, type));
+            helper.getBlockEntity(pos, StrippedFacesBlockEntity.class).setStrippedMask(stripped);
+            helper.setBlock(pos, slab.setValue(SlabBlock.TYPE, SlabType.DOUBLE));
+            StrippedFace covered = type == SlabType.BOTTOM ? StrippedFace.UP : StrippedFace.DOWN;
+            int mask = helper.getBlockEntity(pos, StrippedFacesBlockEntity.class).strippedMask();
+            helper.assertTrue(mask == (stripped & ~covered.bit()),
+                    type + " + slab: expected " + Integer.toBinaryString(stripped & ~covered.bit()) + " but was " + Integer.toBinaryString(mask));
+        }
         helper.succeed();
     }
 

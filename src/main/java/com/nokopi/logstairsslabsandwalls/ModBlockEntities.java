@@ -14,7 +14,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public final class ModBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, LogStairsSlabsAndWalls.MODID);
 
-    // 剥ぎ状態を持つブロック（試作では階段だけ。SPEC 3.3.1）
+    // 剥ぎ状態を持つブロック: パネル・階段・ハーフ・塀（SPEC 3.3.1）
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<StrippedFacesBlockEntity>> STRIPPED_FACES =
             BLOCK_ENTITY_TYPES.register("stripped_faces", () -> new BlockEntityType<>(StrippedFacesBlockEntity::new, strippableBlocks()));
 
@@ -24,7 +24,10 @@ public final class ModBlockEntities {
     private static Set<Block> strippableBlocks() {
         Set<Block> blocks = new HashSet<>();
         for (LogWood wood : ModBlocks.WOODS) {
+            blocks.add(ModBlocks.logPanel(wood).get());
             blocks.add(ModBlocks.logStairs(wood).get());
+            blocks.add(ModBlocks.logSlab(wood).get());
+            blocks.add(ModBlocks.logWall(wood).get());
         }
         return blocks;
     }

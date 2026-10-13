@@ -2,326 +2,272 @@
   "multipart": [
     {
       "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_top_down"
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_top_down"
+        },
+        "face": "down",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_top_down"
+        }
       },
       "when": {
-        "type": "top",
-        "down_stripped": "false"
+        "type": "top"
       }
     },
     {
       "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_top_down"
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_top_up"
+        },
+        "face": "up",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_top_up"
+        }
       },
       "when": {
-        "type": "top",
-        "down_stripped": "true"
+        "type": "top"
       }
     },
     {
       "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_top_up"
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_top_north"
+        },
+        "face": "north",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_top_north"
+        }
       },
       "when": {
-        "type": "top",
-        "up_stripped": "false"
+        "type": "top"
       }
     },
     {
       "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_top_up"
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_top_south"
+        },
+        "face": "south",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_top_south"
+        }
       },
       "when": {
-        "type": "top",
-        "up_stripped": "true"
+        "type": "top"
       }
     },
     {
       "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_top_north"
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_top_west"
+        },
+        "face": "west",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_top_west"
+        }
       },
       "when": {
-        "type": "top",
-        "north_stripped": "false"
+        "type": "top"
       }
     },
     {
       "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_top_north"
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_top_east"
+        },
+        "face": "east",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_top_east"
+        }
       },
       "when": {
-        "type": "top",
-        "north_stripped": "true"
+        "type": "top"
       }
     },
     {
       "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_top_south"
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_down"
+        },
+        "face": "down",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_down"
+        }
       },
       "when": {
-        "type": "top",
-        "south_stripped": "false"
+        "type": "bottom"
       }
     },
     {
       "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_top_south"
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_up"
+        },
+        "face": "up",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_up"
+        }
       },
       "when": {
-        "type": "top",
-        "south_stripped": "true"
+        "type": "bottom"
       }
     },
     {
       "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_top_west"
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_north"
+        },
+        "face": "north",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_north"
+        }
       },
       "when": {
-        "type": "top",
-        "west_stripped": "false"
+        "type": "bottom"
       }
     },
     {
       "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_top_west"
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_south"
+        },
+        "face": "south",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_south"
+        }
       },
       "when": {
-        "type": "top",
-        "west_stripped": "true"
+        "type": "bottom"
       }
     },
     {
       "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_top_east"
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_west"
+        },
+        "face": "west",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_west"
+        }
       },
       "when": {
-        "type": "top",
-        "east_stripped": "false"
+        "type": "bottom"
       }
     },
     {
       "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_top_east"
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_east"
+        },
+        "face": "east",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_east"
+        }
       },
       "when": {
-        "type": "top",
-        "east_stripped": "true"
+        "type": "bottom"
       }
     },
     {
       "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_down"
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_double_down"
+        },
+        "face": "down",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_double_down"
+        }
       },
       "when": {
-        "type": "bottom",
-        "down_stripped": "false"
+        "type": "double"
       }
     },
     {
       "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_down"
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_double_up"
+        },
+        "face": "up",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_double_up"
+        }
       },
       "when": {
-        "type": "bottom",
-        "down_stripped": "true"
+        "type": "double"
       }
     },
     {
       "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_up"
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_double_north"
+        },
+        "face": "north",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_double_north"
+        }
       },
       "when": {
-        "type": "bottom",
-        "up_stripped": "false"
+        "type": "double"
       }
     },
     {
       "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_up"
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_double_south"
+        },
+        "face": "south",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_double_south"
+        }
       },
       "when": {
-        "type": "bottom",
-        "up_stripped": "true"
+        "type": "double"
       }
     },
     {
       "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_north"
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_double_west"
+        },
+        "face": "west",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_double_west"
+        }
       },
       "when": {
-        "type": "bottom",
-        "north_stripped": "false"
+        "type": "double"
       }
     },
     {
       "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_north"
+        "type": "log_stairs_slabs_and_walls:stripped_face",
+        "bark": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_double_east"
+        },
+        "face": "east",
+        "stripped": {
+          "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_double_east"
+        }
       },
       "when": {
-        "type": "bottom",
-        "north_stripped": "true"
-      }
-    },
-    {
-      "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_south"
-      },
-      "when": {
-        "type": "bottom",
-        "south_stripped": "false"
-      }
-    },
-    {
-      "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_south"
-      },
-      "when": {
-        "type": "bottom",
-        "south_stripped": "true"
-      }
-    },
-    {
-      "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_west"
-      },
-      "when": {
-        "type": "bottom",
-        "west_stripped": "false"
-      }
-    },
-    {
-      "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_west"
-      },
-      "when": {
-        "type": "bottom",
-        "west_stripped": "true"
-      }
-    },
-    {
-      "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_east"
-      },
-      "when": {
-        "type": "bottom",
-        "east_stripped": "false"
-      }
-    },
-    {
-      "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_east"
-      },
-      "when": {
-        "type": "bottom",
-        "east_stripped": "true"
-      }
-    },
-    {
-      "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_double_down"
-      },
-      "when": {
-        "type": "double",
-        "down_stripped": "false"
-      }
-    },
-    {
-      "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_double_down"
-      },
-      "when": {
-        "type": "double",
-        "down_stripped": "true"
-      }
-    },
-    {
-      "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_double_up"
-      },
-      "when": {
-        "type": "double",
-        "up_stripped": "false"
-      }
-    },
-    {
-      "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_double_up"
-      },
-      "when": {
-        "type": "double",
-        "up_stripped": "true"
-      }
-    },
-    {
-      "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_double_north"
-      },
-      "when": {
-        "type": "double",
-        "north_stripped": "false"
-      }
-    },
-    {
-      "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_double_north"
-      },
-      "when": {
-        "type": "double",
-        "north_stripped": "true"
-      }
-    },
-    {
-      "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_double_south"
-      },
-      "when": {
-        "type": "double",
-        "south_stripped": "false"
-      }
-    },
-    {
-      "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_double_south"
-      },
-      "when": {
-        "type": "double",
-        "south_stripped": "true"
-      }
-    },
-    {
-      "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_double_west"
-      },
-      "when": {
-        "type": "double",
-        "west_stripped": "false"
-      }
-    },
-    {
-      "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_double_west"
-      },
-      "when": {
-        "type": "double",
-        "west_stripped": "true"
-      }
-    },
-    {
-      "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_double_east"
-      },
-      "when": {
-        "type": "double",
-        "east_stripped": "false"
-      }
-    },
-    {
-      "apply": {
-        "model": "log_stairs_slabs_and_walls:block/oak_log_slab_stripped_double_east"
-      },
-      "when": {
-        "type": "double",
-        "east_stripped": "true"
+        "type": "double"
       }
     }
   ]
