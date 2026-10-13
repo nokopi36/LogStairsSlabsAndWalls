@@ -14,31 +14,63 @@ import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 
 /**
- * 原木の階段（SPEC 3.1）。縦置きの原木の見た目で、斧でクリックした面の向きの面がまとめて剥がれる（SPEC 3.2）。
+ * 原木の階段（SPEC 3.1）。縦置きの原木の見た目で、斧で面ごとに樹皮を剥げる（SPEC 3.2）。
+ * ブロックの外周の面はワールドの 6 方向、段の内側の面は踏み面と蹴上げの 2 つで、合わせて 8 つの剥ぎ状態を持つ。
  */
 public class LogStairBlock extends StairBlock {
+    // 下の段の踏み面（上下逆の階段では下の段の裏側）
+    public static final BooleanProperty TREAD_STRIPPED = BooleanProperty.create("tread_stripped");
+    // 上の段の蹴上げ（内角・外角では 2 面）
+    public static final BooleanProperty RISER_STRIPPED = BooleanProperty.create("riser_stripped");
+
+    // 段の内側の面はブロックの中央（0.5）にある。クリック位置が外周からこれ以上離れていれば内側の面とみなす
+    private static final double INNER_FACE_MARGIN = 0.25;
+
     private final boolean flammable;
 
     public LogStairBlock(BlockState baseState, Properties properties, boolean flammable) {
         super(baseState, properties);
         this.flammable = flammable;
-        this.registerDefaultState(FaceStripping.withAllBark(this.defaultBlockState()));
+        this.registerDefaultState(FaceStripping.withAllBark(this.defaultBlockState())
+                .setValue(TREAD_STRIPPED, false)
+                .setValue(RISER_STRIPPED, false));
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
         FaceStripping.addProperties(builder);
+        builder.add(TREAD_STRIPPED, RISER_STRIPPED);
     }
 
     @Override
     protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player,
             InteractionHand hand, BlockHitResult hitResult) {
-        InteractionResult result = FaceStripping.stripWithAxe(stack, state, level, pos, player, hand, hitResult);
-        return result != null ? result : super.useItemOn(stack, state, level, pos, player, hand, hitResult);
+        if (!FaceStripping.isAxe(stack)) {
+            return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
+        }
+        Vec3 local = hitResult.getLocation().subtract(pos.getX(), pos.getY(), pos.getZ());
+        return FaceStripping.strip(state, strippedPropertyAt(hitResult.getDirection(), local), level, pos, player, stack, hand);
+    }
+
+    /**
+     * クリックした面の剥ぎ状態。face はクリックした面の向き、local はブロック内のクリック位置（0〜1）。
+     * 外周の面ならその向き、段の内側の面なら上下向きが踏み面・横向きが蹴上げ。
+     */
+    public static BooleanProperty strippedPropertyAt(Direction face, Vec3 local) {
+        double position = local.get(face.getAxis());
+        boolean onBoundary = face.getAxisDirection() == Direction.AxisDirection.POSITIVE
+                ? position > 1.0 - INNER_FACE_MARGIN
+                : position < INNER_FACE_MARGIN;
+        if (onBoundary) {
+            return FaceStripping.strippedProperty(face);
+        }
+        return face.getAxis() == Direction.Axis.Y ? TREAD_STRIPPED : RISER_STRIPPED;
     }
 
     @Override

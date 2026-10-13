@@ -1,0 +1,7 @@
+{
+  "parent": "log_stairs_slabs_and_walls:block/template_log_stairs_riser",
+  "textures": {
+    "end": "minecraft:block/oak_log_top",
+    "side": "minecraft:block/oak_log"
+  }
+}

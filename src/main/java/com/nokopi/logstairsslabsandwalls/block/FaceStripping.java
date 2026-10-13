@@ -80,12 +80,19 @@ public final class FaceStripping {
         if (!isAxe(stack)) {
             return null;
         }
-        Direction face = hitResult.getDirection();
-        if (isStripped(state, face)) {
-            // 剥がれ済みなら何もせず、通常の右クリックに回す
+        return strip(state, strippedProperty(hitResult.getDirection()), level, pos, player, stack, hand);
+    }
+
+    /**
+     * 剥ぎ状態 property の面を剥いで、バニラの原木と同じ音・ゲームイベント・斧の耐久消費を起こす。
+     * 剥がれ済みなら何もせず、通常の右クリックに回す。
+     */
+    public static InteractionResult strip(BlockState state, BooleanProperty property, Level level, BlockPos pos, Player player,
+            ItemStack stack, InteractionHand hand) {
+        if (state.getValue(property)) {
             return InteractionResult.TRY_WITH_EMPTY_HAND;
         }
-        BlockState stripped = state.setValue(strippedProperty(face), true);
+        BlockState stripped = state.setValue(property, true);
         level.setBlock(pos, stripped, Block.UPDATE_ALL_IMMEDIATE);
         level.playSound(player, pos, SoundEvents.AXE_STRIP.value(), SoundSource.BLOCKS, 1.0F, 1.0F);
         level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, stripped));

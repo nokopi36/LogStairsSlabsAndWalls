@@ -9,6 +9,7 @@ import com.nokopi.logstairsslabsandwalls.LogWood;
 import com.nokopi.logstairsslabsandwalls.ModBlocks;
 import com.nokopi.logstairsslabsandwalls.ModItems;
 import com.nokopi.logstairsslabsandwalls.block.FaceStripping;
+import com.nokopi.logstairsslabsandwalls.block.LogStairBlock;
 import com.nokopi.logstairsslabsandwalls.datagen.ModRecipeProvider;
 
 import net.minecraft.core.BlockPos;
@@ -38,7 +39,9 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.Half;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.SlabType;
 import net.minecraft.world.level.block.state.properties.StairsShape;
 import net.minecraft.world.phys.BlockHitResult;
@@ -129,12 +132,20 @@ public final class ModGameTests {
         helper.succeed();
     }
 
-    // 階段の上下・すべての形で、6 面それぞれが剥げる
+    // 階段の上下・すべての形で、外周の 6 面と段の内側の踏み面・蹴上げがそれぞれ単独で剥げる
     private static void stripStairsFaces(GameTestHelper helper) {
         for (Half half : Half.values()) {
             for (StairsShape shape : StairsShape.values()) {
-                assertStripEachFace(helper, ModBlocks.logStairs(LogWood.OAK).get().defaultBlockState()
-                        .setValue(StairBlock.HALF, half).setValue(StairBlock.SHAPE, shape));
+                BlockState stairs = ModBlocks.logStairs(LogWood.OAK).get().defaultBlockState()
+                        .setValue(StairBlock.HALF, half).setValue(StairBlock.SHAPE, shape);
+                assertStripEachFace(helper, stairs);
+                // 段の内側の面（ブロックの中央の高さ・位置）: 踏み面は上下逆なら下向き、蹴上げは横向き
+                Direction treadFace = half == Half.BOTTOM ? Direction.UP : Direction.DOWN;
+                assertStripsOnly(helper, stairs, treadFace, new Vec3(0.25, 0.5, 0.5), LogStairBlock.TREAD_STRIPPED);
+                for (Direction riserFace : Direction.Plane.HORIZONTAL) {
+                    Vec3 local = new Vec3(0.5, half == Half.BOTTOM ? 0.75 : 0.25, 0.5);
+                    assertStripsOnly(helper, stairs, riserFace, local, LogStairBlock.RISER_STRIPPED);
+                }
             }
         }
         helper.succeed();
@@ -154,21 +165,29 @@ public final class ModGameTests {
         helper.succeed();
     }
 
+    // 外周の 6 面それぞれの中央をクリックすると、その向きの状態だけ剥がれる
     private static void assertStripEachFace(GameTestHelper helper, BlockState initial) {
-        Player player = helper.makeMockPlayer(GameType.SURVIVAL);
         for (Direction face : Direction.values()) {
-            BlockPos pos = new BlockPos(1, 1, 1);
-            helper.setBlock(pos, initial);
-            ItemStack axe = new ItemStack(Items.IRON_AXE);
-            player.setItemInHand(InteractionHand.MAIN_HAND, axe);
-            clickFace(helper, player, pos, face);
-            BlockState state = helper.getBlockState(pos);
-            for (Direction direction : Direction.values()) {
-                helper.assertTrue(FaceStripping.isStripped(state, direction) == (direction == face),
-                        initial + ": clicked " + face + " but " + direction + " stripped=" + FaceStripping.isStripped(state, direction));
-            }
-            helper.assertTrue(player.getMainHandItem().getDamageValue() == 1, "axe damage should be 1 after stripping " + face + " of " + initial);
+            Vec3 local = new Vec3(0.5, 0.5, 0.5).add(Vec3.atLowerCornerOf(face.getUnitVec3i()).scale(0.5));
+            assertStripsOnly(helper, initial, face, local, FaceStripping.strippedProperty(face));
         }
+    }
+
+    // local の位置を face 向きにクリックすると、剥ぎ状態（*_stripped）のうち expected だけ剥がれ、斧の耐久が 1 減る
+    private static void assertStripsOnly(GameTestHelper helper, BlockState initial, Direction face, Vec3 local, BooleanProperty expected) {
+        Player player = helper.makeMockPlayer(GameType.SURVIVAL);
+        BlockPos pos = new BlockPos(1, 1, 1);
+        helper.setBlock(pos, initial);
+        player.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(Items.IRON_AXE));
+        click(helper, player, pos, local, face);
+        BlockState state = helper.getBlockState(pos);
+        for (Property<?> property : state.getProperties()) {
+            if (property instanceof BooleanProperty bool && bool.getName().endsWith("_stripped")) {
+                helper.assertTrue(state.getValue(bool) == (bool == expected),
+                        initial + ": clicked " + face + " at " + local + " but " + bool.getName() + "=" + state.getValue(bool));
+            }
+        }
+        helper.assertTrue(player.getMainHandItem().getDamageValue() == 1, "axe damage should be 1 after stripping " + expected.getName() + " of " + initial);
     }
 
     // SPEC 3.2: 剥がれ済みの面をクリックしても何も起きない（斧も消費しない）
@@ -187,9 +206,13 @@ public final class ModGameTests {
 
     // ブロックの face 側の面の中央をクリックする
     private static void clickFace(GameTestHelper helper, Player player, BlockPos relativePos, Direction face) {
+        click(helper, player, relativePos, new Vec3(0.5, 0.5, 0.5).add(Vec3.atLowerCornerOf(face.getUnitVec3i()).scale(0.5)), face);
+    }
+
+    // ブロック内の位置 local（0〜1）を face 向きにクリックする
+    private static void click(GameTestHelper helper, Player player, BlockPos relativePos, Vec3 local, Direction face) {
         BlockPos absolutePos = helper.absolutePos(relativePos);
-        Vec3 location = Vec3.atCenterOf(absolutePos).add(Vec3.atLowerCornerOf(face.getUnitVec3i()).scale(0.5));
-        helper.useBlock(relativePos, player, new BlockHitResult(location, face, absolutePos, false));
+        helper.useBlock(relativePos, player, new BlockHitResult(Vec3.atLowerCornerOf(absolutePos).add(local), face, absolutePos, false));
     }
 
     private static void assertOnlyRecipe(GameTestHelper helper, CraftingInput input, ItemLike expected, int count) {
