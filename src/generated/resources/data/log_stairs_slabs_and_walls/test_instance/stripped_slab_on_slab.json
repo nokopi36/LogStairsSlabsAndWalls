@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "log_stairs_slabs_and_walls:stripped_slab_on_slab",
+  "max_ticks": 20,
+  "structure": "log_stairs_slabs_and_walls:test_area"
+}

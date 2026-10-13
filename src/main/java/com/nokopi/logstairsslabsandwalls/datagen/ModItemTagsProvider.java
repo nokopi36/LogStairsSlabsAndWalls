@@ -28,13 +28,22 @@ public class ModItemTagsProvider extends BlockTagCopyingItemTagProvider {
         this.copy(BlockItemTags.WALLS.block(), BlockItemTags.WALLS.item());
         for (LogWood wood : ModBlocks.WOODS) {
             this.copy(wood.logsTag().block(), wood.logsTag().item());
+            // 剥いだ版はブロックを持たないので、アイテムのタグに直接入れる。剥いだパネルもバニラの剥いだ原木と同じく原木のタグに入る
+            this.tag(wood.logsTag().item()).add(ModItems.strippedLogPanel(wood).getKey());
+            this.tag(BlockItemTags.WOODEN_STAIRS.item()).add(ModItems.strippedLogStairs(wood).getKey());
+            this.tag(BlockItemTags.WOODEN_SLABS.item()).add(ModItems.strippedLogSlab(wood).getKey());
+            this.tag(BlockItemTags.WALLS.item()).add(ModItems.strippedLogWall(wood).getKey());
             // バニラと同じく、ネザーの木は燃えない木材として扱う
             if (!wood.flammable()) {
                 this.tag(ItemTags.NON_FLAMMABLE_WOOD)
                         .add(ModItems.logPanel(wood).getKey())
                         .add(ModItems.logStairs(wood).getKey())
                         .add(ModItems.logSlab(wood).getKey())
-                        .add(ModItems.logWall(wood).getKey());
+                        .add(ModItems.logWall(wood).getKey())
+                        .add(ModItems.strippedLogPanel(wood).getKey())
+                        .add(ModItems.strippedLogStairs(wood).getKey())
+                        .add(ModItems.strippedLogSlab(wood).getKey())
+                        .add(ModItems.strippedLogWall(wood).getKey());
             }
         }
     }

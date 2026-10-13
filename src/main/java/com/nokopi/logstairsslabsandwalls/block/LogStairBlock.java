@@ -8,6 +8,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -62,6 +63,11 @@ public class LogStairBlock extends StairBlock implements EntityBlock {
     }
 
     // TODO(SPEC 3.3.1): ストラクチャーで回転・反転したとき、ブロックエンティティの剥いだ面は一緒に回らない（試作では後回し）
+
+    @Override
+    public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state, boolean includeData, Player player) {
+        return FaceStripping.cloneItemStack(super.getCloneItemStack(level, pos, state, includeData, player), level, pos, state);
+    }
 
     @Override
     public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {

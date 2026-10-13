@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "stripped_log_panel",
+  "key": {
+    "#": "minecraft:stripped_birch_log"
+  },
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "result": {
+    "count": 2,
+    "id": "log_stairs_slabs_and_walls:stripped_birch_log_panel"
+  }
+}

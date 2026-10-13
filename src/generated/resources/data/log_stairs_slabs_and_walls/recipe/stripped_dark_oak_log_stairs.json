@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "stripped_log_stairs",
+  "key": {
+    "#": [
+      "minecraft:stripped_dark_oak_log",
+      "log_stairs_slabs_and_walls:stripped_dark_oak_log_panel"
+    ]
+  },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "result": {
+    "count": 16,
+    "id": "log_stairs_slabs_and_walls:stripped_dark_oak_log_stairs"
+  }
+}

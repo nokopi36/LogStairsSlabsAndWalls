@@ -49,6 +49,8 @@ public final class ModCreativeTabs {
     // 1 種類の木のアイテムを、タブに並べる順で返す
     private static List<ItemStack> items(LogWood wood) {
         return List.of(new ItemStack(ModItems.logPanel(wood).get()), new ItemStack(ModItems.logStairs(wood).get()),
-                new ItemStack(ModItems.logSlab(wood).get()), new ItemStack(ModItems.logWall(wood).get()));
+                new ItemStack(ModItems.logSlab(wood).get()), new ItemStack(ModItems.logWall(wood).get()),
+                new ItemStack(ModItems.strippedLogPanel(wood).get()), new ItemStack(ModItems.strippedLogStairs(wood).get()),
+                new ItemStack(ModItems.strippedLogSlab(wood).get()), new ItemStack(ModItems.strippedLogWall(wood).get()));
     }
 }

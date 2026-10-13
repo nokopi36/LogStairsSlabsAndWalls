@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "stripped_log_slab",
+  "key": {
+    "#": [
+      "minecraft:stripped_bamboo_block",
+      "log_stairs_slabs_and_walls:stripped_bamboo_block_panel"
+    ]
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "count": 12,
+    "id": "log_stairs_slabs_and_walls:stripped_bamboo_block_slab"
+  }
+}

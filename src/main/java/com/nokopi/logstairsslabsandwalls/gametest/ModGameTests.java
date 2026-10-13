@@ -82,6 +82,12 @@ public final class ModGameTests {
             TEST_FUNCTIONS.register("double_slab_keeps_sides", () -> ModGameTests::doubleSlabKeepsSides);
     public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> ALL_WOODS_REGISTERED =
             TEST_FUNCTIONS.register("all_woods_registered", () -> ModGameTests::allWoodsRegistered);
+    public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> STRIPPED_PLACE_AND_DROP =
+            TEST_FUNCTIONS.register("stripped_place_and_drop", () -> ModGameTests::strippedPlaceAndDrop);
+    public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> STRIPPED_SLAB_ON_SLAB =
+            TEST_FUNCTIONS.register("stripped_slab_on_slab", () -> ModGameTests::strippedSlabOnSlab);
+    public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> STRIPPED_RECIPES =
+            TEST_FUNCTIONS.register("stripped_recipes", () -> ModGameTests::strippedRecipes);
     public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> LOG_WALL_RECIPE =
             TEST_FUNCTIONS.register("log_wall_recipe", () -> ModGameTests::logWallRecipe);
     public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> STRIP_WALL_FACES =
@@ -193,6 +199,82 @@ public final class ModGameTests {
                         block + " flammability does not match " + wood);
                 helper.assertTrue(state.getSoundType() == wood.log().defaultBlockState().getSoundType(), block + " sound differs from the log");
             }
+        }
+        helper.succeed();
+    }
+
+    // SPEC 3.5: 剥いだ版は全面が剥がれた状態で置かれ、全面剥がれていれば剥いだ版をドロップ・ピックブロックする。一部だけなら普通の版
+    private static void strippedPlaceAndDrop(GameTestHelper helper) {
+        Player player = helper.makeMockPlayer(GameType.CREATIVE);
+        LogWood wood = LogWood.OAK;
+        List<Item> normals = List.of(ModItems.logPanel(wood).get(), ModItems.logStairs(wood).get(),
+                ModItems.logSlab(wood).get(), ModItems.logWall(wood).get());
+        List<Item> strippeds = List.of(ModItems.strippedLogPanel(wood).get(), ModItems.strippedLogStairs(wood).get(),
+                ModItems.strippedLogSlab(wood).get(), ModItems.strippedLogWall(wood).get());
+        BlockPos floor = new BlockPos(1, 0, 1);
+        BlockPos pos = floor.above();
+        for (int i = 0; i < normals.size(); i++) {
+            helper.setBlock(pos, Blocks.AIR);
+            helper.setBlock(floor, Blocks.STONE);
+            player.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(strippeds.get(i)));
+            click(helper, player, floor, new Vec3(0.5, 1.0, 0.5), Direction.UP);
+            BlockState state = helper.getBlockState(pos);
+            StrippedFacesBlockEntity blockEntity = helper.getBlockEntity(pos, StrippedFacesBlockEntity.class);
+            helper.assertTrue(blockEntity.isAllStripped(), strippeds.get(i) + " was not placed fully stripped: " + Integer.toBinaryString(blockEntity.strippedMask()));
+            helper.assertTrue(state.getBlock().asItem() == normals.get(i), state.getBlock() + " asItem is not the normal item");
+            assertDrop(helper, state, blockEntity, strippeds.get(i));
+            helper.assertTrue(pickBlock(helper, pos, player).is(strippeds.get(i)), strippeds.get(i) + " pick block is not the stripped item");
+            // 1 面だけ樹皮が残っていれば普通の版
+            blockEntity.setStrippedMask(blockEntity.strippedMask() & ~StrippedFace.NORTH.bit());
+            assertDrop(helper, state, blockEntity, normals.get(i));
+            helper.assertTrue(pickBlock(helper, pos, player).is(normals.get(i)), normals.get(i) + " pick block is not the normal item");
+        }
+        helper.succeed();
+    }
+
+    private static ItemStack pickBlock(GameTestHelper helper, BlockPos relativePos, Player player) {
+        BlockPos absolutePos = helper.absolutePos(relativePos);
+        BlockState state = helper.getLevel().getBlockState(absolutePos);
+        return state.getBlock().getCloneItemStack(helper.getLevel(), absolutePos, state, false, player);
+    }
+
+    private static void assertDrop(GameTestHelper helper, BlockState state, StrippedFacesBlockEntity blockEntity, Item expected) {
+        List<ItemStack> drops = Block.getDrops(state, helper.getLevel(), blockEntity.getBlockPos(), blockEntity);
+        int count = state.getBlock() instanceof SlabBlock && state.getValue(SlabBlock.TYPE) == SlabType.DOUBLE ? 2 : 1;
+        helper.assertTrue(drops.size() == 1 && drops.get(0).is(expected) && drops.get(0).getCount() == count,
+                state + " should drop " + count + " " + expected + " but dropped " + drops);
+    }
+
+    // 普通のハーフに剥いだハーフを重ねられる。側面は先に置いたハーフのまま、表に出る上面だけ剥がれる。2 枚重ねで 2 個落ちる
+    private static void strippedSlabOnSlab(GameTestHelper helper) {
+        Player player = helper.makeMockPlayer(GameType.CREATIVE);
+        BlockPos pos = new BlockPos(1, 1, 1);
+        helper.setBlock(pos, ModBlocks.logSlab(LogWood.OAK).get().defaultBlockState().setValue(SlabBlock.TYPE, SlabType.BOTTOM));
+        helper.getBlockEntity(pos, StrippedFacesBlockEntity.class).setStrippedMask(StrippedFace.NORTH.bit());
+        player.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(ModItems.strippedLogSlab(LogWood.OAK).get()));
+        click(helper, player, pos, new Vec3(0.5, 0.5, 0.5), Direction.UP);
+        BlockState state = helper.getBlockState(pos);
+        helper.assertTrue(state.getValue(SlabBlock.TYPE) == SlabType.DOUBLE, "stripped slab did not stack: " + state);
+        StrippedFacesBlockEntity blockEntity = helper.getBlockEntity(pos, StrippedFacesBlockEntity.class);
+        int expected = StrippedFace.NORTH.bit() | StrippedFace.UP.bit();
+        helper.assertTrue(blockEntity.strippedMask() == expected, "expected " + Integer.toBinaryString(expected) + " but was " + Integer.toBinaryString(blockEntity.strippedMask()));
+        assertDrop(helper, state, blockEntity, ModItems.logSlab(LogWood.OAK).get());
+        helper.succeed();
+    }
+
+    // SPEC 3.5 / 4 章: 剥いだ原木（と剥いだ原木パネル）から剥いだ版ができる。どれも当たるレシピは 1 つだけ（普通の版は当たらない）
+    private static void strippedRecipes(GameTestHelper helper) {
+        for (LogWood wood : ModBlocks.WOODS) {
+            ItemStack log = new ItemStack(wood.strippedLog());
+            ItemStack panel = new ItemStack(ModItems.strippedLogPanel(wood).get());
+            assertOnlyRecipe(helper, CraftingInput.of(1, 2, List.of(log, log)), ModItems.strippedLogPanel(wood).get(), ModRecipeProvider.LOG_PANELS_PER_RECIPE);
+            assertOnlyRecipe(helper, CraftingInput.of(1, 2, List.of(panel, panel)), wood.strippedLog(), ModRecipeProvider.LOGS_PER_PANEL_RECIPE);
+            assertOnlyRecipe(helper, CraftingInput.of(3, 3, List.of(
+                    log, ItemStack.EMPTY, ItemStack.EMPTY,
+                    panel, log, ItemStack.EMPTY,
+                    log, panel, log)), ModItems.strippedLogStairs(wood).get(), ModRecipeProvider.stairsCount(wood));
+            assertOnlyRecipe(helper, CraftingInput.of(3, 1, List.of(log, panel, log)), ModItems.strippedLogSlab(wood).get(), ModRecipeProvider.slabCount(wood));
+            assertOnlyRecipe(helper, CraftingInput.of(3, 2, List.of(log, log, panel, panel, log, log)), ModItems.strippedLogWall(wood).get(), ModRecipeProvider.wallCount(wood));
         }
         helper.succeed();
     }

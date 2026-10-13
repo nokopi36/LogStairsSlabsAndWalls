@@ -7,8 +7,20 @@
       },
       "entries": [
         {
-          "type": "minecraft:item",
-          "name": "log_stairs_slabs_and_walls:crimson_stem_stairs"
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "condition": {
+                "type": "log_stairs_slabs_and_walls:all_faces_stripped"
+              },
+              "name": "log_stairs_slabs_and_walls:stripped_crimson_stem_stairs"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "log_stairs_slabs_and_walls:crimson_stem_stairs"
+            }
+          ]
         }
       ],
       "rolls": 1

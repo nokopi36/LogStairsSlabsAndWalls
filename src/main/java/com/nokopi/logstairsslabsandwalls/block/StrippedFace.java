@@ -37,6 +37,11 @@ public enum StrippedFace implements StringRepresentable {
         return 1 << this.ordinal();
     }
 
+    // ブロックの外周の面（ワールドの 6 方向）か。段の内側の面（踏み面・蹴上げ）は階段だけ
+    public boolean isOuter() {
+        return this.ordinal() < Direction.values().length;
+    }
+
     public boolean isStrippedIn(int mask) {
         return (mask & this.bit()) != 0;
     }

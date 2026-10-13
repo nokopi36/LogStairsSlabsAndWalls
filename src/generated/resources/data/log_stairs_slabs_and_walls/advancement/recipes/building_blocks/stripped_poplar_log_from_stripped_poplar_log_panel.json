@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_stripped_poplar_log_panel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "log_stairs_slabs_and_walls:stripped_poplar_log_panel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipes": "log_stairs_slabs_and_walls:stripped_poplar_log_from_stripped_poplar_log_panel"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_stripped_poplar_log_panel"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "log_stairs_slabs_and_walls:stripped_poplar_log_from_stripped_poplar_log_panel"
+    ]
+  }
+}

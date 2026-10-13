@@ -1,5 +1,7 @@
 package com.nokopi.logstairsslabsandwalls.block;
 
+import com.nokopi.logstairsslabsandwalls.ModItems;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.BlockTransformer;
@@ -9,9 +11,11 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.BlockTransformers;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
@@ -27,6 +31,17 @@ public final class FaceStripping {
     private static final int AXE_DAMAGE_PER_STRIP = 1;
 
     private FaceStripping() {
+    }
+
+    // 全面が剥がれていれば剥いだ版、そうでなければ normal（SPEC 3.5 のピックブロック）
+    public static ItemStack cloneItemStack(ItemStack normal, LevelReader level, BlockPos pos, BlockState state) {
+        if (level.getBlockEntity(pos) instanceof StrippedFacesBlockEntity blockEntity && blockEntity.isAllStripped()) {
+            Item stripped = ModItems.strippedItem(state.getBlock());
+            if (stripped != null) {
+                return new ItemStack(stripped);
+            }
+        }
+        return normal;
     }
 
     // バニラの斧と同じく、斧の BlockTransformer を持つアイテムを斧とみなす（Item.Properties#axe で付く）

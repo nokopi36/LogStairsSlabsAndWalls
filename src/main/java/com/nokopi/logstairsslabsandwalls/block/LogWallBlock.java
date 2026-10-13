@@ -8,6 +8,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -36,6 +37,11 @@ public class LogWallBlock extends WallBlock implements EntityBlock {
             InteractionHand hand, BlockHitResult hitResult) {
         InteractionResult result = FaceStripping.stripWithAxe(stack, state, level, pos, player, hand, hitResult);
         return result != null ? result : super.useItemOn(stack, state, level, pos, player, hand, hitResult);
+    }
+
+    @Override
+    public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state, boolean includeData, Player player) {
+        return FaceStripping.cloneItemStack(super.getCloneItemStack(level, pos, state, includeData, player), level, pos, state);
     }
 
     @Override

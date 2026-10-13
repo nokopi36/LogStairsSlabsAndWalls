@@ -11,6 +11,7 @@ import java.util.function.UnaryOperator;
 import com.nokopi.logstairsslabsandwalls.LogStairsSlabsAndWalls;
 import com.nokopi.logstairsslabsandwalls.LogWood;
 import com.nokopi.logstairsslabsandwalls.ModBlocks;
+import com.nokopi.logstairsslabsandwalls.ModItems;
 import com.nokopi.logstairsslabsandwalls.block.StrippedFace;
 import com.nokopi.logstairsslabsandwalls.client.StrippedFaceModel;
 
@@ -99,7 +100,29 @@ public class ModModelProvider extends ModelProvider {
             createLogStairs(blockModels, ModBlocks.logStairs(wood).get(), wood.log(), wood.strippedLog());
             createLogSlab(blockModels, ModBlocks.logSlab(wood).get(), wood.log(), wood.strippedLog());
             createLogWall(blockModels, ModBlocks.logWall(wood).get(), wood.log(), wood.strippedLog());
+            createStrippedItemModels(blockModels, wood);
         }
+    }
+
+    // SPEC 3.5: 剥いだ版のアイテムは、剥いだ原木のテクスチャのインベントリモデル（形は普通の版と同じ）
+    private static void createStrippedItemModels(BlockModelGenerators blockModels, LogWood wood) {
+        TextureMapping stripped = logTextures(wood.strippedLog());
+        blockModels.registerSimpleItemModel(ModItems.strippedLogPanel(wood).get(), ModelTemplates.CUBE_COLUMN.createWithSuffix(
+                ModBlocks.logPanel(wood).get(), STRIPPED_SUFFIX, stripped, blockModels.modelOutput));
+        blockModels.registerSimpleItemModel(ModItems.strippedLogStairs(wood).get(), ModelTemplates.STAIRS_STRAIGHT.createWithSuffix(
+                ModBlocks.logStairs(wood).get(), STRIPPED_SUFFIX, slabAndStairsTextures(wood.strippedLog()), blockModels.modelOutput));
+        blockModels.registerSimpleItemModel(ModItems.strippedLogSlab(wood).get(), ModelTemplates.SLAB_BOTTOM.createWithSuffix(
+                ModBlocks.logSlab(wood).get(), STRIPPED_SUFFIX, slabAndStairsTextures(wood.strippedLog()), blockModels.modelOutput));
+        blockModels.registerSimpleItemModel(ModItems.strippedLogWall(wood).get(), WALL_INVENTORY.createWithSuffix(
+                ModBlocks.logWall(wood).get(), STRIPPED_SUFFIX, stripped, blockModels.modelOutput));
+    }
+
+    // バニラの stairs / slab モデル用（上下は年輪、横は樹皮）
+    private static TextureMapping slabAndStairsTextures(Block log) {
+        return new TextureMapping()
+                .put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(log, "_top"))
+                .put(TextureSlot.TOP, TextureMapping.getBlockTexture(log, "_top"))
+                .put(TextureSlot.SIDE, TextureMapping.getBlockTexture(log));
     }
 
     private static TextureMapping logTextures(Block log) {
@@ -222,10 +245,7 @@ public class ModModelProvider extends ModelProvider {
         blockModels.blockStateOutput.accept(generator);
 
         // インベントリでは樹皮付きの見た目（バニラの stairs モデル）
-        blockModels.registerSimpleItemModel(stairs, ModelTemplates.STAIRS_STRAIGHT.create(stairs, new TextureMapping()
-                .put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(log, "_top"))
-                .put(TextureSlot.TOP, TextureMapping.getBlockTexture(log, "_top"))
-                .put(TextureSlot.SIDE, TextureMapping.getBlockTexture(log)), blockModels.modelOutput));
+        blockModels.registerSimpleItemModel(stairs, ModelTemplates.STAIRS_STRAIGHT.create(stairs, slabAndStairsTextures(log), blockModels.modelOutput));
     }
 
     /**
@@ -335,10 +355,7 @@ public class ModModelProvider extends ModelProvider {
         blockModels.blockStateOutput.accept(generator);
 
         // インベントリでは樹皮付きの下置きの見た目（バニラの slab モデル）
-        blockModels.registerSimpleItemModel(slab, ModelTemplates.SLAB_BOTTOM.create(slab, new TextureMapping()
-                .put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(log, "_top"))
-                .put(TextureSlot.TOP, TextureMapping.getBlockTexture(log, "_top"))
-                .put(TextureSlot.SIDE, TextureMapping.getBlockTexture(log)), blockModels.modelOutput));
+        blockModels.registerSimpleItemModel(slab, ModelTemplates.SLAB_BOTTOM.create(slab, slabAndStairsTextures(log), blockModels.modelOutput));
     }
 
     private static List<ModelTemplate> allPanelTemplates() {

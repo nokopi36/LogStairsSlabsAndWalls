@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
 import com.nokopi.logstairsslabsandwalls.gametest.ModGameTests;
+import com.nokopi.logstairsslabsandwalls.loot.ModLootConditions;
 
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
@@ -18,6 +19,7 @@ public class LogStairsSlabsAndWalls {
         ModBlocks.BLOCKS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
         ModBlockEntities.BLOCK_ENTITY_TYPES.register(modEventBus);
+        ModLootConditions.LOOT_CONDITION_TYPES.register(modEventBus);
         ModCreativeTabs.CREATIVE_MODE_TABS.register(modEventBus);
         ModGameTests.TEST_FUNCTIONS.register(modEventBus);
         modEventBus.addListener(ModCreativeTabs::addToVanillaTabs);

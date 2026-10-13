@@ -26,6 +26,9 @@ public class StrippedFacesBlockEntity extends BlockEntity {
     private static final String TAG_STRIPPED = "stripped_faces";
 
     private int strippedMask;
+    // 剥いだ版のハーフを重ねている途中か（保存しない）。NeoForge はアイテムで置くとき onPlace を置いた後に呼ぶので、
+    // アイテムからハーフの onPlace へ「表に出る面を剥がれた状態にする」ことを伝える
+    private boolean stackingStrippedSlab;
 
     public StrippedFacesBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.STRIPPED_FACES.get(), pos, state);
@@ -37,6 +40,34 @@ public class StrippedFacesBlockEntity extends BlockEntity {
 
     public boolean isStripped(StrippedFace face) {
         return face.isStrippedIn(this.strippedMask);
+    }
+
+    // すべての面が剥がれているか（剥いだ版のドロップ・ピックブロック。SPEC 3.5）
+    public boolean isAllStripped() {
+        int all = allFacesMask(this.getBlockState());
+        return (this.strippedMask & all) == all;
+    }
+
+    // そのブロックが持つ面のすべて: 階段は 8 面（段の内側の 2 面を含む）、ほかは外周の 6 面
+    public static int allFacesMask(BlockState state) {
+        int mask = 0;
+        for (StrippedFace face : StrippedFace.values()) {
+            if (face.isOuter() || state.getBlock() instanceof LogStairBlock) {
+                mask |= face.bit();
+            }
+        }
+        return mask;
+    }
+
+    public void markStackingStrippedSlab() {
+        this.stackingStrippedSlab = true;
+    }
+
+    // 重ねている途中の印を読んで消す
+    public boolean consumeStackingStrippedSlab() {
+        boolean stacking = this.stackingStrippedSlab;
+        this.stackingStrippedSlab = false;
+        return stacking;
     }
 
     // 面を剥いで保存し、クライアントへ送る。クライアント側でも同じ処理を呼んで、すぐ見た目を変える
