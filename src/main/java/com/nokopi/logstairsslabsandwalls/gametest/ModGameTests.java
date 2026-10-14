@@ -19,6 +19,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.Vec3i;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.ProblemReporter;
@@ -46,6 +47,8 @@ import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.WallBlock;
@@ -54,6 +57,8 @@ import net.minecraft.world.level.block.state.properties.Half;
 import net.minecraft.world.level.block.state.properties.SlabType;
 import net.minecraft.world.level.block.state.properties.StairsShape;
 import net.minecraft.world.level.block.state.properties.WallSide;
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import net.minecraft.world.level.storage.TagValueInput;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.phys.BlockHitResult;
@@ -90,6 +95,8 @@ public final class ModGameTests {
             TEST_FUNCTIONS.register("stripped_slab_on_slab", () -> ModGameTests::strippedSlabOnSlab);
     public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> STRIPPED_RECIPES =
             TEST_FUNCTIONS.register("stripped_recipes", () -> ModGameTests::strippedRecipes);
+    public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> STRUCTURE_ROTATION =
+            TEST_FUNCTIONS.register("structure_rotation", () -> ModGameTests::structureRotation);
     public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> LOG_WALL_RECIPE =
             TEST_FUNCTIONS.register("log_wall_recipe", () -> ModGameTests::logWallRecipe);
     public static final DeferredHolder<Consumer<GameTestHelper>, Consumer<GameTestHelper>> STRIP_WALL_FACES =
@@ -288,6 +295,44 @@ public final class ModGameTests {
             assertOnlyRecipe(helper, CraftingInput.of(3, 1, List.of(log, panel, log)), ModItems.strippedLogSlab(wood).get(), ModRecipeProvider.slabCount(wood));
             assertOnlyRecipe(helper, CraftingInput.of(3, 2, List.of(log, log, panel, panel, log, log)), ModItems.strippedLogWall(wood).get(), ModRecipeProvider.wallCount(wood));
         }
+        helper.succeed();
+    }
+
+    // SPEC 3.2: ストラクチャーとして取り込んで回転・反転して置くと、剥いだ面もブロックと一緒に回る
+    private static void structureRotation(GameTestHelper helper) {
+        BlockPos source = new BlockPos(0, 1, 0);
+        BlockPos target = new BlockPos(2, 1, 2);
+        // 北面と、ハーフの上半分の東面・階段の踏み面（向きを持たない面はそのまま）
+        int mask = StrippedFace.NORTH.bit() | StrippedFace.UP.bit() | StrippedFace.UPPER_EAST.bit() | StrippedFace.TREAD.bit();
+        List<BlockState> states = List.of(ModBlocks.logPanel(LogWood.OAK).get().defaultBlockState(),
+                ModBlocks.logStairs(LogWood.OAK).get().defaultBlockState(),
+                ModBlocks.logSlab(LogWood.OAK).get().defaultBlockState().setValue(SlabBlock.TYPE, SlabType.DOUBLE),
+                ModBlocks.logWall(LogWood.OAK).get().defaultBlockState());
+        for (BlockState state : states) {
+            for (Mirror mirror : List.of(Mirror.NONE, Mirror.LEFT_RIGHT)) {
+                helper.setBlock(source, Blocks.AIR);
+                helper.setBlock(target, Blocks.AIR);
+                helper.setBlock(source, state);
+                int stored = mask & StrippedFacesBlockEntity.allFacesMask(state);
+                helper.getBlockEntity(source, StrippedFacesBlockEntity.class).setStrippedMask(stored);
+
+                StructureTemplate template = new StructureTemplate();
+                template.fillFromWorld(helper.getLevel(), helper.absolutePos(source), new Vec3i(1, 1, 1), false, List.of());
+                StructurePlaceSettings settings = new StructurePlaceSettings().setRotation(Rotation.CLOCKWISE_90).setMirror(mirror);
+                BlockPos absoluteTarget = helper.absolutePos(target);
+                template.placeInWorld(helper.getLevel(), absoluteTarget, absoluteTarget, settings, helper.getLevel().getRandom(), Block.UPDATE_ALL);
+
+                int expected = StrippedFace.transform(stored, mirror, Rotation.CLOCKWISE_90);
+                int actual = helper.getBlockEntity(target, StrippedFacesBlockEntity.class).strippedMask();
+                helper.assertTrue(actual == expected, state.getBlock() + " " + mirror + ": expected "
+                        + Integer.toBinaryString(expected) + " but was " + Integer.toBinaryString(actual));
+            }
+        }
+        // 回転の向き: 北 → 東（時計回り 90°）、左右反転すると北 → 南 → 西
+        helper.assertTrue(StrippedFace.NORTH.transform(Mirror.NONE, Rotation.CLOCKWISE_90) == StrippedFace.EAST, "north should rotate to east");
+        helper.assertTrue(StrippedFace.UPPER_NORTH.transform(Mirror.LEFT_RIGHT, Rotation.CLOCKWISE_90) == StrippedFace.UPPER_WEST,
+                "upper north should mirror and rotate to upper west");
+        helper.assertTrue(StrippedFace.TREAD.transform(Mirror.LEFT_RIGHT, Rotation.CLOCKWISE_90) == StrippedFace.TREAD, "tread should not move");
         helper.succeed();
     }
 

@@ -62,8 +62,6 @@ public class LogStairBlock extends StairBlock implements EntityBlock {
         return face.getAxis() == Direction.Axis.Y ? StrippedFace.TREAD : StrippedFace.RISER;
     }
 
-    // TODO(SPEC 3.3.1): ストラクチャーで回転・反転したとき、ブロックエンティティの剥いだ面は一緒に回らない（試作では後回し）
-
     @Override
     public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state, boolean includeData, Player player) {
         return FaceStripping.cloneItemStack(super.getCloneItemStack(level, pos, state, includeData, player), level, pos, state);

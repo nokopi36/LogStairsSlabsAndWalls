@@ -9,6 +9,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -152,6 +154,15 @@ public class StrippedFacesBlockEntity extends BlockEntity {
             BlockState state = this.getBlockState();
             this.level.sendBlockUpdated(this.worldPosition, state, state, Block.UPDATE_IMMEDIATE);
         }
+    }
+
+    /**
+     * ストラクチャーで回転・反転して置かれたとき、剥いだ面もブロックと一緒に回す（方角はワールドの向きなので。SPEC 3.2）。
+     * ワールド生成の別スレッドから呼ばれることがあるので、自分の値だけを書き換える（level には触らない）。
+     */
+    @Override
+    public void applyStructureRotation(Mirror mirror, Rotation rotation) {
+        this.strippedMask = StrippedFace.transform(this.strippedMask, mirror, rotation);
     }
 
     @Override

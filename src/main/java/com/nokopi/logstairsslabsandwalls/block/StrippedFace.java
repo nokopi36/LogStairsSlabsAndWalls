@@ -4,6 +4,9 @@ import com.mojang.serialization.Codec;
 
 import net.minecraft.core.Direction;
 import net.minecraft.util.StringRepresentable;
+import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.Rotation;
+import org.jspecify.annotations.Nullable;
 
 /**
  * ブロックエンティティに保存する剥ぎ状態の面（SPEC 3.2 / 3.3.1）。ordinal がビットの位置。
@@ -51,6 +54,44 @@ public enum StrippedFace implements StringRepresentable {
             case WEST -> UPPER_WEST;
             case EAST -> UPPER_EAST;
             default -> throw new IllegalArgumentException("not a horizontal direction: " + direction);
+        };
+    }
+
+    /**
+     * ストラクチャーで反転・回転したとき、この面が移る先（ブロックの向きと同じく、反転してから回転）。
+     * 横向きの面と上半分の側面だけ向きが変わり、上面・下面・踏み面・蹴上げはそのまま。
+     */
+    public StrippedFace transform(Mirror mirror, Rotation rotation) {
+        Direction direction = this.horizontalDirection();
+        if (direction == null) {
+            return this;
+        }
+        Direction moved = rotation.rotate(mirror.mirror(direction));
+        return this.isUpperSide() ? upper(moved) : of(moved);
+    }
+
+    // 剥ぎ状態のビットの集まり全体を transform で移す
+    public static int transform(int mask, Mirror mirror, Rotation rotation) {
+        int result = 0;
+        for (StrippedFace face : values()) {
+            if (face.isStrippedIn(mask)) {
+                result |= face.transform(mirror, rotation).bit();
+            }
+        }
+        return result;
+    }
+
+    private boolean isUpperSide() {
+        return (UPPER_SIDES & this.bit()) != 0;
+    }
+
+    private @Nullable Direction horizontalDirection() {
+        return switch (this) {
+            case NORTH, UPPER_NORTH -> Direction.NORTH;
+            case SOUTH, UPPER_SOUTH -> Direction.SOUTH;
+            case WEST, UPPER_WEST -> Direction.WEST;
+            case EAST, UPPER_EAST -> Direction.EAST;
+            default -> null;
         };
     }
 
