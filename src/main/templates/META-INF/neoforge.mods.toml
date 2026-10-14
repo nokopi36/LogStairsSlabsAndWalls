@@ -9,7 +9,7 @@
 license="${mod_license}"
 
 # A URL to refer people to when problems occur with this mod
-#issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/" #optional
+issueTrackerURL="https://github.com/nokopi36/LogStairsSlabsAndWalls/issues" #optional
 
 # A list of mods - how many allowed here is determined by the individual mod loader
 [[mods]] #mandatory
@@ -27,7 +27,7 @@ displayName="${mod_name}" #mandatory
 #updateJSONURL="https://change.me.example.invalid/updates.json" #optional
 
 # A URL for the "homepage" for this mod, displayed in the mod UI
-#displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
+displayURL="https://github.com/nokopi36/LogStairsSlabsAndWalls" #optional
 
 # A file name (in the root of the mod JAR) containing a logo for display
 #logoFile="examplemod.png" #optional
@@ -40,8 +40,11 @@ authors="nokopi"
 
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-Log stairs, slabs, walls and panels for every vanilla wood type, including bamboo blocks and nether stems.
-Strip the bark one face at a time with an axe: only the face you click is stripped, so a one-block-thick wall or roof can show bark on one side and stripped wood on the other.
+Log stairs, slabs, walls and panels - strip the bark one face at a time.
+Adds log-textured stairs, slabs, walls and full-block log panels for every vanilla wood type, including bamboo blocks and nether stems.
+Use an axe on a face to strip only that face, so a one-block-thick wall or roof can show bark on one side and stripped wood on the other.
+Stair treads and risers, and the upper and lower halves of double slabs, can be stripped separately.
+Craft them from stripped logs to get fully stripped variants. A sister mod of Log Fences and Gates.
 '''
 
 # The [[mixins]] block allows you to declare your mixin config to FML so that it gets loaded.

@@ -42,6 +42,11 @@ runClient を起動し、JVM の起動からログの最初のリソース読み
 - 差（全 13 種類）: +約 0.3 秒、+約 9 MB。目安（+10 秒以内）に収まる
 - 時間はタイトル画面の表示ではなくログの最後の読み込みの行まで。実際の差はやや大きい可能性がある
 
+## 公開準備（フェーズ 7）
+- CurseForge の確認（2026-10-14）: 「Log Stairs, Slabs and Walls」は検索で見つからず（似た名前: More Slabs, Stairs, and Walls / Log Slabs/Stairs / Slab, Stairs & Walls）。`/mc-mods/log-stairs-slabs-and-walls` は 404（自動アクセスを弾く可能性あり。プロジェクト作成時に確認する）
+- CurseForge 規約（Moderation Policies、2026-10-13 更新）: AI はショーケース画像の誤認防止の明記のみ、コードの規定なし。アイコン 400×400・単色不可・著作物不可・WebP 不可。名前は英語でゲーム名・バージョンを入れない。見た目だけ違う同じ中身は 1 プロジェクトにまとめる（fence とは中身が違うので別プロジェクトで可。説明文で違いを明記する）
+- mods.toml: displayURL / issueTrackerURL を GitHub `nokopi36/LogStairsSlabsAndWalls` に。説明文を SPEC の一文から始める
+
 ## 保留・課題
 - NeoForge 26.3 はベータ版。正式版が出たら `neo_version` を上げて追従する（`mcsrc/` も展開し直す）
 
