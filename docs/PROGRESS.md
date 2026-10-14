@@ -4,7 +4,7 @@
 
 ## 現在地
 - 実装中: なし
-- 次にやること: 公開準備（フェーズ 7）。SPEC の MVP・次の機能はすべて完了
+- 次にやること: 公開（GitHub リポジトリ・Releases、CurseForge）。SPEC の MVP・次の機能はすべて完了
 
 ## 完了
 | 日付 | 機能 | コミット | メモ |
@@ -49,6 +49,7 @@ runClient を起動し、JVM の起動からログの最初のリソース読み
 - アイコン: ゲーム内スクリーンショット（2026-10-14_22.50.24.png、13 種類の原木の階段・ハーフ・パネルを面ごとに剥いだ柱）を切り抜き、System.Drawing（HighQualityBicubic）で縮小。400×400 の `src/main/resources/logo.png`（bannerFile）と `docs/curseforge/icon.png`（同じ画像）、上部をアップにした 128×128 の `src/main/resources/icon.png`（iconFile、iconBlur=true）
 - README.md / README.ja.md / CHANGELOG.md（1.0.0）/ docs/curseforge/description.md（日本語版をユーザーが修正し、英語版を合わせた）
 - 配布 jar のサーバー確認（2026-10-14、NeoForge 26.3.0.42-beta 専用サーバー・公式インストーラーは SHA-256 照合済み・本番モード・jar 単体、`logstairsslabsandwalls-neoforge-26.3-1.0.0.jar` SHA-256 ef7e1b14…）: 起動 OK、RCON で setblock（剥ぎ状態付き）、`/loot spawn ... mine` でドロップを確認（全面剥がれの階段・竹ブロックの塀 → 剥いだ版、一部のパネル → 普通の版、上下で違う 2 枚重ねの真紅の幹のハーフ → 剥いだ版 1 + 普通の版 1）。再起動後も剥ぎ状態が保たれる。MOD 由来のエラーなし。標準入力からのコマンドは「An unexpected error occurred」で動かなかったため RCON を使った
+- 配布 jar のクライアント確認（2026-10-15、ランチャーの新規プロファイル・NeoForge 26.3.0.42-beta・jar 単体）: 起動・MOD 一覧（アイコン・バナー・説明文）・設置と剥ぎ・再読み込み OK
 
 ## 保留・課題
 - NeoForge 26.3 はベータ版。正式版が出たら `neo_version` を上げて追従する（`mcsrc/` も展開し直す）
