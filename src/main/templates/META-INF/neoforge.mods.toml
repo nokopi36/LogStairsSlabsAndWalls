@@ -29,8 +29,13 @@ displayName="${mod_name}" #mandatory
 # A URL for the "homepage" for this mod, displayed in the mod UI
 displayURL="https://github.com/nokopi36/LogStairsSlabsAndWalls" #optional
 
-# A file name (in the root of the mod JAR) containing a logo for display
-#logoFile="examplemod.png" #optional
+# A file name (in the root of the mod JAR) containing a banner image shown in the mod list details
+# (26.3 deprecates logoFile in favor of bannerFile)
+bannerFile="logo.png" #optional
+# The small icon shown in the mod list (rendered at 24x24)
+iconFile="icon.png" #optional
+# Use linear filtering when scaling the icon down
+iconBlur=true #optional
 
 # A text field displayed in the mod UI
 #credits="" #optional

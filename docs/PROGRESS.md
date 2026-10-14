@@ -46,6 +46,7 @@ runClient を起動し、JVM の起動からログの最初のリソース読み
 - CurseForge の確認（2026-10-14）: 「Log Stairs, Slabs and Walls」は検索で見つからず（似た名前: More Slabs, Stairs, and Walls / Log Slabs/Stairs / Slab, Stairs & Walls）。`/mc-mods/log-stairs-slabs-and-walls` は 404（自動アクセスを弾く可能性あり。プロジェクト作成時に確認する）
 - CurseForge 規約（Moderation Policies、2026-10-13 更新）: AI はショーケース画像の誤認防止の明記のみ、コードの規定なし。アイコン 400×400・単色不可・著作物不可・WebP 不可。名前は英語でゲーム名・バージョンを入れない。見た目だけ違う同じ中身は 1 プロジェクトにまとめる（fence とは中身が違うので別プロジェクトで可。説明文で違いを明記する）
 - mods.toml: displayURL / issueTrackerURL を GitHub `nokopi36/LogStairsSlabsAndWalls` に。説明文を SPEC の一文から始める
+- アイコン: ゲーム内スクリーンショット（2026-10-14_22.50.24.png、13 種類の原木の階段・ハーフ・パネルを面ごとに剥いだ柱）を切り抜き、System.Drawing（HighQualityBicubic）で縮小。400×400 の `src/main/resources/logo.png`（bannerFile）と `docs/curseforge/icon.png`（同じ画像）、上部をアップにした 128×128 の `src/main/resources/icon.png`（iconFile、iconBlur=true）
 
 ## 保留・課題
 - NeoForge 26.3 はベータ版。正式版が出たら `neo_version` を上げて追従する（`mcsrc/` も展開し直す）
