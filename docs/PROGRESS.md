@@ -4,7 +4,7 @@
 
 ## 現在地
 - 実装中: なし
-- 次にやること: 公開（GitHub リポジトリ・Releases、CurseForge）。SPEC の MVP・次の機能はすべて完了
+- 次にやること: CurseForge への公開（ユーザー）→ README に CurseForge のリンクを足す
 
 ## 完了
 | 日付 | 機能 | コミット | メモ |
@@ -50,6 +50,7 @@ runClient を起動し、JVM の起動からログの最初のリソース読み
 - README.md / README.ja.md / CHANGELOG.md（1.0.0）/ docs/curseforge/description.md（日本語版をユーザーが修正し、英語版を合わせた）
 - 配布 jar のサーバー確認（2026-10-14、NeoForge 26.3.0.42-beta 専用サーバー・公式インストーラーは SHA-256 照合済み・本番モード・jar 単体、`logstairsslabsandwalls-neoforge-26.3-1.0.0.jar` SHA-256 ef7e1b14…）: 起動 OK、RCON で setblock（剥ぎ状態付き）、`/loot spawn ... mine` でドロップを確認（全面剥がれの階段・竹ブロックの塀 → 剥いだ版、一部のパネル → 普通の版、上下で違う 2 枚重ねの真紅の幹のハーフ → 剥いだ版 1 + 普通の版 1）。再起動後も剥ぎ状態が保たれる。MOD 由来のエラーなし。標準入力からのコマンドは「An unexpected error occurred」で動かなかったため RCON を使った
 - 配布 jar のクライアント確認（2026-10-15、ランチャーの新規プロファイル・NeoForge 26.3.0.42-beta・jar 単体）: 起動・MOD 一覧（アイコン・バナー・説明文）・設置と剥ぎ・再読み込み OK
+- GitHub（2026-10-15）: `nokopi36/LogStairsSlabsAndWalls` を public で作成、ブランチを master → main に（fence に合わせた）。Releases に v1.0.0（タグ v1.0.0 = bdff528、jar SHA-256 ef7e1b14…、リリースノートは CHANGELOG の 1.0.0 の節 + 対応バージョン + SHA-256）。https://github.com/nokopi36/LogStairsSlabsAndWalls/releases/tag/v1.0.0
 
 ## 保留・課題
 - NeoForge 26.3 はベータ版。正式版が出たら `neo_version` を上げて追従する（`mcsrc/` も展開し直す）
